@@ -1,0 +1,51 @@
+{
+  "name": "kient",
+  "type": "module",
+  "version": "1.0.0",
+  "packageManager": "pnpm@8.6.0",
+  "description": "",
+  "author": "Soulweaver",
+  "license": "GPL-3.0-or-later",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub",
+    "dev": "pnpm --filter playground dev",
+    "docs": "typedoc",
+    "docs:dev": "pnpm run docs && vitepress dev docs"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.39.7",
+    "@deepkit/type-compiler": "1.0.1-alpha.97",
+    "@types/node": "^20.4.0",
+    "eslint": "^8.44.0",
+    "pnpm": "^8.6.6",
+    "typedoc": "^0.24.8",
+    "typedoc-plugin-frontmatter": "^0.0.2",
+    "typedoc-plugin-markdown": "4.0.0-next.17",
+    "typedoc-plugin-merge-modules": "^5.0.1",
+    "typedoc-plugin-missing-exports": "^2.0.0",
+    "typedoc-plugin-not-exported": "^0.1.6",
+    "typedoc-vitepress-theme": "1.0.0-next.2",
+    "typescript": "^5.1.6",
+    "unbuild": "^1.2.1",
+    "vitepress": "1.0.0-beta.5"
+  },
+  "dependencies": {
+    "@deepkit/type": "1.0.1-alpha.97",
+    "ofetch": "^1.1.1",
+    "vue": "^3.3.4"
+  }
+}

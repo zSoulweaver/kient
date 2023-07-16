@@ -1,0 +1,19 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch src --watch ../src -e ts --exec \"node --loader @polkadot/dev-ts/cached src/index.ts\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "kient": "workspace:*"
+  },
+  "devDependencies": {
+    "@polkadot/dev-ts": "^0.75.27",
+    "nodemon": "^3.0.1"
+  }
+}
