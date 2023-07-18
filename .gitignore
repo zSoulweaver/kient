@@ -11,5 +11,7 @@ node_modules
 temp
 build-loader
 
+docs/.vitepress/cache
+docs/.vitepress/dist
 docs/reference
 playground/src
