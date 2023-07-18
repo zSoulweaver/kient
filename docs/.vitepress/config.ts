@@ -16,10 +16,10 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: 'Examples',
+        text: 'Getting Started',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' },
+          { text: 'What is Kient?', link: '/introduction/what-is-kient' },
+          { text: 'Getting Started', link: '/introduction/getting-started' },
         ],
       },
       {

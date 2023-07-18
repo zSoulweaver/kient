@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Getting Started
-      link: /markdown-examples
+      link: /getting-started/quick-start.md
     - theme: alt
       text: API Endpoints
       link: /endpoints
