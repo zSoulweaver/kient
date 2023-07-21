@@ -4,7 +4,7 @@ import type { Kient } from './kient'
 /**
  * @hidden
  */
-export class ApiEndpoint {
+export abstract class ApiEndpoint {
   /** @hidden */
   protected readonly _client: Kient
   /** @hidden */

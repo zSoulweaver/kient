@@ -1,10 +1,12 @@
-import type { $Fetch } from 'ofetch'
+import type { $Fetch, FetchOptions } from 'ofetch'
 import { ofetch } from 'ofetch'
 import type { Kient } from './kient'
 
-/**
-  * @hidden
- */
+interface CallKickAPI {
+  endpoint: string
+  options?: FetchOptions
+}
+
 export class ApiClient {
   private readonly _client: Kient
   private readonly _apiFetch: $Fetch
@@ -16,7 +18,7 @@ export class ApiClient {
     })
   }
 
-  callKickApi(params: { endpoint: string }) {
-    return this._apiFetch(params.endpoint)
+  callKickApi(params: CallKickAPI) {
+    return this._apiFetch(params.endpoint, params.options)
   }
 }
