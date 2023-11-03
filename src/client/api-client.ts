@@ -1,4 +1,4 @@
-import type { $Fetch, FetchOptions } from 'ofetch'
+import type { $Fetch } from 'ofetch'
 import { ofetch } from 'ofetch'
 import type { CycleTLSClient, CycleTLSRequestOptions, CycleTLSResponse } from 'cycletls'
 import initCycleTLS from 'cycletls'
@@ -6,10 +6,10 @@ import exitHook from 'exit-hook'
 import toughCookie from 'tough-cookie'
 import type { Kient } from './kient'
 
-interface CallKickAPI {
-  endpoint: string
-  options?: FetchOptions
-}
+// interface CallKickAPI {
+//   endpoint: string
+//   options?: FetchOptions
+// }
 
 interface CallKickAPICycles {
   endpoint: string
