@@ -8,13 +8,21 @@ import { ApiClient } from './api-client'
  */
 export class Kient {
   /** @hidden */
-  private readonly _apiClient: ApiClient
+  private _apiClient: ApiClient
 
   /**
    * Creates an instance of Kient.
    */
-  constructor() {
-    this._apiClient = new ApiClient(this)
+  constructor() { }
+
+  private async init() {
+    this._apiClient = await ApiClient.create(this)
+  }
+
+  static async create() {
+    const kient = new Kient()
+    await kient.init()
+    return kient
   }
 
   /**
@@ -31,8 +39,6 @@ export class Kient {
   api() {
     return {
       channel: new ChannelEndpoint(this, this._apiClient),
-      test: new ChannelEndpoint(this, this._apiClient),
-      user: new ChannelEndpoint(this, this._apiClient),
     }
   }
 }
