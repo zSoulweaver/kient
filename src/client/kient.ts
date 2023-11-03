@@ -1,4 +1,3 @@
-import { AuthEndpoint } from '../endpoints/auth/auth-endpoint'
 import { ChannelEndpoint } from '../endpoints/channel/channel.endpoint'
 import { ApiClient } from './api-client'
 
@@ -39,7 +38,6 @@ export class Kient {
    */
   api() {
     return {
-      auth: new AuthEndpoint(this, this._apiClient),
       channel: new ChannelEndpoint(this, this._apiClient),
     }
   }
