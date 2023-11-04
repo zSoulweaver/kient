@@ -34,15 +34,15 @@
     "eslint": "^8.44.0",
     "pnpm": "^8.6.6",
     "tsup": "^7.1.0",
-    "typedoc": "^0.24.8",
+    "typedoc": "^0.25.3",
     "typedoc-plugin-frontmatter": "^0.0.2",
-    "typedoc-plugin-markdown": "4.0.0-next.17",
-    "typedoc-plugin-merge-modules": "^5.0.1",
-    "typedoc-plugin-missing-exports": "^2.0.0",
+    "typedoc-plugin-markdown": "4.0.0-next.25",
+    "typedoc-plugin-merge-modules": "^5.1.0",
+    "typedoc-plugin-missing-exports": "^2.1.0",
     "typedoc-plugin-not-exported": "^0.1.6",
-    "typedoc-vitepress-theme": "1.0.0-next.2",
-    "typescript": "^5.1.6",
-    "vitepress": "1.0.0-beta.5"
+    "typedoc-vitepress-theme": "1.0.0-next.3",
+    "typescript": "^5.2.2",
+    "vitepress": "1.0.0-rc.24"
   },
   "dependencies": {
     "@deepkit/type": "1.0.1-alpha.97",

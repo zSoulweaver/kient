@@ -1,29 +1,31 @@
 {
-  "entryPoints": ["src/"],
-  "entryPointStrategy": "expand",
+  "entryPoints": ["./src/"],
+  // "entryPointStrategy": "expand",
   "plugin": [
     // "typedoc-plugin-missing-exports",
-    "typedoc-plugin-merge-modules",
+    // "typedoc-plugin-merge-modules",
     "typedoc-plugin-markdown",
     "typedoc-vitepress-theme",
     "typedoc-plugin-frontmatter",
     "./typedoc/sidebar-plugin.js"
   ],
   "out": "./docs/reference",
-  "categorizeByGroup": false,
+
+  // "internalModule": "Kientnternals",
+  // "categorizeByGroup": false,
   // Markdown Plugin Options
-  "propertiesFormat": "Table",
+  "readme": "none",
+  "parametersFormat": "table",
+  "propertiesFormat": "table",
+  "enumMembersFormat": "table",
   "typeDeclarationFormat": "table",
-  "excludeExternals": false,
-  "excludeGroups": true,
-  "hideHierarchy": true,
+  "indexFormat": "table",
   "hideBreadcrumbs": true,
-  "hideInPageTOC": false,
-  "hideKindPrefix": true,
+  "hideInPageTOC": true,
 
   // Vitepress Plugin Options
   "sidebar": {
-    "autoConfiguration": false,
+    "autoConfiguration": true,
     "format": "vitepress"
   },
 

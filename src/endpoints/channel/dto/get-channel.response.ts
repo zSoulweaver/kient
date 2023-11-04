@@ -1,4 +1,4 @@
-export class GetChannelResponse {
+export interface GetChannelResponse {
   id: number
   user_id: number
   slug: string

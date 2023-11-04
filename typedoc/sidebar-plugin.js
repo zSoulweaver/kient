@@ -25,8 +25,9 @@ export function load(app) {
   )
 
   app.renderer.on(PageEvent.END, (page) => {
-    if (page.contents && endpoints.includes(page.model.url))
+    if (page.contents && endpoints.includes(page.model.url)) {
       page.contents = page.contents.replace(/^## Endpoint.*$/gm, '')
+    }
   })
 
   app.renderer.postRenderAsyncJobs.push(
@@ -38,13 +39,16 @@ export function load(app) {
       const endpointSidebarPath = path.resolve(outDir, 'typedoc-endpoint-sidebar.json')
 
       const endpointPages = output.navigation.filter(x => endpoints.includes(x.url))
+      console.log(output.navigation)
+      console.log(endpoints)
+      console.log(endpointData)
       const endpointSidebar = endpointPages.map(item => getNavigationItem(item, basePath, endpointData))
 
       const sidebarPages = output.navigation.filter(x => !endpoints.includes(x.url))
       const sidebar = sidebarPages.map(item => getNavigationItem(item, basePath))
 
       fs.writeFileSync(endpointSidebarPath, JSON.stringify(endpointSidebar))
-      fs.writeFileSync(sidebarPath, JSON.stringify(sidebar))
+      // fs.writeFileSync(sidebarPath, JSON.stringify(sidebar))
     },
   )
 }

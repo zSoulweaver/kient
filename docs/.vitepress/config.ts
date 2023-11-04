@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import typedocSidebar from '../reference/typedoc-sidebar.json'
-import typedocEndpointSidebar from '../reference/typedoc-endpoint-sidebar.json'
+
+// import typedocEndpointSidebar from '../reference/typedoc-endpoint-sidebar.json'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -15,7 +16,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Examples', link: '/markdown-examples' },
-      { text: 'Endpoints', link: typedocEndpointSidebar[0].link },
+      // { text: 'Endpoints', link: typedocEndpointSidebar[0].link },
     ],
 
     sidebar: [
@@ -26,10 +27,10 @@ export default defineConfig({
           { text: 'Getting Started', link: '/introduction/getting-started' },
         ],
       },
-      {
-        text: 'Endpoints',
-        items: typedocEndpointSidebar,
-      },
+      // {
+      //   text: 'Endpoints',
+      //   items: typedocEndpointSidebar,
+      // },
       {
         text: 'Reference',
         items: typedocSidebar,
