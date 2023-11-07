@@ -22,6 +22,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "pnpm --filter playground dev",
+    "docs2": "vitepress dev docs2",
     "docs": "typedoc",
     "docs:dev": "pnpm run docs && vitepress dev docs"
   },

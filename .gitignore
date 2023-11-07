@@ -15,3 +15,6 @@ docs/.vitepress/cache
 docs/.vitepress/dist
 docs/reference
 playground/src
+
+docs2/.vitepress/cache
+docs2/.vitepress/dist
