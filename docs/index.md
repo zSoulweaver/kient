@@ -3,16 +3,16 @@
 layout: home
 
 hero:
-  name: "Kient"
-  text: "API Library for Kick"
-  tagline: A TypeScript based library for interacting with Kick.com
+  name: "The Easiest Way to Interact with the Kick API"
+  # text: "The Easiest Way to Interact with the Kick API"
+  tagline: TypeScript-First Client Library for Kick.com's API. Explore channel information, read chat, and much more effortlessly.
   actions:
     - theme: brand
-      text: Getting Started
-      link: /introduction/getting-started
+      text: Markdown Examples
+      link: /markdown-examples
     - theme: alt
-      text: API Endpoints
-      link: /endpoints
+      text: API Examples
+      link: /api-examples
 
 features:
   - title: Feature A
@@ -22,3 +22,4 @@ features:
   - title: Feature C
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
+

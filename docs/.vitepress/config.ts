@@ -1,42 +1,36 @@
 import { defineConfig } from 'vitepress'
-import typedocSidebar from '../reference/typedoc-sidebar.json'
-
-// import typedocEndpointSidebar from '../reference/typedoc-endpoint-sidebar.json'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Kient',
-  description: 'Kick.com Client Library',
+  description: 'A TypeScript-First Client Library for Kick.com',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    search: {
-      provider: 'local',
-    },
-
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' },
-      // { text: 'Endpoints', link: typedocEndpointSidebar[0].link },
+      { text: 'Guide', link: '/guide/what-is-kient' },
+      { text: 'Reference', link: '/reference/kient' },
     ],
 
-    sidebar: [
-      {
-        text: 'Getting Started',
-        items: [
-          { text: 'What is Kient?', link: '/introduction/what-is-kient' },
-          { text: 'Getting Started', link: '/introduction/getting-started' },
-        ],
-      },
-      // {
-      //   text: 'Endpoints',
-      //   items: typedocEndpointSidebar,
-      // },
-      {
-        text: 'Reference',
-        items: typedocSidebar,
-        collapsed: true,
-      },
-    ],
+    sidebar: {
+      '/guide': [
+        {
+          text: 'Introduction',
+          items: [
+            { text: 'What is Kient?', link: '/guide/what-is-kient' },
+            { text: 'Getting Started', link: '/guide/getting-started' },
+          ],
+        },
+      ],
+      '/reference': [
+        {
+          text: 'Reference',
+          items: [
+            { text: 'Kient', link: '/reference/kient' },
+          ],
+        },
+      ],
+    },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
