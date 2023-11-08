@@ -4,6 +4,7 @@ import type { GetChannelResponse } from './dto/get-channel.response'
 import type { GetLivestreamResponse } from './dto/get-livestream.response'
 import type { GetLeaderboardsResponse } from './dto/get-leaderboards.response'
 import type { GetChatroomSettingsResponse } from './dto/get-chatroom-settings.response'
+import { GetPollsResponse } from './dto/get-polls.response'
 
 export class ChannelEndpoint extends ApiEndpoint {
   public async getChannel(channel: string) {
@@ -24,5 +25,10 @@ export class ChannelEndpoint extends ApiEndpoint {
   public async getChatroomSettings(channel: string) {
     const response = await this._apiClient.callKickApi({ endpoint: `api/v2/channels/${channel}/chatroom` })
     return deserialize<GetChatroomSettingsResponse>(response.body)
+  }
+
+  public async getPolls(channel: string) {
+    const response = await this._apiClient.callKickApi({ endpoint: `api/v2/channels/${channel}/polls` })
+    return deserialize<GetPollsResponse>(response.body)
   }
 }

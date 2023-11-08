@@ -14,7 +14,8 @@
     "paths": {
       "kient": [
         "../src/index.ts"
-      ]
+      ],
+      "@/*": ["../src/*"]
     }
   },
   "reflection": true
