@@ -3,19 +3,9 @@ import { ApiEndpoint } from '../../client/api-endpoint'
 import type { GetChannelResponse } from './dto/get-channel.response'
 import type { GetLivestreamResponse } from './dto/get-livestream.response'
 import type { GetLeaderboardsResponse } from './dto/get-leaderboards.response'
+import type { GetChatroomSettingsResponse } from './dto/get-chatroom-settings.response'
 
-/**
- * API methods for dealing with channels.
- * @endpoint
- * @class ChannelEndpoint
- */
 export class ChannelEndpoint extends ApiEndpoint {
-  /**
-   * Returns the channel object for V2 api
-   *
-   * @param {string} channel The channel you want to retreive information for
-   * @returns GetChannelResponse
-   */
   public async getChannel(channel: string) {
     const response = await this._apiClient.callKickApi({ endpoint: `api/v2/channels/${channel}` })
     return deserialize<GetChannelResponse>(response.body)
@@ -29,5 +19,10 @@ export class ChannelEndpoint extends ApiEndpoint {
   public async getLeaderboards(channel: string) {
     const response = await this._apiClient.callKickApi({ endpoint: `api/v2/channels/${channel}/leaderboards` })
     return deserialize<GetLeaderboardsResponse>(response.body)
+  }
+
+  public async getChatroomSettings(channel: string) {
+    const response = await this._apiClient.callKickApi({ endpoint: `api/v2/channels/${channel}/chatroom` })
+    return deserialize<GetChatroomSettingsResponse>(response.body)
   }
 }
