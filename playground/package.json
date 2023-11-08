@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch src --watch ../src -e ts --exec \"node --loader @polkadot/dev-ts/cached src/index.ts\""
+    "dev": "node --loader @polkadot/dev-ts/cached --watch src/index.ts"
   },
   "keywords": [],
   "author": "",
