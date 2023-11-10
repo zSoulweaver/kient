@@ -1,5 +1,5 @@
-import type { ApiClient } from './api-client'
-import type { Kient } from './kient'
+import { ApiClient } from '@/client/api-client'
+import { Kient } from '@/client/kient'
 
 export abstract class ApiEndpoint {
   protected readonly _client: Kient

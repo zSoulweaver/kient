@@ -1,4 +1,4 @@
-import { ApiEndpoint } from '@/client/api-endpoint'
+import { ApiEndpoint } from '../api-endpoint'
 import { deserialize } from '@deepkit/type'
 import { TokensResponse } from './dto/tokens.response'
 import { KientAuthenticationError } from './authentication.error'

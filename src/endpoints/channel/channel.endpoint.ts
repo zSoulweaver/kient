@@ -1,5 +1,5 @@
+import { ApiEndpoint } from '../api-endpoint'
 import { deserialize } from '@deepkit/type'
-import { ApiEndpoint } from '../../client/api-endpoint'
 import type { GetChannelResponse } from './dto/get-channel.response'
 import type { GetLivestreamResponse } from './dto/get-livestream.response'
 import type { GetLeaderboardsResponse } from './dto/get-leaderboards.response'
