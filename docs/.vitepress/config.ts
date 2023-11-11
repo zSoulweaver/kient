@@ -4,11 +4,12 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'Kient',
   description: 'A TypeScript-First Client Library for Kick.com',
+  cleanUrls: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/guide/what-is-kient' },
+      { text: 'Guide', link: '/guide/getting-started' },
       { text: 'Reference', link: '/reference/kient' },
     ],
 
@@ -33,7 +34,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
+      { icon: 'github', link: 'https://github.com/zSoulweaver/kient' },
     ],
   },
 })

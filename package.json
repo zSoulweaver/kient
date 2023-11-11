@@ -22,7 +22,9 @@
   "scripts": {
     "build": "tsup",
     "dev": "pnpm --filter playground dev",
-    "docs": "vitepress dev docs"
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^1.1.0",
