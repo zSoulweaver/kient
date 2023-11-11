@@ -4,13 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node --loader @polkadot/dev-ts/cached --watch src/index.ts"
+    "dev": "nodemon --watch src --watch ../src -e ts --exec \"node --loader @polkadot/dev-ts/cached src/index.ts\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@inquirer/prompts": "^3.3.0",
     "kient": "workspace:*"
   },
   "devDependencies": {
