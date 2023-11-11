@@ -3,7 +3,8 @@
   "type": "module",
   "version": "1.0.1-1",
   "packageManager": "pnpm@8.10.2",
-  "description": "",
+  "description": "TypeScript-First Client Library for Kick.com",
+  "repository": "zSoulweaver/kient",
   "author": "Soulweaver",
   "license": "MIT",
   "exports": {
