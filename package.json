@@ -1,7 +1,7 @@
 {
   "name": "kient",
   "type": "module",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.1-0",
   "packageManager": "pnpm@8.10.2",
   "description": "",
   "author": "Soulweaver",
@@ -24,7 +24,8 @@
     "dev": "pnpm --filter playground dev",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "changelog": "changelogen --output --release --no-commit --prerelease"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^1.1.0",
@@ -32,6 +33,7 @@
     "@gjsify/esbuild-plugin-deepkit": "^0.0.3",
     "@types/node": "^20.9.0",
     "@types/tough-cookie": "^4.0.5",
+    "changelogen": "^0.5.5",
     "eslint": "^8.53.0",
     "pnpm": "^8.10.2",
     "tsup": "^7.2.0",
