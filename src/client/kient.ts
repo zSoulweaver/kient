@@ -1,9 +1,9 @@
 import { AuthenticationEndpoint } from '@/endpoints/authentication/authentication.endpoint'
 import { ChannelEndpoint } from '@/endpoints/channel/channel.endpoint'
-import { ApiClient } from './api-client'
+import { ApiClient } from './api.client'
 import { Emitter } from 'strict-event-emitter'
 import { KientEvents } from '@/ws/ws.events'
-import { WsClient } from './ws-client'
+import { WsClient } from './ws.client'
 import { ChatroomSocket } from '@/ws/chatroom/chatroom.socket'
 
 interface Endpoints {

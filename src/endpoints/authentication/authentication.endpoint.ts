@@ -1,4 +1,4 @@
-import { ApiEndpoint } from '../api-endpoint'
+import { BaseEndpoint } from '../endpoint.base'
 import { deserialize } from '@deepkit/type'
 import { TokensResponse } from './dto/tokens.response'
 import { KientAuthenticationError } from './authentication.error'
@@ -11,7 +11,7 @@ interface LoginCredentials {
   otc?: number | string
 }
 
-export class AuthenticationEndpoint extends ApiEndpoint {
+export class AuthenticationEndpoint extends BaseEndpoint {
   public async getTokens() {
     const response = await this._apiClient.callKickApi({ endpoint: 'kick-token-provider' })
     if (response.status !== 200) {

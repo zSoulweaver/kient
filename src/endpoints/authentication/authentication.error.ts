@@ -1,4 +1,4 @@
-import { ErrorBase } from '@/utils/error-base'
+import { ErrorBase } from '@/utils/error.base'
 
 type ErrorName =
   | 'SOMETHING_WENT_WRONG'

@@ -1,4 +1,4 @@
-import { ApiEndpoint } from '../api-endpoint'
+import { BaseEndpoint } from '../endpoint.base'
 import { deserialize } from '@deepkit/type'
 import type { GetChannelResponse } from './dto/get-channel.response'
 import type { GetLivestreamResponse } from './dto/get-livestream.response'
@@ -6,7 +6,7 @@ import type { GetLeaderboardsResponse } from './dto/get-leaderboards.response'
 import type { GetChatroomSettingsResponse } from './dto/get-chatroom-settings.response'
 import { GetPollsResponse } from './dto/get-polls.response'
 
-export class ChannelEndpoint extends ApiEndpoint {
+export class ChannelEndpoint extends BaseEndpoint {
   public async getChannel(channel: string) {
     const response = await this._apiClient.callKickApi({ endpoint: `api/v2/channels/${channel}` })
     return deserialize<GetChannelResponse>(response.body)

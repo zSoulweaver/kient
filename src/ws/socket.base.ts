@@ -1,5 +1,5 @@
 import { Kient } from '@/client/kient'
-import { WsClient } from '@/client/ws-client'
+import { WsClient } from '@/client/ws.client'
 
 export abstract class BaseSocket {
   protected readonly _client: Kient
