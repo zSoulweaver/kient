@@ -16,7 +16,7 @@ Kient
 
 ## About
 
-Kient (**K***ick-Cl***ient**) is a versatile TypeScript client designed to simplify interaction with Kick's API and WebSocket. With Kient, you can seamlessly integrate Kick's platform into your projects, making it easier than ever to leverage its capabilities.
+Kient (**K**ick-Cl**ient**) is a versatile TypeScript client designed to simplify interaction with Kick's API and WebSocket. With Kient, you can seamlessly integrate Kick's platform into your projects, making it easier than ever to leverage its capabilities.
 
 
 ## Documentation
