@@ -4,7 +4,7 @@ Kient
 
 <p align="center">
   <a href="https://github.com/zSoulweaver/kient/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&labelColor=181a1e">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&labelColor=181a1e&color=00e701&">
   </a>
   <a href="https://www.npmjs.com/package/kient">
     <img src="https://img.shields.io/npm/v/kient.svg?logo=npm&style=for-the-badge&labelColor=181a1e&color=00e701&logoColor=fff">
