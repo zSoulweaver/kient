@@ -4,6 +4,7 @@ import { TokensResponse } from './dto/tokens.response'
 import { KientAuthenticationError } from './authentication.error'
 import { LoginErrorResponse, LoginResponse } from './dto/login.response'
 import { UserResponse } from './dto/user.response'
+import { KientApiError } from '../api.error'
 
 interface LoginCredentials {
   email: string
@@ -15,7 +16,7 @@ export class AuthenticationEndpoint extends BaseEndpoint {
   public async getTokens() {
     const response = await this._apiClient.callKickApi({ endpoint: 'kick-token-provider' })
     if (response.status !== 200) {
-      throw new KientAuthenticationError({
+      throw new KientApiError({
         name: 'SOMETHING_WENT_WRONG',
         message: 'Failed to retrieve pre-login tokens'
       })
@@ -86,9 +87,9 @@ export class AuthenticationEndpoint extends BaseEndpoint {
         })
       }
     }
-    throw new KientAuthenticationError({
+    throw new KientApiError({
       name: 'SOMETHING_WENT_WRONG',
-      message: 'Unknown authentication error'
+      message: 'Unknown authentication error when attemping login'
     })
   }
 
@@ -96,7 +97,7 @@ export class AuthenticationEndpoint extends BaseEndpoint {
     const response = await this._apiClient.callKickApi({ endpoint: 'api/v1/user' })
     const deserializedBody = deserialize<UserResponse>(response.body)
     if (!deserializedBody.id) {
-      throw new KientAuthenticationError({
+      throw new KientApiError({
         name: 'UNAUTHENTICATED',
         message: 'Not authenticated'
       })
