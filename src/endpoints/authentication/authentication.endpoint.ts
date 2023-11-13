@@ -42,26 +42,6 @@ export class AuthenticationEndpoint extends BaseEndpoint {
       }
     })
 
-
-    if (response.status === 200) {
-      const responseBody = deserialize<LoginResponse>(response.body)
-      if (responseBody.token) {
-        this._apiClient.setBearerToken(responseBody.token)
-        return
-      }
-      let errorMessage = ''
-      if (responseBody.otp_required) {
-        errorMessage = 'Login requires one time code from email'
-      }
-      if (responseBody['2fa_required']) {
-        errorMessage = 'Login requires authenticator app token'
-      }
-      throw new KientAuthenticationError({
-        name: '2FA_REQUIRED',
-        message: errorMessage
-      })
-    }
-
     if (response.status === 422) {
       const responseBody = deserialize<LoginErrorResponse>(response.body)
       if (responseBody.message === 'Username or password is not correct') {
@@ -87,6 +67,27 @@ export class AuthenticationEndpoint extends BaseEndpoint {
         })
       }
     }
+
+    if (response.status === 200) {
+      const responseBody = deserialize<LoginResponse>(response.body)
+      if (responseBody.token) {
+        this._apiClient.setBearerToken(responseBody.token)
+        this._client.autenticated = true
+        return
+      }
+      let errorMessage = ''
+      if (responseBody.otp_required) {
+        errorMessage = 'Login requires one time code from email'
+      }
+      if (responseBody['2fa_required']) {
+        errorMessage = 'Login requires authenticator app token'
+      }
+      throw new KientAuthenticationError({
+        name: '2FA_REQUIRED',
+        message: errorMessage
+      })
+    }
+
     throw new KientApiError({
       name: 'SOMETHING_WENT_WRONG',
       message: 'Unknown authentication error when attemping login'
@@ -94,13 +95,13 @@ export class AuthenticationEndpoint extends BaseEndpoint {
   }
 
   public async currentUser() {
+    if (!this._client.autenticated) {
+      throw new KientApiError({ name: 'UNAUTHENTICATED' })
+    }
     const response = await this._apiClient.callKickApi({ endpoint: 'api/v1/user' })
     const deserializedBody = deserialize<UserResponse>(response.body)
     if (!deserializedBody.id) {
-      throw new KientApiError({
-        name: 'UNAUTHENTICATED',
-        message: 'Not authenticated'
-      })
+      throw new KientApiError({ name: 'UNAUTHENTICATED' })
     }
     return deserialize<UserResponse>(response.body)
   }
