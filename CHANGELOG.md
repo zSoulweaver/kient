@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.0.1-2
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-1...v1.0.1-2)
+
+### 🚀 Enhancements
+
+- Add chat message sending ([c5b923f](https://github.com/zSoulweaver/kient/commit/c5b923f))
+- Add chat message deletion - improve error handling ([2378f4b](https://github.com/zSoulweaver/kient/commit/2378f4b))
+
+### 💅 Refactors
+
+- Add generic api error class ([0169f9b](https://github.com/zSoulweaver/kient/commit/0169f9b))
+
+### 🏡 Chore
+
+- Add github to package.json ([a179ddd](https://github.com/zSoulweaver/kient/commit/a179ddd))
+
 ## v1.0.1-1
 
 
