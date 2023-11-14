@@ -10,4 +10,8 @@ export class ChatroomSocket extends BaseSocket {
       this._client.emit('onMessage', chatMessage)
     })
   }
+
+  public async disconnect(chatroomId: string | number) {
+    await this._wsClient.unsubscribe(`chatrooms.${chatroomId}.v2`)
+  }
 }

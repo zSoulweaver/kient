@@ -32,4 +32,8 @@ export class WsClient {
       })
     })
   }
+
+  public async unsubscribe(channel: string) {
+    await this.pusher.unsubscribe(channel)
+  }
 }
