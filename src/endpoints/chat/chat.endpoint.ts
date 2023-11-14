@@ -6,7 +6,7 @@ import { GenericApiResponse } from '@/utils/generic-api.response'
 
 export class ChatEndpoint extends BaseEndpoint {
   public async sendMessage(chatroomId: string | number, message: string) {
-    if (!this._client.autenticated) {
+    if (!this._client.authenticated) {
       throw new KientApiError({ name: 'UNAUTHENTICATED' })
     }
 
@@ -40,7 +40,7 @@ export class ChatEndpoint extends BaseEndpoint {
   }
 
   public async deleteMessage(chatroomId: string | number, messageId: string) {
-    if (!this._client.autenticated) {
+    if (!this._client.authenticated) {
       throw new KientApiError({ name: 'UNAUTHENTICATED' })
     }
 

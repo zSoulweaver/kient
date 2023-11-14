@@ -72,7 +72,7 @@ export class AuthenticationEndpoint extends BaseEndpoint {
       const responseBody = deserialize<LoginResponse>(response.body)
       if (responseBody.token) {
         this._apiClient.setBearerToken(responseBody.token)
-        this._client.autenticated = true
+        this._client.authenticated = true
         return
       }
       let errorMessage = ''
@@ -95,7 +95,7 @@ export class AuthenticationEndpoint extends BaseEndpoint {
   }
 
   public async currentUser() {
-    if (!this._client.autenticated) {
+    if (!this._client.authenticated) {
       throw new KientApiError({ name: 'UNAUTHENTICATED' })
     }
     const response = await this._apiClient.callKickApi({ endpoint: 'api/v1/user' })
