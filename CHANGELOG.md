@@ -1,6 +1,24 @@
 # Changelog
 
 
+## v1.0.1-3
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-2...v1.0.1-3)
+
+### 🚀 Enhancements
+
+- Add chatroom disconnecting ([a688c4a](https://github.com/zSoulweaver/kient/commit/a688c4a))
+- Chat message sender status check ([2064274](https://github.com/zSoulweaver/kient/commit/2064274))
+
+### 💅 Refactors
+
+- Fix spelling ([bb85576](https://github.com/zSoulweaver/kient/commit/bb85576))
+
+### 🏡 Chore
+
+- Fix badge colour in readme ([8228649](https://github.com/zSoulweaver/kient/commit/8228649))
+- Remove vue dep ([82449a6](https://github.com/zSoulweaver/kient/commit/82449a6))
+
 ## v1.0.1-2
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-1...v1.0.1-2)
