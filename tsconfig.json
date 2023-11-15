@@ -18,5 +18,8 @@
       "@/*": ["./src/*"]
     }
   },
-  "reflection": true
+  "reflection": true,
+  "exclude": [
+    "./dist/*"
+  ]
 }
