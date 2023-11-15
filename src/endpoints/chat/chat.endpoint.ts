@@ -65,4 +65,36 @@ export class ChatEndpoint extends BaseEndpoint {
     }
     return deserializedResponse
   }
+
+  public async pinMessage(channel: string, messageId: string) {
+    const body: PinMessageInput = {
+      message: {
+        id: messageId,
+        content: 'dummy',
+        type: 'message'
+      },
+      duration: 20
+    }
+
+    const response = await this._apiClient.callKickApi({
+      endpoint: `api/v2/channels/${channel}/pinned-message`,
+      method: 'post'
+    })
+    if (response.status !== 200) {
+      throw new KientApiError({ name: 'SOMETHING_WENT_WRONG', cause: response })
+    }
+
+    const deserializedResponse = deserialize<GenericApiResponse<null>>(response.body)
+    if (deserializedResponse.status.code === 401) {
+      throw new KientApiError({ name: 'UNAUTHENTICATED' })
+    }
+    if (deserializedResponse.status.code !== 200) {
+      throw new KientApiError({
+        name: 'SOMETHING_WENT_WRONG',
+        message: deserializedResponse.status.message,
+        cause: response
+      })
+    }
+    return deserializedResponse
+  }
 }
