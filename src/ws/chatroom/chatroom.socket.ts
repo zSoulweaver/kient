@@ -1,13 +1,12 @@
-import { deserialize } from '@deepkit/type'
 import { BaseSocket } from '../socket.base'
-import { ChatMessageEvent } from './dto/chat-message.event'
+import { ChatMessageInstance } from './instance/chat-message.instance'
 
 export class ChatroomSocket extends BaseSocket {
   public async listen(chatroomId: string | number) {
     const channel = await this._wsClient.subscribe(`chatrooms.${chatroomId}.v2`)
-    channel.bind('App\\Events\\ChatMessageEvent', (data: any) => {
-      const chatMessage = deserialize<ChatMessageEvent>(data)
-      this._client.emit('onMessage', chatMessage)
+    channel.bind('App\\Events\\ChatMessageEvent', (data: Record<string, any>) => {
+      const chatMessageInstance = new ChatMessageInstance(data, this._client)
+      this._client.emit('onMessage', chatMessageInstance)
     })
   }
 

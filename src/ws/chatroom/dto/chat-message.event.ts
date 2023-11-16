@@ -7,7 +7,7 @@ export enum ChatterStatus {
   FOUNDER = 'founder'
 }
 
-export class ChatMessageEvent {
+export interface ChatMessageEvent {
   id: string
   chatroom_id: number
   content: string
@@ -25,10 +25,5 @@ export class ChatMessageEvent {
         count?: number
       }>
     }
-  }
-
-  chatterIs(chatterStatus: ChatterStatus | string) {
-    const badges = this.sender.identity.badges
-    return badges.filter(x => x.type === chatterStatus).length > 0
   }
 }

@@ -1,5 +1,5 @@
-import { ChatMessageEvent } from './dto/chat-message.event'
+import { ChatMessageInstance } from './instance/chat-message.instance'
 
 export type ChatroomEvents = {
-  onMessage: [chatMessage: ChatMessageEvent]
+  onMessage: [chatMessageInstance: ChatMessageInstance]
 }
