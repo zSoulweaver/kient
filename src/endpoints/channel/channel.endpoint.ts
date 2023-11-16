@@ -5,16 +5,20 @@ import type { GetLivestreamResponse } from './dto/get-livestream.response'
 import type { GetLeaderboardsResponse } from './dto/get-leaderboards.response'
 import type { GetChatroomSettingsResponse } from './dto/get-chatroom-settings.response'
 import { GetPollsResponse } from './dto/get-polls.response'
+import { ChannelInstance } from './instance/channel.instance'
+import { LivestreamInstance } from './instance/livestream.instance'
 
 export class ChannelEndpoint extends BaseEndpoint {
   public async getChannel(channel: string) {
     const response = await this._apiClient.callKickApi({ endpoint: `api/v2/channels/${channel}` })
-    return deserialize<GetChannelResponse>(response.body)
+    const channelInstance = new ChannelInstance(response.body, this._client)
+    return channelInstance
   }
 
   public async getLivestream(channel: string) {
     const response = await this._apiClient.callKickApi({ endpoint: `api/v2/channels/${channel}/livestream` })
-    return deserialize<GetLivestreamResponse>((response.body as Record<any, any>).data)
+    const livestreamInstance = new LivestreamInstance((response.body as Record<any, any>).data, this._client)
+    return livestreamInstance
   }
 
   public async getLeaderboards(channel: string) {
@@ -27,7 +31,7 @@ export class ChannelEndpoint extends BaseEndpoint {
     return deserialize<GetChatroomSettingsResponse>(response.body)
   }
 
-  public async getPolls(channel: string) {
+  public async getPoll(channel: string) {
     const response = await this._apiClient.callKickApi({ endpoint: `api/v2/channels/${channel}/polls` })
     return deserialize<GetPollsResponse>(response.body)
   }

@@ -1,3 +1,20 @@
+export interface ChannelChatroom {
+  id: number
+  chatable_type: string
+  channel_id: string
+  created_at: Date
+  updated_at: Date
+  chat_mode_old: string
+  chat_mode: string
+  slow_mode: boolean
+  chatable_id: number
+  followers_mode: boolean
+  subscribers_mode: boolean
+  emotes_mode: boolean
+  message_interval: number
+  following_min_duration: number
+}
+
 export interface GetChannelResponse {
   id: number
   user_id: number
@@ -82,7 +99,7 @@ export interface GetChannelResponse {
       }
     }>
     tags: unknown[]
-  }
+  } | null
 
   role: unknown
   muted: boolean
@@ -107,22 +124,7 @@ export interface GetChannelResponse {
     profile_pic: string
   }
 
-  chatroom: {
-    id: number
-    chatable_type: string
-    channel_id: string
-    created_at: Date
-    updated_at: Date
-    chat_mode_old: string
-    chat_mode: string
-    slow_mode: boolean
-    chatable_id: number
-    followers_mode: boolean
-    subscribers_mode: boolean
-    emotes_mode: boolean
-    message_interval: number
-    following_min_duration: number
-  }
+  chatroom: ChannelChatroom
 
   ascending_links: Array<{
     id: number
@@ -200,7 +202,7 @@ export interface GetChannelResponse {
     channel_id: number
     created_at: Date
     updated_at: Date
-  }
+  } | null
 
   media: Array<{
     id: number
