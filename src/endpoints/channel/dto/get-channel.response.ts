@@ -15,6 +15,43 @@ export interface ChannelChatroom {
   following_min_duration: number
 }
 
+export interface ChannelLivestream {
+  id: number
+  slug: string
+  channel_id: number
+  created_at: Date
+  session_title: string
+  is_live: boolean
+  risk_level_id: unknown
+  start_time: Date
+  source: unknown
+  twitch_channel: unknown
+  duration: number
+  language: string
+  is_mature: boolean
+  viewer_count: number
+  thumbnail: {
+    url: string
+  }
+  categories: Array<{
+    id: number
+    category_id: number
+    name: string
+    slug: string
+    tags: string[]
+    description: string
+    deleted_at: unknown
+    viewers: number
+    category: {
+      id: number
+      name: string
+      slug: string
+      icon: string
+    }
+  }>
+  tags: unknown[]
+}
+
 export interface GetChannelResponse {
   id: number
   user_id: number
@@ -24,8 +61,8 @@ export interface GetChannelResponse {
   vod_enabled: boolean
   subscription_enabled: boolean
   followers_count: number
-  following: boolean
-  subscription: unknown
+  following?: boolean
+  subscription?: unknown
   subscriber_badges: Array<{
     id: number
     channel_id: number
@@ -35,19 +72,22 @@ export interface GetChannelResponse {
       src: string
     }
   }>
-
-  banner_image: {
-    responsive: string
+  banner_image?: {
     url: string
   }
-
+  livestream?: ChannelLivestream
+  role?: unknown
+  muted: boolean
+  follower_badges: unknown[]
+  offline_banner_image: unknown
+  verified: boolean
   recent_categories: Array<{
     id: number
     category_id: number
     name: string
     slug: string
     tags: string[]
-    description: string
+    description?: string
     deleted_at: unknown
     viewers: number
     banner: {
@@ -61,50 +101,6 @@ export interface GetChannelResponse {
       icon: string
     }
   }>
-
-  livestream: {
-    id: number
-    slug: string
-    channel_id: number
-    created_at: Date
-    session_title: string
-    is_live: boolean
-    risk_level_id: unknown
-    start_time: Date
-    source: unknown
-    twitch_channel: unknown
-    duration: number
-    language: string
-    is_mature: boolean
-    viewer_count: number
-    thumbnail: {
-      responsive: string
-      url: string
-    }
-    viewers: number
-    categories: Array<{
-      id: number
-      category_id: number
-      name: string
-      slug: string
-      tags: string[]
-      description: string
-      deleted_at: unknown
-      viewers: number
-      category: {
-        id: number
-        name: string
-        slug: string
-        icon: string
-      }
-    }>
-    tags: unknown[]
-  } | null
-
-  role: unknown
-  muted: boolean
-  follower_badges: unknown[]
-  offline_banner_image: unknown
   can_host: boolean
   user: {
     id: number
@@ -123,10 +119,8 @@ export interface GetChannelResponse {
     facebook: string
     profile_pic: string
   }
-
   chatroom: ChannelChatroom
-
-  ascending_links: Array<{
+  ascending_links?: Array<{
     id: number
     channel_id: number
     description: string
@@ -135,97 +129,5 @@ export interface GetChannelResponse {
     updated_at: Date
     order: number
     title: string
-  }>
-
-  plan: {
-    id: number
-    channel_id: number
-    stripe_plan_id: string
-    amount: string
-    created_at: Date
-    updated_at: Date
-  }
-
-  previous_livestreams: Array<{
-    id: number
-    slug: string
-    channel_id: number
-    created_at: Date
-    session_title: string
-    is_live: boolean
-    risk_level_id: unknown
-    start_time: Date
-    source: unknown
-    twitch_channel: unknown
-    duration: number
-    language: string
-    is_mature: boolean
-    viewer_count: number
-    thumbnail: {
-      responsive: string
-      url: string
-    }
-    views: number
-    categories: Array<{
-      id: number
-      category_id: number
-      name: string
-      slug: string
-      tags: string[]
-      description: string
-      deleted_at: unknown
-      viewers: number
-      category: {
-        id: number
-        name: string
-        slug: string
-        icon: string
-      }
-    }>
-    video: {
-      id: number
-      live_stream_id: number
-      slug: unknown
-      thumb: unknown
-      s3: unknown
-      trading_platform_id: unknown
-      created_at: Date
-      updated_at: Date
-      uuid: string
-      views: number
-      delated_at: unknown
-    }
-  }>
-
-  verified: {
-    id: number
-    channel_id: number
-    created_at: Date
-    updated_at: Date
-  } | null
-
-  media: Array<{
-    id: number
-    model_type: string
-    model_id: number
-    collection_name: string
-    name: string
-    file_name: string
-    mime_type: string
-    disk: string
-    size: number
-    manipulations: unknown[]
-    custom_properties: {
-      generated_conversations: {
-        fullsize: boolean
-        medium: boolean
-      }
-    }
-    responsive_images: unknown[]
-    order_column: number
-    created_at: Date
-    updated_at: Date
-    uuid: string
-    conversations_disk: string
   }>
 }
