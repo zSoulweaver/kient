@@ -1,4 +1,4 @@
-interface PinMessageInput {
+export interface PinMessageInput {
   message: {
     id: string
     content: 'dummy'

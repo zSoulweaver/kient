@@ -3,6 +3,7 @@ import { BaseEndpoint } from '../endpoint.base'
 import { SendMessageResponse } from './dto/send-message.response'
 import { KientApiError } from '../api.error'
 import { GenericApiResponse } from '@/utils/generic-api.response'
+import { PinMessageInput } from './dto/pin-message.input'
 
 export class ChatEndpoint extends BaseEndpoint {
   public async sendMessage(chatroomId: string | number, message: string) {
