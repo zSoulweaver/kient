@@ -26,7 +26,7 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "changelog": "changelogen --output --release --no-commit --prerelease"
+    "changelog": "changelogen --output --release --prerelease"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^1.1.0",
