@@ -1,15 +1,19 @@
 import { BaseInstance } from '@/utils/instance.base'
 import { GetChannelResponse } from '../dto/get-channel.response'
 import { Kient } from '@/client/kient'
-import { deserialize } from '@deepkit/type'
+import { cast, deserialize } from '@deepkit/type'
 
 export class ChannelInstance extends BaseInstance<GetChannelResponse> {
   constructor(data: any, client: Kient) {
-    super(deserialize<GetChannelResponse>(data), client)
+    super(cast<GetChannelResponse>(data), client)
   }
 
   getChatroom() {
     return this.data.chatroom
+  }
+
+  async connectToChatroom() {
+    return this._client.ws.chatroom.listen(this.data.chatroom.id)
   }
 
   async getLivestream() {
