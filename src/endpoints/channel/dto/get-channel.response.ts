@@ -107,17 +107,17 @@ export interface GetChannelResponse {
     username: string
     agreed_to_terms: true
     email_verified_at: Date
-    bio: string
-    country: string
-    state: string
-    city: string
-    instagram: string
-    twitter: string
-    youtube: string
-    discord: string
-    tiktok: string
-    facebook: string
-    profile_pic: string
+    bio?: string
+    country?: string
+    state?: string
+    city?: string
+    instagram?: string
+    twitter?: string
+    youtube?: string
+    discord?: string
+    tiktok?: string
+    facebook?: string
+    profile_pic?: string
   }
   chatroom: ChannelChatroom
   ascending_links?: Array<{

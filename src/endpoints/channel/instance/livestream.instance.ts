@@ -1,7 +1,7 @@
 import { BaseInstance } from '@/utils/instance.base'
 import { GetLivestreamResponse } from '../dto/get-livestream.response'
 import { Kient } from '@/client/kient'
-import { deserialize } from '@deepkit/type'
+import { cast } from '@deepkit/type'
 
 export interface LivestreamThumbnails {
   1080: string
@@ -11,12 +11,15 @@ export interface LivestreamThumbnails {
   160: string
 }
 
-export class LivestreamInstance extends BaseInstance<GetLivestreamResponse> {
+export class LivestreamInstance extends BaseInstance<GetLivestreamResponse | null> {
   constructor(data: any, client: Kient) {
-    super(deserialize<GetLivestreamResponse>(data), client)
+    super(cast<GetLivestreamResponse | null>(data), client)
   }
 
   getThumbnails() {
+    if (!this.data) {
+      return null
+    }
     const pairs = this.data.thumbnail.srcset.split(', ')
     const result: Record<string, string> = {}
     pairs.forEach(pair => {
@@ -27,6 +30,6 @@ export class LivestreamInstance extends BaseInstance<GetLivestreamResponse> {
       }
     })
 
-    return deserialize<LivestreamThumbnails>(result)
+    return cast<LivestreamThumbnails>(result)
   }
 }

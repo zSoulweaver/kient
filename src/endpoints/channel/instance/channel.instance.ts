@@ -1,7 +1,7 @@
 import { BaseInstance } from '@/utils/instance.base'
 import { GetChannelResponse } from '../dto/get-channel.response'
 import { Kient } from '@/client/kient'
-import { cast, deserialize } from '@deepkit/type'
+import { cast } from '@deepkit/type'
 
 export class ChannelInstance extends BaseInstance<GetChannelResponse> {
   constructor(data: any, client: Kient) {

@@ -1,11 +1,11 @@
 import { BaseInstance } from '@/utils/instance.base'
 import { ChatMessageEvent, ChatterStatus } from '../dto/chat-message.event'
 import { Kient } from '@/client/kient'
-import { deserialize } from '@deepkit/type'
+import { cast } from '@deepkit/type'
 
 export class ChatMessageInstance extends BaseInstance<ChatMessageEvent> {
   constructor(data: any, client: Kient) {
-    super(deserialize<ChatMessageEvent>(data), client)
+    super(cast<ChatMessageEvent>(data), client)
   }
 
   chatterIs(chatterStatus: ChatterStatus | string) {

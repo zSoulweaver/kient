@@ -1,5 +1,5 @@
 import { BaseEndpoint } from '../endpoint.base'
-import { deserialize } from '@deepkit/type'
+import { cast } from '@deepkit/type'
 import { TokensResponse } from './dto/tokens.response'
 import { KientAuthenticationError } from './authentication.error'
 import { LoginErrorResponse, LoginResponse } from './dto/login.response'
@@ -18,10 +18,11 @@ export class AuthenticationEndpoint extends BaseEndpoint {
     if (response.status !== 200) {
       throw new KientApiError({
         name: 'SOMETHING_WENT_WRONG',
-        message: 'Failed to retrieve pre-login tokens'
+        message: 'Failed to retrieve pre-login tokens',
+        cause: response
       })
     }
-    return deserialize<TokensResponse>(response.body)
+    return cast<TokensResponse>(response.body)
   }
 
   public async login(credentials: LoginCredentials) {
@@ -43,33 +44,36 @@ export class AuthenticationEndpoint extends BaseEndpoint {
     })
 
     if (response.status === 422) {
-      const responseBody = deserialize<LoginErrorResponse>(response.body)
+      const responseBody = cast<LoginErrorResponse>(response.body)
       if (responseBody.message === 'Username or password is not correct') {
         throw new KientAuthenticationError({
           name: 'INCORRECT_CREDENTIALS',
-          message: responseBody.message
+          message: responseBody.message,
+          cause: response
         })
       }
       if (responseBody.message === 'The given data was invalid.') {
         throw new KientAuthenticationError({
           name: 'INVALID_CREDENTIALS',
-          message: responseBody.message
+          message: responseBody.message,
+          cause: response
         })
       }
     }
 
     if (response.status === 400) {
-      const responseBody = deserialize<LoginErrorResponse>(response.body)
+      const responseBody = cast<LoginErrorResponse>(response.body)
       if (responseBody.message === 'Invalid OTP') {
         throw new KientAuthenticationError({
           name: 'INVALID_2FA_CODE',
-          message: 'Provided one time code is incorrect'
+          message: 'Provided one time code is incorrect',
+          cause: response
         })
       }
     }
 
     if (response.status === 200) {
-      const responseBody = deserialize<LoginResponse>(response.body)
+      const responseBody = cast<LoginResponse>(response.body)
       if (responseBody.token) {
         this._apiClient.setBearerToken(responseBody.token)
         this._client.authenticated = true
@@ -84,25 +88,30 @@ export class AuthenticationEndpoint extends BaseEndpoint {
       }
       throw new KientAuthenticationError({
         name: '2FA_REQUIRED',
-        message: errorMessage
+        message: errorMessage,
+        cause: response
       })
     }
 
     throw new KientApiError({
       name: 'SOMETHING_WENT_WRONG',
-      message: 'Unknown authentication error when attemping login'
+      message: 'Unknown authentication error when attemping login',
+      cause: response
     })
   }
 
   public async currentUser() {
-    if (!this._client.authenticated) {
-      throw new KientApiError({ name: 'UNAUTHENTICATED' })
-    }
+    this.checkAuthenticated()
+
     const response = await this._apiClient.callKickApi({ endpoint: 'api/v1/user' })
-    const deserializedBody = deserialize<UserResponse>(response.body)
+    if (response.status !== 200) {
+      throw new KientApiError({ name: 'SOMETHING_WENT_WRONG', cause: response })
+    }
+
+    const deserializedBody = cast<UserResponse>(response.body)
     if (!deserializedBody.id) {
       throw new KientApiError({ name: 'UNAUTHENTICATED' })
     }
-    return deserialize<UserResponse>(response.body)
+    return cast<UserResponse>(response.body)
   }
 }
