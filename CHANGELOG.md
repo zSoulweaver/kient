@@ -1,6 +1,31 @@
 # Changelog
 
 
+## v1.0.1-4
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-3...v1.0.1-4)
+
+### 🚀 Enhancements
+
+- Add message pinning ([4e3d38d](https://github.com/zSoulweaver/kient/commit/4e3d38d))
+- API response instances ([0ba3601](https://github.com/zSoulweaver/kient/commit/0ba3601))
+- Add channel instance ([f26faf5](https://github.com/zSoulweaver/kient/commit/f26faf5))
+- Chatroom connect from channel instance ([6bd3402](https://github.com/zSoulweaver/kient/commit/6bd3402))
+
+### 🩹 Fixes
+
+- Impove channel response types ([cd4be2f](https://github.com/zSoulweaver/kient/commit/cd4be2f))
+- Export PinMessageInput interface ([dc5a01c](https://github.com/zSoulweaver/kient/commit/dc5a01c))
+
+### 💅 Refactors
+
+- Improve error handling ([05d21e9](https://github.com/zSoulweaver/kient/commit/05d21e9))
+
+### 🏡 Chore
+
+- Add `dist` to tsconfig exclude ([99d5370](https://github.com/zSoulweaver/kient/commit/99d5370))
+- Fix changelog commit gen ([e3795cf](https://github.com/zSoulweaver/kient/commit/e3795cf))
+
 ## v1.0.1-3
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-2...v1.0.1-3)
