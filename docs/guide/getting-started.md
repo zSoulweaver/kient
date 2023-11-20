@@ -33,10 +33,10 @@ const kient = await Kient.create()
 Once you've created an instance of Kient you can proceed to call any of the available endpoints, here's an example on retrieving channel information and outputting the response to the console:
 ```ts
 const channelData = await kient.api.channel.getChannel('xqc')
-console.log(channelData)
+console.log(channelData.data)
 ```
 
-Logging `channelData` to the console will spit out all the information Kick provides on their channel endpoint, the object properties will also have types assigned for your convenience.
+Logging `channelData.data` to the console will spit out all the information Kick provides on their channel endpoint, the object properties will also have types assigned for your convenience.
 ```json
 {
   "id": 668, // number

@@ -40,7 +40,7 @@ const client = await Kient.create()
 
 // Get a channel and listen to its chatroom
 const channel = await client.api.channel.getChannel('channel_slug')
-await client.ws.chatroom.listen(channel.chatroom.id)
+await client.ws.chatroom.listen(channel.data.chatroom.id)
 
 // Handle incoming messages
 client.on('onMessage', (message) => {

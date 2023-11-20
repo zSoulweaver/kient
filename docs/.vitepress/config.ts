@@ -22,8 +22,22 @@ export default defineConfig({
             { text: 'Getting Started', link: '/guide/getting-started' },
           ],
         },
+        {
+          text: 'Essentials',
+          items: [
+            { text: 'Response Instances', link: '/guide/response-instance' },
+            { text: 'Authentication', link: '/guide/authentication' }
+          ]
+        }
       ],
       '/reference': [
+        {
+          text: 'Instances',
+          items: [
+            { text: 'ChannelInstance', link: '/reference/channel-instance' },
+            { text: 'LivestreamInstance', link: '/reference/livestream-instance' }
+          ]
+        },
         {
           text: 'Reference',
           items: [
