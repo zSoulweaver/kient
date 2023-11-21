@@ -32,10 +32,25 @@ export default defineConfig({
       ],
       '/reference': [
         {
+          text: 'Endpoints',
+          items: [
+            { text: 'Authentication', link: '/reference/authentication-endpoint' },
+            { text: 'Channels', link: '/reference/channel-endpoint' },
+            { text: 'Chat', link: '/reference/chat-endpoint' }
+          ]
+        },
+        {
+          text: 'Sockets',
+          items: [
+            { text: 'Chatroom', link: '/reference/chatroom-socket' }
+          ]
+        },
+        {
           text: 'Instances',
           items: [
-            { text: 'ChannelInstance', link: '/reference/channel-instance' },
-            { text: 'LivestreamInstance', link: '/reference/livestream-instance' }
+            { text: 'Channel', link: '/reference/channel-instance' },
+            { text: 'Livestream', link: '/reference/livestream-instance' },
+            { text: 'Chat Message', link: '/reference/chat-message-instance' }
           ]
         },
         {
