@@ -5,6 +5,14 @@ import { cast } from '@deepkit/type'
 
 export class ChannelInstance extends BaseInstance<GetChannelResponse> {
   constructor(data: any, client: Kient) {
+
+    if (data.livestream && Array.isArray(data.livestream.categories)) {
+      if (data.livestream.categories.length > 0 &&
+          typeof data.livestream.categories[0].description !== 'string') {
+        data.livestream.categories[0].description = 'Default category description';
+      }
+    }
+
     super(cast<GetChannelResponse>(data), client)
   }
 
