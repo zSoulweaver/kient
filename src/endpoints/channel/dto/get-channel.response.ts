@@ -39,7 +39,7 @@ export interface ChannelLivestream {
     name: string
     slug: string
     tags: string[]
-    description: string
+    description?: string
     deleted_at: unknown
     viewers: number
     category: {
