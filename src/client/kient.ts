@@ -21,7 +21,7 @@ export class Kient extends Emitter<KientEvents> {
   private _apiClient: ApiClient
   private _endpoints: Endpoints
   private _wsClient: WsClient
-  private _wsHandlers: { chatroom: ChatroomSocket }
+  private _wsHandlers: WsHandlers
   public authenticated = false
 
   private async init() {
