@@ -1,7 +1,7 @@
-import { BaseInstance } from '@/utils/instance.base'
-import { GetLivestreamResponse } from '../dto/get-livestream.response'
-import { Kient } from '@/client/kient'
 import { cast } from '@deepkit/type'
+import type { GetLivestreamResponse } from '../dto/get-livestream.response'
+import { BaseInstance } from '@/utils/instance.base'
+import type { Kient } from '@/client/kient'
 
 export interface LivestreamThumbnails {
   1080: string
@@ -17,17 +17,16 @@ export class LivestreamInstance extends BaseInstance<GetLivestreamResponse | nul
   }
 
   getThumbnails() {
-    if (!this.data) {
+    if (!this.data)
       return null
-    }
+
     const pairs = this.data.thumbnail.srcset.split(', ')
     const result: Record<string, string> = {}
-    pairs.forEach(pair => {
+    pairs.forEach((pair) => {
       const url = pair.split(' ')[0]
       const filename = url.match(/([\w\d_-]*)\.?[^\\\/]*$/i)
-      if (filename && filename[1]) {
+      if (filename && filename[1])
         result[filename[1]] = url
-      }
     })
 
     return cast<LivestreamThumbnails>(result)

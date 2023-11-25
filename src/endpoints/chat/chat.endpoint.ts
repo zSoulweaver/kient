@@ -1,9 +1,9 @@
 import { cast } from '@deepkit/type'
 import { BaseEndpoint } from '../endpoint.base'
-import { SendMessageResponse } from './dto/send-message.response'
 import { KientApiError } from '../api.error'
-import { GenericApiResponse } from '@/utils/generic-api.response'
-import { PinMessageInput } from './dto/pin-message.input'
+import type { SendMessageResponse } from './dto/send-message.response'
+import type { PinMessageInput } from './dto/pin-message.input'
+import type { GenericApiResponse } from '@/utils/generic-api.response'
 
 export class ChatEndpoint extends BaseEndpoint {
   public async sendMessage(chatroomId: string | number, message: string) {
@@ -11,18 +11,17 @@ export class ChatEndpoint extends BaseEndpoint {
 
     const body = {
       content: message,
-      type: 'message'
+      type: 'message',
     }
     const response = await this._apiClient.callKickApi({
       endpoint: `api/v2/messages/send/${chatroomId}`,
       method: 'post',
       options: {
-        body: JSON.stringify(body)
-      }
+        body: JSON.stringify(body),
+      },
     })
-    if (response.status !== 200) {
+    if (response.status !== 200)
       throw new KientApiError({ name: 'SOMETHING_WENT_WRONG', cause: response })
-    }
 
     const deserializedResponse = cast<SendMessageResponse>(response.body)
     if (deserializedResponse.status.error) {
@@ -30,7 +29,7 @@ export class ChatEndpoint extends BaseEndpoint {
         name: 'SOMETHING_WENT_WRONG',
         message: deserializedResponse.status.message,
         code: deserializedResponse.status.code,
-        cause: response
+        cause: response,
       })
     }
     return deserializedResponse
@@ -41,11 +40,10 @@ export class ChatEndpoint extends BaseEndpoint {
 
     const response = await this._apiClient.callKickApi({
       endpoint: `api/v2/chatrooms/${chatroomId}/messages/${messageId}`,
-      method: 'delete'
+      method: 'delete',
     })
-    if (response.status !== 200) {
+    if (response.status !== 200)
       throw new KientApiError({ name: 'SOMETHING_WENT_WRONG', cause: response })
-    }
 
     const deserializedResponse = cast<GenericApiResponse<null>>(response.body)
     if (deserializedResponse.status.error) {
@@ -53,7 +51,7 @@ export class ChatEndpoint extends BaseEndpoint {
         name: 'SOMETHING_WENT_WRONG',
         message: deserializedResponse.status.message,
         code: deserializedResponse.status.code,
-        cause: response
+        cause: response,
       })
     }
     return deserializedResponse
@@ -66,20 +64,19 @@ export class ChatEndpoint extends BaseEndpoint {
       message: {
         id: messageId,
         content: 'dummy',
-        type: 'message'
+        type: 'message',
       },
-      duration: 20
+      duration: 20,
     }
     const response = await this._apiClient.callKickApi({
       endpoint: `api/v2/channels/${channel}/pinned-message`,
       method: 'post',
       options: {
-        body: JSON.stringify(body)
-      }
+        body: JSON.stringify(body),
+      },
     })
-    if (response.status !== 200) {
+    if (response.status !== 200)
       throw new KientApiError({ name: 'SOMETHING_WENT_WRONG', cause: response })
-    }
 
     const deserializedResponse = cast<GenericApiResponse<null>>(response.body)
     if (deserializedResponse.status.error) {
@@ -87,7 +84,7 @@ export class ChatEndpoint extends BaseEndpoint {
         name: 'SOMETHING_WENT_WRONG',
         message: deserializedResponse.status.message,
         code: deserializedResponse.status.code,
-        cause: response
+        cause: response,
       })
     }
     return deserializedResponse

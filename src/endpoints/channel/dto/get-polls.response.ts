@@ -1,4 +1,4 @@
-import { GenericApiResponse } from '@/utils/generic-api.response'
+import type { GenericApiResponse } from '@/utils/generic-api.response'
 
 interface PollData {
   poll: {

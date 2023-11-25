@@ -1,8 +1,8 @@
-import { BaseInstance } from '@/utils/instance.base'
-import { Kient } from '@/client/kient'
 import { cast } from '@deepkit/type'
+import type { FollowersUpdatedEvent } from '../dto/followers-updated.event'
+import { BaseInstance } from '@/utils/instance.base'
+import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
-import { FollowersUpdatedEvent } from '../dto/followers-updated.event'
 
 export class FollowersUpdateInstance extends BaseInstance<FollowersUpdatedEvent> {
   constructor(data: any, client: Kient) {
@@ -12,7 +12,7 @@ export class FollowersUpdateInstance extends BaseInstance<FollowersUpdatedEvent>
       throw new KientError({
         name: 'SOMETHING_WENT_WRONG',
         message: 'Failed to initialise FollowersUpdateInstance',
-        cause: err
+        cause: err,
       })
     }
   }

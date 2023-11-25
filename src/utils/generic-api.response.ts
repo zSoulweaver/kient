@@ -1,4 +1,4 @@
-import { Embedded } from '@deepkit/type'
+import type { Embedded } from '@deepkit/type'
 
 export interface GenericApiResponse<T> {
   status: {

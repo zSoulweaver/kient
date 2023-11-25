@@ -1,4 +1,4 @@
-import { Kient } from '@/client/kient'
+import type { Kient } from '@/client/kient'
 
 export abstract class BaseInstance<T> {
   protected _client: Kient

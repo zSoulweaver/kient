@@ -1,9 +1,9 @@
+import { Emitter } from 'strict-event-emitter'
+import { ApiClient } from './api.client'
+import { WsClient } from './ws.client'
 import { AuthenticationEndpoint } from '@/endpoints/authentication/authentication.endpoint'
 import { ChannelEndpoint } from '@/endpoints/channel/channel.endpoint'
-import { ApiClient } from './api.client'
-import { Emitter } from 'strict-event-emitter'
-import { KientEvents } from '@/ws/ws.events'
-import { WsClient } from './ws.client'
+import type { KientEvents } from '@/ws/ws.events'
 import { ChatroomSocket } from '@/ws/chatroom/chatroom.socket'
 import { ChatEndpoint } from '@/endpoints/chat/chat.endpoint'
 import { ChannelSocket } from '@/ws/channel/channel.socket'
@@ -31,15 +31,14 @@ export class Kient extends Emitter<KientEvents> {
     this._endpoints = {
       authentication: new AuthenticationEndpoint(this, this._apiClient),
       channel: new ChannelEndpoint(this, this._apiClient),
-      chat: new ChatEndpoint(this, this._apiClient)
+      chat: new ChatEndpoint(this, this._apiClient),
     }
 
     this._wsClient = new WsClient(this)
     this._wsHandlers = {
       chatroom: new ChatroomSocket(this, this._wsClient),
-      channel: new ChannelSocket(this, this._wsClient)
+      channel: new ChannelSocket(this, this._wsClient),
     }
-
   }
 
   static async create() {

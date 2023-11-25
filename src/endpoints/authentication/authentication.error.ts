@@ -6,5 +6,4 @@ type ErrorName =
   | 'INVALID_CREDENTIALS'
   | 'INVALID_2FA_CODE'
 
-
 export class KientAuthenticationError extends ErrorBase<ErrorName> { }

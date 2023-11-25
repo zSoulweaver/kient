@@ -2,13 +2,13 @@
   "name": "playground",
   "version": "1.0.0",
   "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --watch src --watch ../src -e ts --exec \"node --loader @polkadot/dev-ts/cached src/index.ts\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "kient": "workspace:*"
   },

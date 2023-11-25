@@ -1,8 +1,8 @@
-import { BaseInstance } from '@/utils/instance.base'
-import { Kient } from '@/client/kient'
 import { cast } from '@deepkit/type'
+import type { LuckyUsersWhoGotGiftSubscriptionsEvent } from '../dto/lucky-users-who-got-gift-subscription.event'
+import { BaseInstance } from '@/utils/instance.base'
+import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
-import { LuckyUsersWhoGotGiftSubscriptionsEvent } from '../dto/lucky-users-who-got-gift-subscription.event'
 
 export class LuckyUsersWhoGotGiftSubscriptionsInstance extends BaseInstance<LuckyUsersWhoGotGiftSubscriptionsEvent> {
   constructor(data: any, client: Kient) {
@@ -12,7 +12,7 @@ export class LuckyUsersWhoGotGiftSubscriptionsInstance extends BaseInstance<Luck
       throw new KientError({
         name: 'SOMETHING_WENT_WRONG',
         message: 'Failed to initialise LuckyUsersWhoGotGiftSubscriptionsInstance',
-        cause: err
+        cause: err,
       })
     }
   }

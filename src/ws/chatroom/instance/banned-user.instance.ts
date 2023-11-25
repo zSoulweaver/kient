@@ -1,7 +1,7 @@
-import { BaseInstance } from '@/utils/instance.base'
-import { UserBannedEvent } from '../dto/user-banned.event'
-import { Kient } from '@/client/kient'
 import { cast } from '@deepkit/type'
+import type { UserBannedEvent } from '../dto/user-banned.event'
+import { BaseInstance } from '@/utils/instance.base'
+import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
 
 export class BannedUserInstance extends BaseInstance<UserBannedEvent> {
@@ -12,7 +12,7 @@ export class BannedUserInstance extends BaseInstance<UserBannedEvent> {
       throw new KientError({
         name: 'SOMETHING_WENT_WRONG',
         message: 'Failed to initialise BannedUserInstance',
-        cause: err
+        cause: err,
       })
     }
   }

@@ -1,8 +1,8 @@
-import { BaseInstance } from '@/utils/instance.base'
-import { Kient } from '@/client/kient'
 import { cast } from '@deepkit/type'
+import type { ChatroomUpdatedEvent } from '../dto/chatroom-updated.event'
+import { BaseInstance } from '@/utils/instance.base'
+import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
-import { ChatroomUpdatedEvent } from '../dto/chatroom-updated.event'
 
 export class ChatroomUpdatedInstance extends BaseInstance<ChatroomUpdatedEvent> {
   constructor(data: any, client: Kient) {
@@ -12,7 +12,7 @@ export class ChatroomUpdatedInstance extends BaseInstance<ChatroomUpdatedEvent> 
       throw new KientError({
         name: 'SOMETHING_WENT_WRONG',
         message: 'Failed to initialise ChatroomUpdatedInstance',
-        cause: err
+        cause: err,
       })
     }
   }

@@ -1,8 +1,8 @@
-import { BaseInstance } from '@/utils/instance.base'
-import { Kient } from '@/client/kient'
 import { cast } from '@deepkit/type'
+import type { SubscriptionEvent } from '../dto/subscription.event'
+import { BaseInstance } from '@/utils/instance.base'
+import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
-import { SubscriptionEvent } from '../dto/subscription.event'
 
 export class SubscriptionInstance extends BaseInstance<SubscriptionEvent> {
   constructor(data: any, client: Kient) {
@@ -12,7 +12,7 @@ export class SubscriptionInstance extends BaseInstance<SubscriptionEvent> {
       throw new KientError({
         name: 'SOMETHING_WENT_WRONG',
         message: 'Failed to initialise SubscriptionInstance',
-        cause: err
+        cause: err,
       })
     }
   }

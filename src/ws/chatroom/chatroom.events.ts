@@ -1,14 +1,15 @@
-import { BannedUserInstance } from './instance/banned-user.instance'
-import { ChatMessageInstance } from './instance/chat-message.instance'
-import { ChatroomUpdatedInstance } from './instance/chatroom-updated.instance'
-import { GiftedSubscriptionsInstance } from './instance/gifted-subscriptions.instance'
-import { MessageDeletedInstance } from './instance/message-deleted.instance'
-import { PinnedMessageInstance } from './instance/pinned-message.instance'
-import { PollUpdateInstance } from './instance/poll-update.instance'
-import { StreamHostInstance } from './instance/stream-host.instance'
-import { SubscriptionInstance } from './instance/subscription.instance'
-import { UnbannedUserInstance } from './instance/unbanned-user.instance'
+import type { BannedUserInstance } from './instance/banned-user.instance'
+import type { ChatMessageInstance } from './instance/chat-message.instance'
+import type { ChatroomUpdatedInstance } from './instance/chatroom-updated.instance'
+import type { GiftedSubscriptionsInstance } from './instance/gifted-subscriptions.instance'
+import type { MessageDeletedInstance } from './instance/message-deleted.instance'
+import type { PinnedMessageInstance } from './instance/pinned-message.instance'
+import type { PollUpdateInstance } from './instance/poll-update.instance'
+import type { StreamHostInstance } from './instance/stream-host.instance'
+import type { SubscriptionInstance } from './instance/subscription.instance'
+import type { UnbannedUserInstance } from './instance/unbanned-user.instance'
 
+// eslint-disable-next-line ts/consistent-type-definitions
 export type ChatroomEvents = {
   onMessage: [chatMessageInstance: ChatMessageInstance]
   onMessageDeleted: [messageDeletedInstance: MessageDeletedInstance]

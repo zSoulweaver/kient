@@ -53,7 +53,7 @@ export class ApiClient {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'Cookie': await this.cookieJar.getCookieString(requestUrl),
-        'Authorization': `Bearer ${this.bearerToken}`
+        'Authorization': `Bearer ${this.bearerToken}`,
       },
     }
 
@@ -69,15 +69,12 @@ export class ApiClient {
   }
 
   private async handleCookies(response: CycleTLSResponse, url: string) {
-    if (!response.headers['Set-Cookie']) {
+    if (!response.headers['Set-Cookie'])
       return
-    }
 
-    if (Array.isArray(response.headers['Set-Cookie'])) {
+    if (Array.isArray(response.headers['Set-Cookie']))
       response.headers['Set-Cookie'].map(async cookieString => await this.cookieJar.setCookie(cookieString, url))
-    }
-    else {
+    else
       await this.cookieJar.setCookie(response.headers['Set-Cookie'], url)
-    }
   }
 }

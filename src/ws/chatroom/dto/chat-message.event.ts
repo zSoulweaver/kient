@@ -4,7 +4,7 @@ export enum ChatterStatus {
   SUBSCRIBER = 'subscriber',
   SUB_GIFTER = 'sub_gifter',
   OG = 'og',
-  FOUNDER = 'founder'
+  FOUNDER = 'founder',
 }
 
 export interface ChatMessageEvent {

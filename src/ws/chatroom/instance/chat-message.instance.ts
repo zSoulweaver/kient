@@ -1,7 +1,7 @@
-import { BaseInstance } from '@/utils/instance.base'
-import { ChatMessageEvent, ChatterStatus } from '../dto/chat-message.event'
-import { Kient } from '@/client/kient'
 import { cast } from '@deepkit/type'
+import type { ChatMessageEvent, ChatterStatus } from '../dto/chat-message.event'
+import { BaseInstance } from '@/utils/instance.base'
+import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
 
 export class ChatMessageInstance extends BaseInstance<ChatMessageEvent> {
@@ -12,7 +12,7 @@ export class ChatMessageInstance extends BaseInstance<ChatMessageEvent> {
       throw new KientError({
         name: 'SOMETHING_WENT_WRONG',
         message: 'Failed to initialise ChatMessageInstance',
-        cause: err
+        cause: err,
       })
     }
   }

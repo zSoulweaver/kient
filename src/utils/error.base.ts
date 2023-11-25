@@ -4,7 +4,7 @@ export class ErrorBase<T extends string> extends Error {
   code?: number
   cause?: any
 
-  constructor(error: { name: T, message?: string, code?: number, cause?: any }) {
+  constructor(error: { name: T; message?: string; code?: number; cause?: any }) {
     super()
     this.name = error.name
     this.message = error.message ?? ''

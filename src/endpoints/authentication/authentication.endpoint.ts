@@ -1,10 +1,10 @@
-import { BaseEndpoint } from '../endpoint.base'
 import { cast } from '@deepkit/type'
-import { TokensResponse } from './dto/tokens.response'
-import { KientAuthenticationError } from './authentication.error'
-import { LoginErrorResponse, LoginResponse } from './dto/login.response'
-import { UserResponse } from './dto/user.response'
+import { BaseEndpoint } from '../endpoint.base'
 import { KientApiError } from '../api.error'
+import type { TokensResponse } from './dto/tokens.response'
+import { KientAuthenticationError } from './authentication.error'
+import type { LoginErrorResponse, LoginResponse } from './dto/login.response'
+import type { UserResponse } from './dto/user.response'
 
 interface LoginCredentials {
   email: string
@@ -19,7 +19,7 @@ export class AuthenticationEndpoint extends BaseEndpoint {
       throw new KientApiError({
         name: 'SOMETHING_WENT_WRONG',
         message: 'Failed to retrieve pre-login tokens',
-        cause: response
+        cause: response,
       })
     }
     return cast<TokensResponse>(response.body)
@@ -33,14 +33,14 @@ export class AuthenticationEndpoint extends BaseEndpoint {
       one_time_password: credentials.otc,
       [tokens.nameFieldName]: '',
       [tokens.validFromFieldName]: tokens.encryptedValidFrom,
-      isMobileRequest: true
+      isMobileRequest: true,
     }
     const response = await this._apiClient.callKickApi({
       endpoint: 'mobile/login',
       method: 'post',
       options: {
-        body: JSON.stringify(body)
-      }
+        body: JSON.stringify(body),
+      },
     })
 
     if (response.status === 422) {
@@ -49,14 +49,14 @@ export class AuthenticationEndpoint extends BaseEndpoint {
         throw new KientAuthenticationError({
           name: 'INCORRECT_CREDENTIALS',
           message: responseBody.message,
-          cause: response
+          cause: response,
         })
       }
       if (responseBody.message === 'The given data was invalid.') {
         throw new KientAuthenticationError({
           name: 'INVALID_CREDENTIALS',
           message: responseBody.message,
-          cause: response
+          cause: response,
         })
       }
     }
@@ -67,7 +67,7 @@ export class AuthenticationEndpoint extends BaseEndpoint {
         throw new KientAuthenticationError({
           name: 'INVALID_2FA_CODE',
           message: 'Provided one time code is incorrect',
-          cause: response
+          cause: response,
         })
       }
     }
@@ -80,23 +80,23 @@ export class AuthenticationEndpoint extends BaseEndpoint {
         return
       }
       let errorMessage = ''
-      if (responseBody.otp_required) {
+      if (responseBody.otp_required)
         errorMessage = 'Login requires one time code from email'
-      }
-      if (responseBody['2fa_required']) {
+
+      if (responseBody['2fa_required'])
         errorMessage = 'Login requires authenticator app token'
-      }
+
       throw new KientAuthenticationError({
         name: '2FA_REQUIRED',
         message: errorMessage,
-        cause: response
+        cause: response,
       })
     }
 
     throw new KientApiError({
       name: 'SOMETHING_WENT_WRONG',
       message: 'Unknown authentication error when attemping login',
-      cause: response
+      cause: response,
     })
   }
 
@@ -104,14 +104,13 @@ export class AuthenticationEndpoint extends BaseEndpoint {
     this.checkAuthenticated()
 
     const response = await this._apiClient.callKickApi({ endpoint: 'api/v1/user' })
-    if (response.status !== 200) {
+    if (response.status !== 200)
       throw new KientApiError({ name: 'SOMETHING_WENT_WRONG', cause: response })
-    }
 
     const deserializedBody = cast<UserResponse>(response.body)
-    if (!deserializedBody.id) {
+    if (!deserializedBody.id)
       throw new KientApiError({ name: 'UNAUTHENTICATED' })
-    }
+
     return cast<UserResponse>(response.body)
   }
 }
