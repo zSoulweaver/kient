@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v1.0.1-5
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-4...v1.0.1-5)
+
+### 🚀 Enhancements
+
+- Add more events to channel/chatroom ([78af8f6](https://github.com/zSoulweaver/kient/commit/78af8f6))
+
+### 🩹 Fixes
+
+- ValidationError in ChannelInstance Constructor ([#1](https://github.com/zSoulweaver/kient/pull/1))
+
+### 💅 Refactors
+
+- Use WsHandlers interface ([f7418db](https://github.com/zSoulweaver/kient/commit/f7418db))
+
+### 📖 Documentation
+
+- Add response instances - adds some reference pages for instances ([0d0d5a0](https://github.com/zSoulweaver/kient/commit/0d0d5a0))
+- Add missing endpoints/instances ([6a29c50](https://github.com/zSoulweaver/kient/commit/6a29c50))
+
 ## v1.0.1-4
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-3...v1.0.1-4)
