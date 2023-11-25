@@ -1,3 +1,4 @@
+import { ChannelEvents } from './channel/channel.events'
 import { ChatroomEvents } from './chatroom/chatroom.events'
 
 type CoreEvents = {
@@ -8,3 +9,5 @@ type CoreEvents = {
 export type KientEvents =
   & CoreEvents
   & ChatroomEvents
+  & ChannelEvents
+  & { UnknownEvent: [data: any] }

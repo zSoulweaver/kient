@@ -6,6 +6,7 @@ import { KientEvents } from '@/ws/ws.events'
 import { WsClient } from './ws.client'
 import { ChatroomSocket } from '@/ws/chatroom/chatroom.socket'
 import { ChatEndpoint } from '@/endpoints/chat/chat.endpoint'
+import { ChannelSocket } from '@/ws/channel/channel.socket'
 
 interface Endpoints {
   authentication: AuthenticationEndpoint
@@ -15,6 +16,7 @@ interface Endpoints {
 
 interface WsHandlers {
   chatroom: ChatroomSocket
+  channel: ChannelSocket
 }
 
 export class Kient extends Emitter<KientEvents> {
@@ -34,7 +36,8 @@ export class Kient extends Emitter<KientEvents> {
 
     this._wsClient = new WsClient(this)
     this._wsHandlers = {
-      chatroom: new ChatroomSocket(this, this._wsClient)
+      chatroom: new ChatroomSocket(this, this._wsClient),
+      channel: new ChannelSocket(this, this._wsClient)
     }
 
   }

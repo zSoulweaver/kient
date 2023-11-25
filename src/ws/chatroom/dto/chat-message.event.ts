@@ -16,7 +16,7 @@ export interface ChatMessageEvent {
   sender: {
     id: number
     username: string
-    slug: string
+    slug?: string
     identity: {
       color: string
       badges: Array<{
