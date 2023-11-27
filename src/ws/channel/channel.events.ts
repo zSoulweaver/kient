@@ -4,6 +4,7 @@ import type { FollowersUpdateInstance } from './instance/followers-updated.insta
 import type { GiftsLeaderboardUpdatedInstance } from './instance/gift-leaderboard-updated.instance'
 import type { LuckyUsersWhoGotGiftSubscriptionsInstance } from './instance/lucky-users-who-got-gift-subscription.instance'
 import type { StopStreamBroadcastInstance } from './instance/stop-stream-broadcast.instance'
+import type { StreamerIsLiveInstance } from './instance/streamer-is-live.instance'
 
 // eslint-disable-next-line ts/consistent-type-definitions
 export type ChannelEvents = {
@@ -11,6 +12,8 @@ export type ChannelEvents = {
   onChannelSubscription: [channelSubscriptionInstance: ChannelSubscriptionInstance]
   onLuckyUsersWhoGotGiftSubscriptions: [luckyUsersWhoGotGiftSubscriptionsInstance: LuckyUsersWhoGotGiftSubscriptionsInstance]
   onLeaderboardUpdate: [giftsLeaderboardUpdatedInstance: GiftsLeaderboardUpdatedInstance]
-  onStartRaid: [chatMoveToSupportedChannelInstance: ChatMoveToSupportedChannelInstance]
+  onStartHost: [chatMoveToSupportedChannelInstance: ChatMoveToSupportedChannelInstance]
+  onStartStream: [streamerIsLiveInstance: StreamerIsLiveInstance]
   onStopStream: [stopStreamBroadcastInstance: StopStreamBroadcastInstance]
+  onStreamerBanned: []
 }
