@@ -33,30 +33,43 @@ export class ChatroomSocket extends BaseSocket {
       switch (eventName) {
         case 'App\\Events\\ChatMessageEvent':
           return this._client.emit('onMessage', new ChatMessageInstance(data, this._client))
+
         case 'App\\Events\\MessageDeletedEvent':
           return this._client.emit('onMessageDeleted', new MessageDeletedInstance(data, this._client))
+
         case 'App\\Events\\UserBannedEvent':
           return this._client.emit('onUserBanned', new BannedUserInstance(data, this._client))
+
         case 'App\\Events\\UserUnbannedEvent':
           return this._client.emit('onUserUnbanned', new UnbannedUserInstance(data, this._client))
+
         case 'App\\Events\\PinnedMessageCreatedEvent':
           return this._client.emit('onPinnedMessage', new PinnedMessageInstance(data, this._client))
+
         case 'App\\Events\\PinnedMessageDeletedEvent':
           return this._client.emit('onUnpinMessage')
+
         case 'App\\Events\\SubscriptionEvent':
           return this._client.emit('onSubscription', new SubscriptionInstance(data, this._client))
+
         case 'App\\Events\\GiftedSubscriptionsEvent':
           return this._client.emit('onGiftedSubscriptions', new GiftedSubscriptionsInstance(data, this._client))
+
         case 'App\\Events\\PollUpdateEvent':
           return this._client.emit('onPollUpdate', new PollUpdateInstance(data, this._client))
+
         case 'App\\Events\\PollDeleteEvent':
           return this._client.emit('onPollDelete')
+
         case 'App\\Events\\ChatroomUpdatedEvent':
           return this._client.emit('onChatroomUpdate', new ChatroomUpdatedInstance(data, this._client))
+
         case 'App\\Events\\ChatroomClearEvent':
           return this._client.emit('onChatroomClear')
+
         case 'App\\Events\\StreamHostEvent':
           return this._client.emit('onHosted', new StreamHostInstance(data, this._client))
+
         default:
           return this._client.emit('UnknownEvent', { eventName, data })
       }
