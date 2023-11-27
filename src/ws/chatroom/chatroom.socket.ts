@@ -20,6 +20,7 @@ type ChannelEvents =
   | 'App\\Events\\SubscriptionEvent'
   | 'App\\Events\\GiftedSubscriptionsEvent'
   | 'App\\Events\\PollUpdateEvent'
+  | 'App\\Events\\PollDeleteEvent'
   | 'App\\Events\\ChatroomUpdatedEvent'
   | 'App\\Events\\ChatroomClearEvent'
   | 'App\\Events\\StreamHostEvent'
@@ -48,6 +49,8 @@ export class ChatroomSocket extends BaseSocket {
           return this._client.emit('onGiftedSubscriptions', new GiftedSubscriptionsInstance(data, this._client))
         case 'App\\Events\\PollUpdateEvent':
           return this._client.emit('onPollUpdate', new PollUpdateInstance(data, this._client))
+        case 'App\\Events\\PollDeleteEvent':
+          return this._client.emit('onPollDelete')
         case 'App\\Events\\ChatroomUpdatedEvent':
           return this._client.emit('onChatroomUpdate', new ChatroomUpdatedInstance(data, this._client))
         case 'App\\Events\\ChatroomClearEvent':

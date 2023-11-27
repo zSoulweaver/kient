@@ -20,6 +20,7 @@ export type ChatroomEvents = {
   onSubscription: [subscriptionInstance: SubscriptionInstance]
   onGiftedSubscriptions: [giftedSubscriptionsInstance: GiftedSubscriptionsInstance]
   onPollUpdate: [pollInstance: PollUpdateInstance]
+  onPollDelete: []
   onChatroomUpdate: [chatroomInstance: ChatroomUpdatedInstance]
   onChatroomClear: []
   onHosted: [hostedInstance: StreamHostInstance]
