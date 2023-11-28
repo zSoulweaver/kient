@@ -26,27 +26,27 @@ interface WsHandlers {
 }
 
 export class Kient extends Emitter<KientEvents> {
-  private _apiClient: ApiClient
   private _endpoints: Endpoints
-  private _wsClient: WsClient
   private _wsHandlers: WsHandlers
-  public authenticated = false
+  _apiClient: ApiClient
+  _wsClient: WsClient
+  authenticated = false
 
   private async init() {
     this._apiClient = await ApiClient.create(this)
     this._endpoints = {
-      authentication: new AuthenticationEndpoint(this, this._apiClient),
-      channel: new ChannelEndpoint(this, this._apiClient),
-      chat: new ChatEndpoint(this, this._apiClient),
+      authentication: new AuthenticationEndpoint(this),
+      channel: new ChannelEndpoint(this),
+      chat: new ChatEndpoint(this),
     }
 
     this._wsClient = new WsClient(this)
     this._wsHandlers = {
-      chatroom: new ChatroomSocket(this, this._wsClient),
-      channel: new ChannelSocket(this, this._wsClient),
-      privateChatroom: new PrivateChatroomSocket(this, this._wsClient),
-      privateChannel: new PrivateChannelSocket(this, this._wsClient),
-      privateLivestream: new PrivateLivestreamSocket(this, this._wsClient),
+      chatroom: new ChatroomSocket(this),
+      channel: new ChannelSocket(this),
+      privateChatroom: new PrivateChatroomSocket(this),
+      privateChannel: new PrivateChannelSocket(this),
+      privateLivestream: new PrivateLivestreamSocket(this),
     }
   }
 
