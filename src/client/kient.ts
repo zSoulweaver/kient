@@ -7,6 +7,9 @@ import type { KientEvents } from '@/ws/ws.events'
 import { ChatroomSocket } from '@/ws/chatroom/chatroom.socket'
 import { ChatEndpoint } from '@/endpoints/chat/chat.endpoint'
 import { ChannelSocket } from '@/ws/channel/channel.socket'
+import { PrivateChannelSocket } from '@/ws/private-channel/private-channel.socket'
+import { PrivateChatroomSocket } from '@/ws/private-chatroom/private-chatroom.socket'
+import { PrivateLivestreamSocket } from '@/ws/private-livestream/private-livestream.socket'
 
 interface Endpoints {
   authentication: AuthenticationEndpoint
@@ -17,6 +20,9 @@ interface Endpoints {
 interface WsHandlers {
   chatroom: ChatroomSocket
   channel: ChannelSocket
+  privateChatroom: PrivateChatroomSocket
+  privateChannel: PrivateChannelSocket
+  privateLivestream: PrivateLivestreamSocket
 }
 
 export class Kient extends Emitter<KientEvents> {
@@ -38,6 +44,9 @@ export class Kient extends Emitter<KientEvents> {
     this._wsHandlers = {
       chatroom: new ChatroomSocket(this, this._wsClient),
       channel: new ChannelSocket(this, this._wsClient),
+      privateChatroom: new PrivateChatroomSocket(this, this._wsClient),
+      privateChannel: new PrivateChannelSocket(this, this._wsClient),
+      privateLivestream: new PrivateLivestreamSocket(this, this._wsClient),
     }
   }
 
