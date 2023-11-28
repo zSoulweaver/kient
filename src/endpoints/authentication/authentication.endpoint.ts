@@ -1,10 +1,12 @@
 import { cast } from '@deepkit/type'
+import type { ChannelAuthorizationRequestParams } from 'pusher-js/types/src/core/auth/options'
 import { BaseEndpoint } from '../endpoint.base'
 import { KientApiError } from '../api.error'
 import type { TokensResponse } from './dto/tokens.response'
 import { KientAuthenticationError } from './authentication.error'
 import type { LoginErrorResponse, LoginResponse } from './dto/login.response'
 import type { UserResponse } from './dto/user.response'
+import type { PusherAuthenticationResponse } from './dto/pusher-authentication.response'
 
 interface LoginCredentials {
   email: string
@@ -112,5 +114,30 @@ export class AuthenticationEndpoint extends BaseEndpoint {
       throw new KientApiError({ name: 'UNAUTHENTICATED' })
 
     return cast<UserResponse>(response.body)
+  }
+
+  public async pusherAuthenticate(params: ChannelAuthorizationRequestParams) {
+    this.checkAuthenticated()
+
+    const body = {
+      socket_id: params.socketId,
+      channel_name: params.channelName,
+    }
+    const response = await this._apiClient.callKickApi({
+      endpoint: 'broadcasting/auth',
+      method: 'post',
+      options: {
+        body: JSON.stringify(body),
+      },
+    })
+    if (response.status !== 200) {
+      throw new KientApiError({
+        name: 'SOMETHING_WENT_WRONG',
+        message: 'Failed to get pusher channel authentication token',
+        cause: response,
+      })
+    }
+
+    return cast<PusherAuthenticationResponse>(response.body)
   }
 }
