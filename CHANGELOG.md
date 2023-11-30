@@ -1,6 +1,29 @@
 # Changelog
 
 
+## v1.0.1-6
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-5...v1.0.1-6)
+
+### 🚀 Enhancements
+
+- Add missing PollDeleteEvent ([1c50f33](https://github.com/zSoulweaver/kient/commit/1c50f33))
+- Add missing channel events ([fee484e](https://github.com/zSoulweaver/kient/commit/fee484e))
+- Pusher private channel auth flow ([2e2cdb6](https://github.com/zSoulweaver/kient/commit/2e2cdb6))
+- Add private-livestream socket ([c7bd06f](https://github.com/zSoulweaver/kient/commit/c7bd06f))
+- Private-channel and private-chatroom sockets ([dcd6e73](https://github.com/zSoulweaver/kient/commit/dcd6e73))
+- Add private-channel events ([4b45364](https://github.com/zSoulweaver/kient/commit/4b45364))
+- Add private-chatroom events ([a0dcd3b](https://github.com/zSoulweaver/kient/commit/a0dcd3b))
+
+### 💅 Refactors
+
+- Improve switch statement readability ([eb170c7](https://github.com/zSoulweaver/kient/commit/eb170c7))
+- Improve class constructors ([d59e92f](https://github.com/zSoulweaver/kient/commit/d59e92f))
+
+### 🏡 Chore
+
+- Fix eslint and lint files ([b8969f4](https://github.com/zSoulweaver/kient/commit/b8969f4))
+
 ## v1.0.1-5
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-4...v1.0.1-5)
