@@ -1,5 +1,6 @@
 import type { ChannelEvents } from './channel/channel.events'
 import type { ChatroomEvents } from './chatroom/chatroom.events'
+import type { PrivateChannelEvents } from './private-channel/private-channel.events'
 import type { PrivateLivestreamEvents } from './private-livestream/private-livestream.events'
 
 // eslint-disable-next-line ts/consistent-type-definitions
@@ -13,4 +14,5 @@ export type KientEvents =
   & ChatroomEvents
   & ChannelEvents
   & PrivateLivestreamEvents
+  & PrivateChannelEvents
   & { UnknownEvent: [data: any] }
