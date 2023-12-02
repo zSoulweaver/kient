@@ -5,7 +5,7 @@ import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
 
 export class UnbannedUserInstance extends BaseInstance<UserUnbannedEvent> {
-  constructor(data: any, client: Kient) {
+  public constructor(data: any, client: Kient) {
     try {
       super(cast<UserUnbannedEvent>(data), client)
     } catch (err) {

@@ -5,7 +5,7 @@ import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
 
 export class StreamerIsLiveInstance extends BaseInstance<StreamerIsLiveEvent> {
-  constructor(data: any, client: Kient) {
+  public constructor(data: any, client: Kient) {
     try {
       super(cast<StreamerIsLiveEvent>(data), client)
     } catch (err) {

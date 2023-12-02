@@ -5,7 +5,7 @@ import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
 
 export class PinnedMessageInstance extends BaseInstance<PinnedMessageCreatedEvent> {
-  constructor(data: any, client: Kient) {
+  public constructor(data: any, client: Kient) {
     try {
       super(cast<PinnedMessageCreatedEvent>(data), client)
     } catch (err) {
@@ -17,7 +17,7 @@ export class PinnedMessageInstance extends BaseInstance<PinnedMessageCreatedEven
     }
   }
 
-  getMessage() {
+  public getMessage() {
     return this.data.message.content
   }
 }

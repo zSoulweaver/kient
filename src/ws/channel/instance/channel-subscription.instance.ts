@@ -5,7 +5,7 @@ import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
 
 export class ChannelSubscriptionInstance extends BaseInstance<ChannelSubscriptionEvent> {
-  constructor(data: any, client: Kient) {
+  public constructor(data: any, client: Kient) {
     try {
       super(cast<ChannelSubscriptionEvent>(data), client)
     } catch (err) {

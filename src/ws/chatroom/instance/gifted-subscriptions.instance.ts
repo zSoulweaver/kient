@@ -5,7 +5,7 @@ import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
 
 export class GiftedSubscriptionsInstance extends BaseInstance<GiftedSubscriptionsEvent> {
-  constructor(data: any, client: Kient) {
+  public constructor(data: any, client: Kient) {
     try {
       super(cast<GiftedSubscriptionsEvent>(data), client)
     } catch (err) {

@@ -1,10 +1,10 @@
 export class ErrorBase<T extends string> extends Error {
-  name: T
-  message: string
-  code?: number
-  cause?: any
+  public name: T
+  public message: string
+  public code?: number
+  public cause?: any
 
-  constructor(error: { name: T; message?: string; code?: number; cause?: any }) {
+  public constructor(error: { name: T; message?: string; code?: number; cause?: any }) {
     super()
     this.name = error.name
     this.message = error.message ?? ''

@@ -10,7 +10,7 @@ export class WsClient {
   private readonly PUSHER_APP_KEY = 'eb1d5f283081a78b932c'
   private readonly pusher: Pusher
 
-  constructor(client: Kient) {
+  public constructor(client: Kient) {
     this._client = client
 
     const pusherOptions: Options = {

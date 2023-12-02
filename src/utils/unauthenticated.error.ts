@@ -1,7 +1,7 @@
 import { KientApiError } from '@/endpoints/api.error'
 
 export class KientUnauthenticated extends KientApiError {
-  constructor(cause?: any) {
+  public constructor(cause?: any) {
     super({
       name: 'UNAUTHENTICATED',
       message: 'You must be logged in to access this endpoint',

@@ -5,7 +5,7 @@ import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
 
 export class PollUpdateInstance extends BaseInstance<PollUpdateEvent> {
-  constructor(data: any, client: Kient) {
+  public constructor(data: any, client: Kient) {
     try {
       super(cast<PollUpdateEvent>(data), client)
     } catch (err) {

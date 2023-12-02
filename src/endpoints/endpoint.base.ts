@@ -6,7 +6,7 @@ export abstract class BaseEndpoint {
   protected readonly _client: Kient
   protected readonly _apiClient: ApiClient
 
-  constructor(client: Kient) {
+  public constructor(client: Kient) {
     this._client = client
     this._apiClient = client._apiClient
   }

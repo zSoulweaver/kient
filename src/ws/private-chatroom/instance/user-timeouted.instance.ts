@@ -5,7 +5,7 @@ import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
 
 export class UserTimeoutedInstance extends BaseInstance<UserTimeoutedEvent> {
-  constructor(data: any, client: Kient) {
+  public constructor(data: any, client: Kient) {
     try {
       super(cast<UserTimeoutedEvent>(data), client)
     } catch (err) {

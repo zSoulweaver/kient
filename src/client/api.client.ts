@@ -24,7 +24,7 @@ export class ApiClient {
   private readonly cookieJar = new toughCookie.CookieJar()
   private bearerToken = ''
 
-  constructor(client: Kient) {
+  private constructor(client: Kient) {
     this._client = client
     this._apiFetch = ofetch.create({
       baseURL: 'https://kick.com',
@@ -38,7 +38,7 @@ export class ApiClient {
     })
   }
 
-  static async create(client: Kient) {
+  public static async create(client: Kient) {
     const apiClient = new ApiClient(client)
     await apiClient.init()
     return apiClient

@@ -5,7 +5,7 @@ import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
 
 export class MessageDeletedInstance extends BaseInstance<MessageDeletedEvent> {
-  constructor(data: any, client: Kient) {
+  public constructor(data: any, client: Kient) {
     try {
       super(cast<MessageDeletedEvent>(data), client)
     } catch (err) {
@@ -17,7 +17,7 @@ export class MessageDeletedInstance extends BaseInstance<MessageDeletedEvent> {
     }
   }
 
-  getMessageId() {
+  public getMessageId() {
     return this.data.message.id
   }
 }

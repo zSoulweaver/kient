@@ -28,9 +28,13 @@ interface WsHandlers {
 export class Kient extends EventEmitter<KientEventEmitters> {
   private _endpoints: Endpoints
   private _wsHandlers: WsHandlers
-  _apiClient: ApiClient
-  _wsClient: WsClient
-  authenticated = false
+  public _apiClient: ApiClient
+  public _wsClient: WsClient
+  public authenticated = false
+
+  private constructor() {
+    super()
+  }
 
   private async init() {
     this._apiClient = await ApiClient.create(this)
@@ -50,17 +54,17 @@ export class Kient extends EventEmitter<KientEventEmitters> {
     }
   }
 
-  static async create() {
+  public static async create() {
     const kient = new Kient()
     await kient.init()
     return kient
   }
 
-  get api() {
+  public get api() {
     return this._endpoints
   }
 
-  get ws() {
+  public get ws() {
     return this._wsHandlers
   }
 }

@@ -5,7 +5,7 @@ import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
 
 export class EmotesModeActivatedInstance extends BaseInstance<EmotesModeActivatedEvent> {
-  constructor(data: any, client: Kient) {
+  public constructor(data: any, client: Kient) {
     try {
       super(cast<EmotesModeActivatedEvent>(data), client)
     } catch (err) {

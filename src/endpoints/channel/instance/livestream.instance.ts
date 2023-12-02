@@ -12,11 +12,11 @@ export interface LivestreamThumbnails {
 }
 
 export class LivestreamInstance extends BaseInstance<GetLivestreamResponse | null> {
-  constructor(data: any, client: Kient) {
+  public constructor(data: any, client: Kient) {
     super(cast<GetLivestreamResponse | null>(data), client)
   }
 
-  getThumbnails() {
+  public getThumbnails() {
     if (!this.data)
       return null
 
