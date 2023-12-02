@@ -47,7 +47,7 @@ export class ChannelSocket extends BaseSocket {
           return this._client.emit(ChannelEvents.StopStream, new StopStreamBroadcastInstance(data, this._client))
 
         case 'App\\Events\\ChannelBannedForceRefresh':
-          return this._client.emit(ChannelEvents.Banned)
+          return this._client.emit(ChannelEvents.Banned, channelId)
 
         default:
           return this._client.emit(Events.Core.UnknownEvent, { eventName, data })

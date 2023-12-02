@@ -26,5 +26,5 @@ export type ChannelEventEmitters = {
   [ChannelEvents.StartHost]: (chatMoveToSupportedChannelInstance: ChatMoveToSupportedChannelInstance) => void
   [ChannelEvents.StartStream]: (streamerIsLiveInstance: StreamerIsLiveInstance) => void
   [ChannelEvents.StopStream]: (stopStreamBroadcastInstance: StopStreamBroadcastInstance) => void
-  [ChannelEvents.Banned]: () => void
+  [ChannelEvents.Banned]: (channelId: string | number) => void
 }
