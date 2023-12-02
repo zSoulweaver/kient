@@ -1,15 +1,15 @@
-import { Emitter } from 'strict-event-emitter'
+import { EventEmitter } from 'tseep'
 import { ApiClient } from './api.client'
 import { WsClient } from './ws.client'
 import { AuthenticationEndpoint } from '@/endpoints/authentication/authentication.endpoint'
 import { ChannelEndpoint } from '@/endpoints/channel/channel.endpoint'
-import type { KientEvents } from '@/ws/ws.events'
 import { ChatroomSocket } from '@/ws/chatroom/chatroom.socket'
 import { ChatEndpoint } from '@/endpoints/chat/chat.endpoint'
 import { ChannelSocket } from '@/ws/channel/channel.socket'
 import { PrivateChannelSocket } from '@/ws/private-channel/private-channel.socket'
 import { PrivateChatroomSocket } from '@/ws/private-chatroom/private-chatroom.socket'
 import { PrivateLivestreamSocket } from '@/ws/private-livestream/private-livestream.socket'
+import type { KientEventEmitters } from '@/ws/ws.events'
 
 interface Endpoints {
   authentication: AuthenticationEndpoint
@@ -25,7 +25,7 @@ interface WsHandlers {
   privateLivestream: PrivateLivestreamSocket
 }
 
-export class Kient extends Emitter<KientEvents> {
+export class Kient extends EventEmitter<KientEventEmitters> {
   private _endpoints: Endpoints
   private _wsHandlers: WsHandlers
   _apiClient: ApiClient

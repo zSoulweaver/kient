@@ -1,4 +1,5 @@
 import { BaseSocket } from '../socket.base'
+import { Events } from '../ws.events'
 import { ChatMessageInstance } from './instance/chat-message.instance'
 import { MessageDeletedInstance } from './instance/message-deleted.instance'
 import { BannedUserInstance } from './instance/banned-user.instance'
@@ -9,7 +10,7 @@ import { GiftedSubscriptionsInstance } from './instance/gifted-subscriptions.ins
 import { ChatroomUpdatedInstance } from './instance/chatroom-updated.instance'
 import { StreamHostInstance } from './instance/stream-host.instance'
 import { PollUpdateInstance } from './instance/poll-update.instance'
-import type { ChatroomEvents } from './chatroom.events'
+import { ChatroomEvents } from './chatroom.events'
 
 type PusherChannelEvents =
   | 'App\\Events\\ChatMessageEvent'
@@ -26,53 +27,53 @@ type PusherChannelEvents =
   | 'App\\Events\\ChatroomClearEvent'
   | 'App\\Events\\StreamHostEvent'
 
-export class ChatroomSocket extends BaseSocket<ChatroomEvents> {
+export class ChatroomSocket extends BaseSocket {
   public async listen(chatroomId: string | number) {
     const channel = await this._wsClient.subscribe(`chatrooms.${chatroomId}.v2`)
 
     channel.bind_global((eventName: PusherChannelEvents, data: any) => {
       switch (eventName) {
         case 'App\\Events\\ChatMessageEvent':
-          return this.emit('onMessage', new ChatMessageInstance(data, this._client))
+          return this._client.emit(ChatroomEvents.Message, new ChatMessageInstance(data, this._client))
 
         case 'App\\Events\\MessageDeletedEvent':
-          return this.emit('onMessageDeleted', new MessageDeletedInstance(data, this._client))
+          return this._client.emit(ChatroomEvents.MessageDeleted, new MessageDeletedInstance(data, this._client))
 
         case 'App\\Events\\UserBannedEvent':
-          return this.emit('onUserBanned', new BannedUserInstance(data, this._client))
+          return this._client.emit(ChatroomEvents.UserBanned, new BannedUserInstance(data, this._client))
 
         case 'App\\Events\\UserUnbannedEvent':
-          return this.emit('onUserUnbanned', new UnbannedUserInstance(data, this._client))
+          return this._client.emit(ChatroomEvents.UserUnbanned, new UnbannedUserInstance(data, this._client))
 
         case 'App\\Events\\PinnedMessageCreatedEvent':
-          return this.emit('onPinnedMessage', new PinnedMessageInstance(data, this._client))
+          return this._client.emit(ChatroomEvents.MessagePinned, new PinnedMessageInstance(data, this._client))
 
         case 'App\\Events\\PinnedMessageDeletedEvent':
-          return this.emit('onUnpinMessage')
+          return this._client.emit(ChatroomEvents.MessageUnpinned)
 
         case 'App\\Events\\SubscriptionEvent':
-          return this.emit('onSubscription', new SubscriptionInstance(data, this._client))
+          return this._client.emit(ChatroomEvents.Subscription, new SubscriptionInstance(data, this._client))
 
         case 'App\\Events\\GiftedSubscriptionsEvent':
-          return this.emit('onGiftedSubscriptions', new GiftedSubscriptionsInstance(data, this._client))
+          return this._client.emit(ChatroomEvents.SubscriptionsGifted, new GiftedSubscriptionsInstance(data, this._client))
 
         case 'App\\Events\\PollUpdateEvent':
-          return this.emit('onPollUpdate', new PollUpdateInstance(data, this._client))
+          return this._client.emit(ChatroomEvents.PollUpdated, new PollUpdateInstance(data, this._client))
 
         case 'App\\Events\\PollDeleteEvent':
-          return this.emit('onPollDelete')
+          return this._client.emit(ChatroomEvents.PollDeleted)
 
         case 'App\\Events\\ChatroomUpdatedEvent':
-          return this.emit('onChatroomUpdate', new ChatroomUpdatedInstance(data, this._client))
+          return this._client.emit(ChatroomEvents.SettingsUpdated, new ChatroomUpdatedInstance(data, this._client))
 
         case 'App\\Events\\ChatroomClearEvent':
-          return this.emit('onChatroomClear')
+          return this._client.emit(ChatroomEvents.ClearChat)
 
         case 'App\\Events\\StreamHostEvent':
-          return this.emit('onHosted', new StreamHostInstance(data, this._client))
+          return this._client.emit(ChatroomEvents.Hosted, new StreamHostInstance(data, this._client))
 
         default:
-          return this.emit('UnknownEvent', { eventName, data })
+          return this._client.emit(Events.Core.UnknownEvent, { eventName, data })
       }
     })
   }

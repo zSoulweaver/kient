@@ -4,11 +4,19 @@ import type { MatureModeDeactivatedInstance } from './instance/mature-mode-deact
 import type { TitleChangedInstance } from './instance/title-changed.instance'
 import type { UpdatedLiveStreamInstance } from './instance/updated-livestream.instance'
 
+export enum PrivateLivestreamEvents {
+  HostReceived = 'PRIVATE_LIVESTREAM_HOST_RECEIVED',
+  TitleChanged = 'PRIVATE_LIVESTREAM_TITLE_CHANGED',
+  MatureModeActivated = 'PRIVATE_LIVESTREAM_MATURE_MODE_ACTIVATED',
+  MatureModeDeactivated = 'PRIVATE_LIVESTREAM_MATURE_MODE_DEACTIVATED',
+  LivestreamInformationUpdated = 'PRIVATE_LIVESTREAM_LIVESTREAM_INFORMATION_UPDATED',
+}
+
 // eslint-disable-next-line ts/consistent-type-definitions
-export type PrivateLivestreamEvents = {
-  onHostReceived: [hostReceivedInstance: HostReceivedInstance]
-  onTitleChanged: [titleChangedInstance: TitleChangedInstance]
-  onMatureModeActivated: [matureModeActivatedInstance: MatureModeActivatedInstance]
-  onMatureModeDeactivated: [matureModeDeactivatedInstance: MatureModeDeactivatedInstance]
-  onLivestreamInformationUpdate: [updatedLiveStreamInstance: UpdatedLiveStreamInstance]
+export type PrivateLivestreamEventEmitter = {
+  [PrivateLivestreamEvents.HostReceived]: (hostReceivedInstance: HostReceivedInstance) => void
+  [PrivateLivestreamEvents.TitleChanged]: (titleChangedInstance: TitleChangedInstance) => void
+  [PrivateLivestreamEvents.MatureModeActivated]: (matureModeActivatedInstance: MatureModeActivatedInstance) => void
+  [PrivateLivestreamEvents.MatureModeDeactivated]: (matureModeDeactivatedInstance: MatureModeDeactivatedInstance) => void
+  [PrivateLivestreamEvents.LivestreamInformationUpdated]: (updatedLiveStreamInstance: UpdatedLiveStreamInstance) => void
 }

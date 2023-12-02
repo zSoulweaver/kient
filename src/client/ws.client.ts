@@ -3,6 +3,7 @@ import Pusher from 'pusher-js'
 import type { ChannelAuthorizationRequestParams } from 'pusher-js/types/src/core/auth/options'
 import type { Kient } from './kient'
 import { KientWsError } from '@/ws/ws.error'
+import { Events } from '@/ws/ws.events'
 
 export class WsClient {
   private readonly _client: Kient
@@ -21,8 +22,8 @@ export class WsClient {
       },
     }
     this.pusher = new Pusher(this.PUSHER_APP_KEY, pusherOptions)
-    this.pusher.connection.bind('connected', () => this._client.emit('wsConnected'))
-    this.pusher.connection.bind('disconnected', () => this._client.emit('wsDisconnected'))
+    this.pusher.connection.bind('connected', () => this._client.emit(Events.Core.WebSocketConnected))
+    this.pusher.connection.bind('disconnected', () => this._client.emit(Events.Core.WebSocketDisconnected))
   }
 
   public async subscribe(channel: string) {

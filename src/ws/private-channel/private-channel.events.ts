@@ -4,11 +4,19 @@ import type { SubscriptionCreatedInstance } from './instance/subscription-create
 import type { SubscriptionGiftedInstance } from './instance/subscription-gifted.instance'
 import type { SubscriptionRenewedInstance } from './instance/subscription-renewed.instance'
 
+export enum PrivateChannelEvents {
+  Subscription = 'PRIVATE_CHANNEL_SUBSCRIPTION',
+  SubscriptionRenewed = 'PRIVATE_CHANNEL_RENEWED',
+  SubscriptionsGifted = 'PRIVATE_CHANNEL_SUBSCRIPTIONS_GIFTED',
+  FollowerAdded = 'PRIVATE_CHANNEL_FOLLOWED',
+  FollowerDeleted = 'PRIVATE_CHANNEL_UNFOLLOWED',
+}
+
 // eslint-disable-next-line ts/consistent-type-definitions
-export type PrivateChannelEvents = {
-  onSubscriptionGifted: [subscriptionGiftedInstance: SubscriptionGiftedInstance]
-  onSubscriptionCreated: [subscriptionCreatedInstance: SubscriptionCreatedInstance]
-  onSubscriptionRenewed: [subscriptionRenewedInstance: SubscriptionRenewedInstance]
-  onFollowerAdded: [followerAddedInstance: FollowerAddedInstance]
-  onFollowerDeleted: [followerDeletedInstance: FollowerDeletedInstance]
+export type PrivateChannelEventEmitters = {
+  [PrivateChannelEvents.Subscription]: (subscriptionCreatedInstance: SubscriptionCreatedInstance) => void
+  [PrivateChannelEvents.SubscriptionRenewed]: (subscriptionRenewedInstance: SubscriptionRenewedInstance) => void
+  [PrivateChannelEvents.SubscriptionsGifted]: (subscriptionGiftedInstance: SubscriptionGiftedInstance) => void
+  [PrivateChannelEvents.FollowerAdded]: (followerAddedInstance: FollowerAddedInstance) => void
+  [PrivateChannelEvents.FollowerDeleted]: (followerDeletedInstance: FollowerDeletedInstance) => void
 }

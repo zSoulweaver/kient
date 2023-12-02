@@ -1,4 +1,5 @@
 import { BaseSocket } from '../socket.base'
+import { Events } from '../ws.events'
 import { BannedUserAddedInstance } from './instance/banned-user-added.instance'
 import { BannedUserDeletedInstance } from './instance/banned-user-deleted.instance'
 import { BannedWordAddedInstance } from './instance/banned-word-added.instance'
@@ -12,7 +13,7 @@ import { SlowModeDeactivatedInstance } from './instance/slow-mode-deactivated.in
 import { SubscribersModeActivatedInstance } from './instance/subscribers-mode-activated.event'
 import { SubscribersModeDeactivatedInstance } from './instance/subscribers-mode-deactivated.instance'
 import { UserTimeoutedInstance } from './instance/user-timeouted.instance'
-import type { PrivateChatroomEvents } from './private-chatroom.events'
+import { PrivateChatroomEvents } from './private-chatroom.events'
 
 type PusherChannelEvents =
   | 'BannedWordAdded'
@@ -32,53 +33,53 @@ type PusherChannelEvents =
   | 'AllowLinksActivated' // Unused?
   | 'AllowLinksDeactivated' // Unused?
 
-export class PrivateChatroomSocket extends BaseSocket<PrivateChatroomEvents> {
+export class PrivateChatroomSocket extends BaseSocket {
   public async listen(chatroomId: string | number) {
     const channel = await this._wsClient.subscribe(`private-chatroom_${chatroomId}`)
 
     channel.bind_global((eventName: PusherChannelEvents, data: any) => {
       switch (eventName) {
         case 'BannedWordAdded':
-          return this.emit('onBannedWordAdded', new BannedWordAddedInstance(data, this._client))
+          return this._client.emit(PrivateChatroomEvents.BannedWordAdded, new BannedWordAddedInstance(data, this._client))
 
         case 'BannedWordDeleted':
-          return this.emit('onBannedWordDeleted', new BannedWordDeletedInstance(data, this._client))
+          return this._client.emit(PrivateChatroomEvents.BannedWordDeleted, new BannedWordDeletedInstance(data, this._client))
 
         case 'BannedUserAdded':
-          return this.emit('onBannedUserAdded', new BannedUserAddedInstance(data, this._client))
+          return this._client.emit(PrivateChatroomEvents.BannedUserAdded, new BannedUserAddedInstance(data, this._client))
 
         case 'BannedUserDeleted':
-          return this.emit('onBannedUserDeleted', new BannedUserDeletedInstance(data, this._client))
+          return this._client.emit(PrivateChatroomEvents.BannedUserDeleted, new BannedUserDeletedInstance(data, this._client))
 
         case 'UserTimeouted':
-          return this.emit('onUserTimeout', new UserTimeoutedInstance(data, this._client))
+          return this._client.emit(PrivateChatroomEvents.UserTimedOut, new UserTimeoutedInstance(data, this._client))
 
         case 'SlowModeActivated':
-          return this.emit('onSlowModeActivated', new SlowModeActivatedInstance(data, this._client))
+          return this._client.emit(PrivateChatroomEvents.SlowModeActivated, new SlowModeActivatedInstance(data, this._client))
 
         case 'SlowModeDeactivated':
-          return this.emit('onSlowModeDeactivated', new SlowModeDeactivatedInstance(data, this._client))
+          return this._client.emit(PrivateChatroomEvents.SlowModeDeactivated, new SlowModeDeactivatedInstance(data, this._client))
 
         case 'EmotesModeActivated':
-          return this.emit('onEmotesModeActivated', new EmotesModeActivatedInstance(data, this._client))
+          return this._client.emit(PrivateChatroomEvents.EmotesOnlyModeActivated, new EmotesModeActivatedInstance(data, this._client))
 
         case 'EmotesModeDeactivated':
-          return this.emit('onEmotesModeDeactivated', new EmotesModeDeactivatedInstance(data, this._client))
+          return this._client.emit(PrivateChatroomEvents.EmotesOnlyModeDeactivated, new EmotesModeDeactivatedInstance(data, this._client))
 
         case 'FollowersModeActivated':
-          return this.emit('onFollowersModeActivated', new FollowersModeActivatedInstance(data, this._client))
+          return this._client.emit(PrivateChatroomEvents.FollowersOnlyModeActivated, new FollowersModeActivatedInstance(data, this._client))
 
         case 'FollowersModeDeactivated':
-          return this.emit('onFollowersModeDeactivated', new FollowersModeDeactivatedInstance(data, this._client))
+          return this._client.emit(PrivateChatroomEvents.FollowersOnlyModeDeactivated, new FollowersModeDeactivatedInstance(data, this._client))
 
         case 'SubscribersModeActivated':
-          return this.emit('onSubscribersModeActivated', new SubscribersModeActivatedInstance(data, this._client))
+          return this._client.emit(PrivateChatroomEvents.SubscribersOnlyModeActivated, new SubscribersModeActivatedInstance(data, this._client))
 
         case 'SubscribersModeDeactivated':
-          return this.emit('onSubscribersModeDeactivated', new SubscribersModeDeactivatedInstance(data, this._client))
+          return this._client.emit(PrivateChatroomEvents.SlowModeDeactivated, new SubscribersModeDeactivatedInstance(data, this._client))
 
         default:
-          return this.emit('UnknownEvent', { eventName, data })
+          return this._client.emit(Events.Core.UnknownEvent, { eventName, data })
       }
     })
   }

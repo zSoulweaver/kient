@@ -6,14 +6,25 @@ import type { LuckyUsersWhoGotGiftSubscriptionsInstance } from './instance/lucky
 import type { StopStreamBroadcastInstance } from './instance/stop-stream-broadcast.instance'
 import type { StreamerIsLiveInstance } from './instance/streamer-is-live.instance'
 
+export enum ChannelEvents {
+  FollowersUpdate = 'CHANNEL_FOLLOWERS_UPDATE',
+  Subscription = 'CHANNEL_SUBSCRIPTION',
+  SubscriptionsGifted = 'CHANNEL_SUBSCRIPTIONS_GIFTED',
+  LeaderboardUpdate = 'CHANNEL_LEADERBOARD_UPDATE',
+  StartHost = 'CHANNEL_START_HOST',
+  StartStream = 'CHANNEL_START_STREAM',
+  StopStream = 'CHANNEL_STOP_STREAM',
+  Banned = 'CHANNEL_BANNED',
+}
+
 // eslint-disable-next-line ts/consistent-type-definitions
-export type ChannelEvents = {
-  onFollowersUpdate: [followersUpdateInstance: FollowersUpdateInstance]
-  onChannelSubscription: [channelSubscriptionInstance: ChannelSubscriptionInstance]
-  onLuckyUsersWhoGotGiftSubscriptions: [luckyUsersWhoGotGiftSubscriptionsInstance: LuckyUsersWhoGotGiftSubscriptionsInstance]
-  onLeaderboardUpdate: [giftsLeaderboardUpdatedInstance: GiftsLeaderboardUpdatedInstance]
-  onStartHost: [chatMoveToSupportedChannelInstance: ChatMoveToSupportedChannelInstance]
-  onStartStream: [streamerIsLiveInstance: StreamerIsLiveInstance]
-  onStopStream: [stopStreamBroadcastInstance: StopStreamBroadcastInstance]
-  onStreamerBanned: []
+export type ChannelEventEmitters = {
+  [ChannelEvents.FollowersUpdate]: (followersUpdateInstance: FollowersUpdateInstance) => void
+  [ChannelEvents.Subscription]: (channelSubscriptionInstance: ChannelSubscriptionInstance) => void
+  [ChannelEvents.SubscriptionsGifted]: (luckyUsersWhoGotGiftSubscriptionsInstance: LuckyUsersWhoGotGiftSubscriptionsInstance) => void
+  [ChannelEvents.LeaderboardUpdate]: (giftsLeaderboardUpdatedInstance: GiftsLeaderboardUpdatedInstance) => void
+  [ChannelEvents.StartHost]: (chatMoveToSupportedChannelInstance: ChatMoveToSupportedChannelInstance) => void
+  [ChannelEvents.StartStream]: (streamerIsLiveInstance: StreamerIsLiveInstance) => void
+  [ChannelEvents.StopStream]: (stopStreamBroadcastInstance: StopStreamBroadcastInstance) => void
+  [ChannelEvents.Banned]: () => void
 }
