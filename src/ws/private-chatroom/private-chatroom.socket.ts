@@ -12,8 +12,9 @@ import { SlowModeDeactivatedInstance } from './instance/slow-mode-deactivated.in
 import { SubscribersModeActivatedInstance } from './instance/subscribers-mode-activated.event'
 import { SubscribersModeDeactivatedInstance } from './instance/subscribers-mode-deactivated.instance'
 import { UserTimeoutedInstance } from './instance/user-timeouted.instance'
+import type { PrivateChatroomEvents } from './private-chatroom.events'
 
-type ChannelEvents =
+type PusherChannelEvents =
   | 'BannedWordAdded'
   | 'BannedWordDeleted'
   | 'BannedUserAdded'
@@ -31,53 +32,53 @@ type ChannelEvents =
   | 'AllowLinksActivated' // Unused?
   | 'AllowLinksDeactivated' // Unused?
 
-export class PrivateChatroomSocket extends BaseSocket {
+export class PrivateChatroomSocket extends BaseSocket<PrivateChatroomEvents> {
   public async listen(chatroomId: string | number) {
     const channel = await this._wsClient.subscribe(`private-chatroom_${chatroomId}`)
 
-    channel.bind_global((eventName: ChannelEvents, data: any) => {
+    channel.bind_global((eventName: PusherChannelEvents, data: any) => {
       switch (eventName) {
         case 'BannedWordAdded':
-          return this._client.emit('onBannedWordAdded', new BannedWordAddedInstance(data, this._client))
+          return this.emit('onBannedWordAdded', new BannedWordAddedInstance(data, this._client))
 
         case 'BannedWordDeleted':
-          return this._client.emit('onBannedWordDeleted', new BannedWordDeletedInstance(data, this._client))
+          return this.emit('onBannedWordDeleted', new BannedWordDeletedInstance(data, this._client))
 
         case 'BannedUserAdded':
-          return this._client.emit('onBannedUserAdded', new BannedUserAddedInstance(data, this._client))
+          return this.emit('onBannedUserAdded', new BannedUserAddedInstance(data, this._client))
 
         case 'BannedUserDeleted':
-          return this._client.emit('onBannedUserDeleted', new BannedUserDeletedInstance(data, this._client))
+          return this.emit('onBannedUserDeleted', new BannedUserDeletedInstance(data, this._client))
 
         case 'UserTimeouted':
-          return this._client.emit('onUserTimeout', new UserTimeoutedInstance(data, this._client))
+          return this.emit('onUserTimeout', new UserTimeoutedInstance(data, this._client))
 
         case 'SlowModeActivated':
-          return this._client.emit('onSlowModeActivated', new SlowModeActivatedInstance(data, this._client))
+          return this.emit('onSlowModeActivated', new SlowModeActivatedInstance(data, this._client))
 
         case 'SlowModeDeactivated':
-          return this._client.emit('onSlowModeDeactivated', new SlowModeDeactivatedInstance(data, this._client))
+          return this.emit('onSlowModeDeactivated', new SlowModeDeactivatedInstance(data, this._client))
 
         case 'EmotesModeActivated':
-          return this._client.emit('onEmotesModeActivated', new EmotesModeActivatedInstance(data, this._client))
+          return this.emit('onEmotesModeActivated', new EmotesModeActivatedInstance(data, this._client))
 
         case 'EmotesModeDeactivated':
-          return this._client.emit('onEmotesModeDeactivated', new EmotesModeDeactivatedInstance(data, this._client))
+          return this.emit('onEmotesModeDeactivated', new EmotesModeDeactivatedInstance(data, this._client))
 
         case 'FollowersModeActivated':
-          return this._client.emit('onFollowersModeActivated', new FollowersModeActivatedInstance(data, this._client))
+          return this.emit('onFollowersModeActivated', new FollowersModeActivatedInstance(data, this._client))
 
         case 'FollowersModeDeactivated':
-          return this._client.emit('onFollowersModeDeactivated', new FollowersModeDeactivatedInstance(data, this._client))
+          return this.emit('onFollowersModeDeactivated', new FollowersModeDeactivatedInstance(data, this._client))
 
         case 'SubscribersModeActivated':
-          return this._client.emit('onSubscribersModeActivated', new SubscribersModeActivatedInstance(data, this._client))
+          return this.emit('onSubscribersModeActivated', new SubscribersModeActivatedInstance(data, this._client))
 
         case 'SubscribersModeDeactivated':
-          return this._client.emit('onSubscribersModeDeactivated', new SubscribersModeDeactivatedInstance(data, this._client))
+          return this.emit('onSubscribersModeDeactivated', new SubscribersModeDeactivatedInstance(data, this._client))
 
         default:
-          return this._client.emit('UnknownEvent', { eventName, data })
+          return this.emit('UnknownEvent', { eventName, data })
       }
     })
   }

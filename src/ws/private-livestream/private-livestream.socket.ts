@@ -3,9 +3,10 @@ import { HostReceivedInstance } from './instance/host-received.instance'
 import { MatureModeActivatedInstance } from './instance/mature-mode-activated.instance'
 import { MatureModeDeactivatedInstance } from './instance/mature-mode-deactivated.instance'
 import { UpdatedLiveStreamInstance } from './instance/updated-livestream.instance'
+import type { PrivateLivestreamEvents } from './private-livestream.events'
 
 // private-livestream events
-type ChannelEvents =
+type PusherChannelEvents =
   | 'HostReceived'
   | 'TitleChanged'
   | 'CategoryChanged' // Unused?
@@ -13,37 +14,37 @@ type ChannelEvents =
   | 'MatureModeDeactivated'
 
 // private-livestream-updated events
-type ChannelEvents2 =
+type PusherChannelEvents2 =
   | 'App\\Events\\LiveStream\\UpdatedLiveStreamEvent'
 
-export class PrivateLivestreamSocket extends BaseSocket {
+export class PrivateLivestreamSocket extends BaseSocket<PrivateLivestreamEvents> {
   public async listen(livestreamId: string | number) {
     const channel = await this._wsClient.subscribe(`private-livestream_${livestreamId}`)
     const channel2 = await this._wsClient.subscribe(`private-livestream-updated.${livestreamId}`)
 
-    channel.bind_global((eventName: ChannelEvents, data: any) => {
+    channel.bind_global((eventName: PusherChannelEvents, data: any) => {
       switch (eventName) {
         case 'HostReceived':
-          return this._client.emit('onHostReceived', new HostReceivedInstance(data, this._client))
+          return this.emit('onHostReceived', new HostReceivedInstance(data, this._client))
 
         case 'MatureModeActivated':
-          return this._client.emit('onMatureModeActivated', new MatureModeActivatedInstance(data, this._client))
+          return this.emit('onMatureModeActivated', new MatureModeActivatedInstance(data, this._client))
 
         case 'MatureModeDeactivated':
-          return this._client.emit('onMatureModeDeactivated', new MatureModeDeactivatedInstance(data, this._client))
+          return this.emit('onMatureModeDeactivated', new MatureModeDeactivatedInstance(data, this._client))
 
         default:
-          return this._client.emit('UnknownEvent', { eventName, data })
+          return this.emit('UnknownEvent', { eventName, data })
       }
     })
 
-    channel2.bind_global((eventName: ChannelEvents2, data: any) => {
+    channel2.bind_global((eventName: PusherChannelEvents2, data: any) => {
       switch (eventName) {
         case 'App\\Events\\LiveStream\\UpdatedLiveStreamEvent':
-          return this._client.emit('onLivestreamInformationUpdate', new UpdatedLiveStreamInstance(data, this._client))
+          return this.emit('onLivestreamInformationUpdate', new UpdatedLiveStreamInstance(data, this._client))
 
         default:
-          return this._client.emit('UnknownEvent', { eventName, data })
+          return this.emit('UnknownEvent', { eventName, data })
       }
     })
   }
