@@ -11,6 +11,7 @@ import { ChatroomUpdatedInstance } from './instance/chatroom-updated.instance'
 import { StreamHostInstance } from './instance/stream-host.instance'
 import { PollUpdateInstance } from './instance/poll-update.instance'
 import { ChatroomEvents } from './chatroom.events'
+import { ChatroomClearInstance } from './instance/chatroom-clear.instance'
 
 type PusherChannelEvents =
   | 'App\\Events\\ChatMessageEvent'
@@ -49,7 +50,7 @@ export class ChatroomSocket extends BaseSocket {
           return this._client.emit(ChatroomEvents.MessagePinned, new PinnedMessageInstance(data, this._client))
 
         case 'App\\Events\\PinnedMessageDeletedEvent':
-          return this._client.emit(ChatroomEvents.MessageUnpinned)
+          return this._client.emit(ChatroomEvents.MessageUnpinned, chatroomId)
 
         case 'App\\Events\\SubscriptionEvent':
           return this._client.emit(ChatroomEvents.Subscription, new SubscriptionInstance(data, this._client))
@@ -61,13 +62,13 @@ export class ChatroomSocket extends BaseSocket {
           return this._client.emit(ChatroomEvents.PollUpdated, new PollUpdateInstance(data, this._client))
 
         case 'App\\Events\\PollDeleteEvent':
-          return this._client.emit(ChatroomEvents.PollDeleted)
+          return this._client.emit(ChatroomEvents.PollDeleted, chatroomId)
 
         case 'App\\Events\\ChatroomUpdatedEvent':
           return this._client.emit(ChatroomEvents.SettingsUpdated, new ChatroomUpdatedInstance(data, this._client))
 
         case 'App\\Events\\ChatroomClearEvent':
-          return this._client.emit(ChatroomEvents.ClearChat)
+          return this._client.emit(ChatroomEvents.ClearChat, new ChatroomClearInstance(data, this._client))
 
         case 'App\\Events\\StreamHostEvent':
           return this._client.emit(ChatroomEvents.Hosted, new StreamHostInstance(data, this._client))

@@ -1,5 +1,6 @@
 import type { BannedUserInstance } from './instance/banned-user.instance'
 import type { ChatMessageInstance } from './instance/chat-message.instance'
+import type { ChatroomClearInstance } from './instance/chatroom-clear.instance'
 import type { ChatroomUpdatedInstance } from './instance/chatroom-updated.instance'
 import type { GiftedSubscriptionsInstance } from './instance/gifted-subscriptions.instance'
 import type { MessageDeletedInstance } from './instance/message-deleted.instance'
@@ -32,12 +33,12 @@ export type ChatroomEventEmitters = {
   [ChatroomEvents.UserBanned]: (bannedUserInstance: BannedUserInstance) => void
   [ChatroomEvents.UserUnbanned]: (unbannedUserInstance: UnbannedUserInstance) => void
   [ChatroomEvents.MessagePinned]: (pinnedMessageInstance: PinnedMessageInstance) => void
-  [ChatroomEvents.MessageUnpinned]: () => void
+  [ChatroomEvents.MessageUnpinned]: (chatroomId: string | number) => void
   [ChatroomEvents.Subscription]: (subscriptionInstance: SubscriptionInstance) => void
   [ChatroomEvents.SubscriptionsGifted]: (giftedSubscriptionsInstance: GiftedSubscriptionsInstance) => void
   [ChatroomEvents.PollUpdated]: (pollInstance: PollUpdateInstance) => void
-  [ChatroomEvents.PollDeleted]: () => void
+  [ChatroomEvents.PollDeleted]: (chatroomId: string | number) => void
   [ChatroomEvents.SettingsUpdated]: (chatroomInstance: ChatroomUpdatedInstance) => void
-  [ChatroomEvents.ClearChat]: () => void
+  [ChatroomEvents.ClearChat]: (chatroomClearInstance: ChatroomClearInstance) => void
   [ChatroomEvents.Hosted]: (hostedInstance: StreamHostInstance) => void
 }
