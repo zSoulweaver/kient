@@ -27,6 +27,7 @@ export default defineConfig({
           items: [
             { text: 'Response Instances', link: '/guide/response-instance' },
             { text: 'Authentication', link: '/guide/authentication' },
+            { text: 'Events', link: '/guide/events' },
           ],
         },
       ],
