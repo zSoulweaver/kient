@@ -67,7 +67,7 @@ export default defineConfig({
           ],
         },
       ],
-      '/api': typedocSidebar,
+      '/typedoc': typedocSidebar,
     },
 
     socialLinks: [
