@@ -1,6 +1,34 @@
 # Changelog
 
 
+## v1.0.1-7
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-6...v1.0.1-7)
+
+### 🚀 Enhancements
+
+- Scope events to channel sockets ([67160ec](https://github.com/zSoulweaver/kient/commit/67160ec))
+- Improve event handling, scope back to client ([2f4fce8](https://github.com/zSoulweaver/kient/commit/2f4fce8))
+- Add channel id to streamer banned event ([f6b4a8b](https://github.com/zSoulweaver/kient/commit/f6b4a8b))
+
+### 🩹 Fixes
+
+- Add chatroomId to chatroom events ([811ae71](https://github.com/zSoulweaver/kient/commit/811ae71))
+- Instance data should be public ([b8d288f](https://github.com/zSoulweaver/kient/commit/b8d288f))
+- Export correct private livestream events ([668fe98](https://github.com/zSoulweaver/kient/commit/668fe98))
+
+### 📖 Documentation
+
+- Add event guide ([6f7900a](https://github.com/zSoulweaver/kient/commit/6f7900a))
+- Add missing sockets ([776bb70](https://github.com/zSoulweaver/kient/commit/776bb70))
+- Add events to kient reference ([c147fe2](https://github.com/zSoulweaver/kient/commit/c147fe2))
+- Add link to event list in event guide ([1d539d2](https://github.com/zSoulweaver/kient/commit/1d539d2))
+- Add sockets to kient reference ([8d0e08f](https://github.com/zSoulweaver/kient/commit/8d0e08f))
+
+### 🏡 Chore
+
+- Add explicit member lint rule ([b007803](https://github.com/zSoulweaver/kient/commit/b007803))
+
 ## v1.0.1-6
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-5...v1.0.1-6)
