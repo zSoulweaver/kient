@@ -1,11 +1,12 @@
 {
   "entryPoints": [
-    "./src/index.ts"
+    "./src/index-docs.ts"
   ],
   "plugin": [
     "typedoc-plugin-markdown",
     "typedoc-vitepress-theme",
     "typedoc-plugin-missing-exports",
+    "typedoc-plugin-frontmatter",
     "./typedoc-plugin.js"
   ],
   "out": "./docs/typedoc",
@@ -23,5 +24,12 @@
   "enumMembersFormat": "list",
   "typeDeclarationFormat": "table",
   "indexFormat": "list",
-  "readme": "none"
+  "readme": "none",
+  "frontmatterTags": [
+    "outline"
+  ],
+  "frontmatterGlobals": {
+    "outline": "[2, 3]"
+  },
+  "categorizeByGroup": true
 }
