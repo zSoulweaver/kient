@@ -6,6 +6,10 @@ Kient emits many events as it receives them from Kick's WebSocket and transforms
 Not sure what an instance is? Check out the [Response Instance](./response-instance.md) page for more information on how to consume them.
 :::
 
+::: tip
+Looking for a list of events? Find them on the [`Kient`](../reference/kient.md#events) reference page.
+:::
+
 ## Accessing Events
 
 Kient will emit events directly off the Kient instance you create. Kient uses the [`tseep`](https://github.com/Morglod/tseep) library which implements the Node [`EventEmitter`](https://nodejs.org/api/events.html#class-eventemitter) class. Simply listen for events using `.on()`, `.once()`, or any of the functions available from `EventEmitter`.
