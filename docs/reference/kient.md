@@ -44,9 +44,13 @@ Returns available endpoints to consume.
 
 Returns available WebSockets to consume.
 
-| Socket   | Reference      |
-| -------- | -------------- |
-| chatroom | [ChatroomSocket](./chatroom-socket.md) |
+| Socket            | Reference                                                 |
+| ----------------- | --------------------------------------------------------- |
+| chatroom          | [ChatroomSocket](./socket/chatroom.md)                    |
+| channel           | [ChannelSocket](./socket/channel.md)                      |
+| privateChatroom   | [PrivateChatroomSocket](./socket/private-chatroom.md)     |
+| privateChannel    | [PrivateChannelSocket](./socket/private-channel.md)       |
+| privateLivestream | [PrivateLivestreamSocket](./socket/private-livestream.md) |
 
 ::: info Returns
 
