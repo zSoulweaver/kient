@@ -3,6 +3,9 @@ import type { GetChannelResponse } from '../dto/get-channel.response'
 import { BaseInstance } from '@/utils/instance.base'
 import type { Kient } from '@/client/kient'
 
+/**
+ * @category Instances
+ */
 export class ChannelInstance extends BaseInstance<GetChannelResponse> {
   public constructor(data: any, client: Kient) {
     super(cast<GetChannelResponse>(data), client)

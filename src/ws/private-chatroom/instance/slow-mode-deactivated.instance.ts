@@ -4,6 +4,9 @@ import { BaseInstance } from '@/utils/instance.base'
 import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
 
+/**
+ * @category Instances
+ */
 export class SlowModeDeactivatedInstance extends BaseInstance<SlowModeDeactivatedEvent> {
   public constructor(data: any, client: Kient) {
     try {

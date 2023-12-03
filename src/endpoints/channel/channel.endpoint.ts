@@ -7,6 +7,9 @@ import type { GetPollsResponse } from './dto/get-polls.response'
 import { ChannelInstance } from './instance/channel.instance'
 import { LivestreamInstance } from './instance/livestream.instance'
 
+/**
+ * @category Endpoints
+ */
 export class ChannelEndpoint extends BaseEndpoint {
   public async getChannel(channel: string) {
     const response = await this._apiClient.callKickApi({ endpoint: `api/v2/channels/${channel}` })

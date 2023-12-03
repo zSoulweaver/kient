@@ -18,6 +18,9 @@ type PusherChannelEvents =
 type PusherChannelEvents2 =
   | 'App\\Events\\LiveStream\\UpdatedLiveStreamEvent'
 
+/**
+ * @category Sockets
+ */
 export class PrivateLivestreamSocket extends BaseSocket {
   public async listen(livestreamId: string | number) {
     const channel = await this._wsClient.subscribe(`private-livestream_${livestreamId}`)

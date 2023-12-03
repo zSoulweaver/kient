@@ -33,6 +33,9 @@ type PusherChannelEvents =
   | 'AllowLinksActivated' // Unused?
   | 'AllowLinksDeactivated' // Unused?
 
+/**
+ * @category Sockets
+ */
 export class PrivateChatroomSocket extends BaseSocket {
   public async listen(chatroomId: string | number) {
     const channel = await this._wsClient.subscribe(`private-chatroom_${chatroomId}`)

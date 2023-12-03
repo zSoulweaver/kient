@@ -4,6 +4,9 @@ import { BaseInstance } from '@/utils/instance.base'
 import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
 
+/**
+ * @category Instances
+ */
 export class ChatMessageInstance extends BaseInstance<ChatMessageEvent> {
   public constructor(data: any, client: Kient) {
     try {
@@ -17,7 +20,7 @@ export class ChatMessageInstance extends BaseInstance<ChatMessageEvent> {
     }
   }
 
-  public chatterIs(chatterStatus: ChatterStatus | string) {
+  public chatterIs(chatterStatus: typeof ChatterStatus | string) {
     const badges = this.data.sender.identity.badges
     return badges.filter(x => x.type === chatterStatus).length > 0
   }

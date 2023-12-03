@@ -1,11 +1,11 @@
-export enum ChatterStatus {
-  BROADCASTER = 'broadcaster',
-  MODERATOR = 'moderator',
-  SUBSCRIBER = 'subscriber',
-  SUB_GIFTER = 'sub_gifter',
-  OG = 'og',
-  FOUNDER = 'founder',
-}
+export const ChatterStatus = {
+  BROADCASTER: 'broadcaster',
+  MODERATOR: 'moderator',
+  SUBSCRIBER: 'subscriber',
+  SUB_GIFTER: 'sub_gifter',
+  OG: 'og',
+  FOUNDER: 'founder',
+} as const
 
 export interface ChatMessageEvent {
   id: string

@@ -4,6 +4,9 @@ import { BaseInstance } from '@/utils/instance.base'
 import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
 
+/**
+ * @category Instances
+ */
 export class MessageDeletedInstance extends BaseInstance<MessageDeletedEvent> {
   public constructor(data: any, client: Kient) {
     try {

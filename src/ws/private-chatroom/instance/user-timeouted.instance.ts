@@ -4,6 +4,9 @@ import { BaseInstance } from '@/utils/instance.base'
 import type { Kient } from '@/client/kient'
 import { KientError } from '@/client/kient.error'
 
+/**
+ * @category Instances
+ */
 export class UserTimeoutedInstance extends BaseInstance<UserTimeoutedEvent> {
   public constructor(data: any, client: Kient) {
     try {

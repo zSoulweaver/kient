@@ -5,6 +5,9 @@ import type { SendMessageResponse } from './dto/send-message.response'
 import type { PinMessageInput } from './dto/pin-message.input'
 import type { GenericApiResponse } from '@/utils/generic-api.response'
 
+/**
+ * @category Endpoints
+ */
 export class ChatEndpoint extends BaseEndpoint {
   public async sendMessage(chatroomId: string | number, message: string) {
     this.checkAuthenticated()

@@ -13,6 +13,9 @@ type PusherChannelEvents =
   | 'FollowerAdded'
   | 'FollowerDeleted'
 
+/**
+ * @category Sockets
+ */
 export class PrivateChannelSocket extends BaseSocket {
   public async listen(channelId: string | number) {
     const channel = await this._wsClient.subscribe(`private-channel_${channelId}`)

@@ -14,6 +14,9 @@ interface LoginCredentials {
   otc?: number | string
 }
 
+/**
+ * @category Endpoints
+ */
 export class AuthenticationEndpoint extends BaseEndpoint {
   public async getTokens() {
     const response = await this._apiClient.callKickApi({ endpoint: 'kick-token-provider' })

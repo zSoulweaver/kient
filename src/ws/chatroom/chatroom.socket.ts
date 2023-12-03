@@ -28,6 +28,9 @@ type PusherChannelEvents =
   | 'App\\Events\\ChatroomClearEvent'
   | 'App\\Events\\StreamHostEvent'
 
+/**
+ * @category Sockets
+ */
 export class ChatroomSocket extends BaseSocket {
   public async listen(chatroomId: string | number) {
     const channel = await this._wsClient.subscribe(`chatrooms.${chatroomId}.v2`)

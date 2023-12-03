@@ -19,6 +19,9 @@ type PusherChannelEvents =
   | 'App\\Events\\StopStreamBroadcast'
   | 'App\\Events\\ChannelBannedForceRefresh' // May be unused, not sure
 
+/**
+ * @category Sockets
+ */
 export class ChannelSocket extends BaseSocket {
   public async listen(channelId: string | number) {
     const channel = await this._wsClient.subscribe(`channel.${channelId}`)

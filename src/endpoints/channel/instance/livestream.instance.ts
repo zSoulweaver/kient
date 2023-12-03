@@ -11,6 +11,9 @@ export interface LivestreamThumbnails {
   160: string
 }
 
+/**
+ * @category Instances
+ */
 export class LivestreamInstance extends BaseInstance<GetLivestreamResponse | null> {
   public constructor(data: any, client: Kient) {
     super(cast<GetLivestreamResponse | null>(data), client)
