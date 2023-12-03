@@ -43,7 +43,11 @@ export default defineConfig({
         {
           text: 'Sockets',
           items: [
-            { text: 'Chatroom', link: '/reference/chatroom-socket' },
+            { text: 'Chatroom', link: '/reference/socket/chatroom' },
+            { text: 'Channel', link: '/reference/socket/channel' },
+            { text: 'Private Channel', link: '/reference/socket/private-channel' },
+            { text: 'Private Chatroom', link: '/reference/socket/private-chatroom' },
+            { text: 'Private Livestream', link: '/reference/socket/private-livestream' },
           ],
         },
         {
