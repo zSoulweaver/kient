@@ -4,13 +4,13 @@ import type { SubscriptionCreatedInstance } from './instance/subscription-create
 import type { SubscriptionGiftedInstance } from './instance/subscription-gifted.instance'
 import type { SubscriptionRenewedInstance } from './instance/subscription-renewed.instance'
 
-export enum PrivateChannelEvents {
-  Subscription = 'PRIVATE_CHANNEL_SUBSCRIPTION',
-  SubscriptionRenewed = 'PRIVATE_CHANNEL_RENEWED',
-  SubscriptionsGifted = 'PRIVATE_CHANNEL_SUBSCRIPTIONS_GIFTED',
-  FollowerAdded = 'PRIVATE_CHANNEL_FOLLOWED',
-  FollowerDeleted = 'PRIVATE_CHANNEL_UNFOLLOWED',
-}
+export const PrivateChannelEvents = {
+  Subscription: 'PRIVATE_CHANNEL_SUBSCRIPTION',
+  SubscriptionRenewed: 'PRIVATE_CHANNEL_RENEWED',
+  SubscriptionsGifted: 'PRIVATE_CHANNEL_SUBSCRIPTIONS_GIFTED',
+  FollowerAdded: 'PRIVATE_CHANNEL_FOLLOWED',
+  FollowerDeleted: 'PRIVATE_CHANNEL_UNFOLLOWED',
+} as const
 
 // eslint-disable-next-line ts/consistent-type-definitions
 export type PrivateChannelEventEmitters = {

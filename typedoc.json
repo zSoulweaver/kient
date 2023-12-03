@@ -21,7 +21,7 @@
   "parametersFormat": "table",
   "propertiesFormat": "table",
   "enumMembersFormat": "list",
-  "typeDeclarationFormat": "list",
-  "indexFormat": "table",
+  "typeDeclarationFormat": "table",
+  "indexFormat": "list",
   "readme": "none"
 }

@@ -6,16 +6,16 @@ import type { LuckyUsersWhoGotGiftSubscriptionsInstance } from './instance/lucky
 import type { StopStreamBroadcastInstance } from './instance/stop-stream-broadcast.instance'
 import type { StreamerIsLiveInstance } from './instance/streamer-is-live.instance'
 
-export enum ChannelEvents {
-  FollowersUpdate = 'CHANNEL_FOLLOWERS_UPDATE',
-  Subscription = 'CHANNEL_SUBSCRIPTION',
-  SubscriptionsGifted = 'CHANNEL_SUBSCRIPTIONS_GIFTED',
-  LeaderboardUpdate = 'CHANNEL_LEADERBOARD_UPDATE',
-  StartHost = 'CHANNEL_START_HOST',
-  StartStream = 'CHANNEL_START_STREAM',
-  StopStream = 'CHANNEL_STOP_STREAM',
-  Banned = 'CHANNEL_BANNED',
-}
+export const ChannelEvents = {
+  FollowersUpdate: 'CHANNEL_FOLLOWERS_UPDATE',
+  Subscription: 'CHANNEL_SUBSCRIPTION',
+  SubscriptionsGifted: 'CHANNEL_SUBSCRIPTIONS_GIFTED',
+  LeaderboardUpdate: 'CHANNEL_LEADERBOARD_UPDATE',
+  StartHost: 'CHANNEL_START_HOST',
+  StartStream: 'CHANNEL_START_STREAM',
+  StopStream: 'CHANNEL_STOP_STREAM',
+  Banned: 'CHANNEL_BANNED',
+} as const
 
 // eslint-disable-next-line ts/consistent-type-definitions
 export type ChannelEventEmitters = {

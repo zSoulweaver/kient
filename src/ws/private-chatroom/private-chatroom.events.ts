@@ -12,21 +12,21 @@ import type { SubscribersModeActivatedInstance } from './instance/subscribers-mo
 import type { SubscribersModeDeactivatedInstance } from './instance/subscribers-mode-deactivated.instance'
 import type { UserTimeoutedInstance } from './instance/user-timeouted.instance'
 
-export enum PrivateChatroomEvents {
-  BannedWordAdded = 'PRIVATE_CHATROOM_BANNED_WORD_ADDED',
-  BannedWordDeleted = 'PRIVATE_CHATROOM_BANNED_WORD_DELETED',
-  BannedUserAdded = 'PRIVATE_CHATROOM_BANNED_USER_ADDED',
-  BannedUserDeleted = 'PRIVATE_CHATROOM_BANNED_USER_DELETED',
-  EmotesOnlyModeActivated = 'PRIVATE_CHATROOM_EMOTES_ONLY_MODE_ACTIVATED',
-  EmotesOnlyModeDeactivated = 'PRIVATE_CHATROOM_EMOTES_ONLY_MODE_DEACTIVATED',
-  FollowersOnlyModeActivated = 'PRIVATE_CHATROOM_FOLLOWERS_ONLY_MODE_ACTIVATED',
-  FollowersOnlyModeDeactivated = 'PRIVATE_CHATROOM_FOLLOWERS_ONLY_MODE_DEACTIVATED',
-  SlowModeActivated = 'PRIVATE_CHATROOM_SLOW_MODE_ACTIVATED',
-  SlowModeDeactivated = 'PRIVATE_CHATROOM_SLOW_MODE_DEACTIVATED',
-  SubscribersOnlyModeActivated = 'PRIVATE_CHATROOM_SUBSCRIBERS_ONLY_MODE_ACTIVATED',
-  SubscribersOnlyModeDeactivated = 'PRIVATE_CHATROOM_SUBSCRIBERS_ONLY_MODE_DEACTIVATED',
-  UserTimedOut = 'PRIVATE_CHATROOM_USER_TIMED_OUT',
-}
+export const PrivateChatroomEvents = {
+  BannedWordAdded: 'PRIVATE_CHATROOM_BANNED_WORD_ADDED',
+  BannedWordDeleted: 'PRIVATE_CHATROOM_BANNED_WORD_DELETED',
+  BannedUserAdded: 'PRIVATE_CHATROOM_BANNED_USER_ADDED',
+  BannedUserDeleted: 'PRIVATE_CHATROOM_BANNED_USER_DELETED',
+  EmotesOnlyModeActivated: 'PRIVATE_CHATROOM_EMOTES_ONLY_MODE_ACTIVATED',
+  EmotesOnlyModeDeactivated: 'PRIVATE_CHATROOM_EMOTES_ONLY_MODE_DEACTIVATED',
+  FollowersOnlyModeActivated: 'PRIVATE_CHATROOM_FOLLOWERS_ONLY_MODE_ACTIVATED',
+  FollowersOnlyModeDeactivated: 'PRIVATE_CHATROOM_FOLLOWERS_ONLY_MODE_DEACTIVATED',
+  SlowModeActivated: 'PRIVATE_CHATROOM_SLOW_MODE_ACTIVATED',
+  SlowModeDeactivated: 'PRIVATE_CHATROOM_SLOW_MODE_DEACTIVATED',
+  SubscribersOnlyModeActivated: 'PRIVATE_CHATROOM_SUBSCRIBERS_ONLY_MODE_ACTIVATED',
+  SubscribersOnlyModeDeactivated: 'PRIVATE_CHATROOM_SUBSCRIBERS_ONLY_MODE_DEACTIVATED',
+  UserTimedOut: 'PRIVATE_CHATROOM_USER_TIMED_OUT',
+} as const
 
 // eslint-disable-next-line ts/consistent-type-definitions
 export type PrivateChatroomEventEmitters = {

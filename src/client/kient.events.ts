@@ -9,11 +9,11 @@ import { PrivateChatroomEvents } from '@/ws/private-chatroom/private-chatroom.ev
 import type { PrivateLivestreamEventEmitters } from '@/ws/private-livestream/private-livestream.events'
 import { PrivateLivestreamEvents } from '@/ws/private-livestream/private-livestream.events'
 
-enum KientEvents {
-  WebSocketConnected = 'KIENT_WEBSOCKET_CONNECTED',
-  WebSocketDisconnected = 'KIENT_WEBSOCKET_DISCONNECTED',
-  UnknownEvent = 'KIENT_UNKNOWN_EVENT',
-}
+const KientEvents = {
+  WebSocketConnected: 'KIENT_WEBSOCKET_CONNECTED',
+  WebSocketDisconnected: 'KIENT_WEBSOCKET_DISCONNECTED',
+  UnknownEvent: 'KIENT_UNKNOWN_EVENT',
+} as const
 
 export const Events = {
   Core: KientEvents,

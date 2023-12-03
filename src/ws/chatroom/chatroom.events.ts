@@ -10,21 +10,21 @@ import type { StreamHostInstance } from './instance/stream-host.instance'
 import type { SubscriptionInstance } from './instance/subscription.instance'
 import type { UnbannedUserInstance } from './instance/unbanned-user.instance'
 
-export enum ChatroomEvents {
-  Message = 'CHATROOM_MESSAGE',
-  MessageDeleted = 'CHATROOM_MESSAGE_DELETED',
-  UserBanned = 'CHATROOM_USER_BANNED',
-  UserUnbanned = 'CHATROOM_USER_UNBANNED',
-  MessagePinned = 'CHATROOM_MESSAGE_PINNED',
-  MessageUnpinned = 'CHATROOM_MESSAGE_UNPINNED',
-  Subscription = 'CHATROOM_SUBSCRIPTION',
-  SubscriptionsGifted = 'CHATROOM_SUBSCRIPTIONS_GIFTED',
-  PollUpdated = 'CHATROOM_POLL_UPDATED',
-  PollDeleted = 'CHATROOM_POLL_DELETED',
-  SettingsUpdated = 'CHATROOM_SETTINGS_UPDATED',
-  ClearChat = 'CHATROOM_CLEAR_CHAT',
-  Hosted = 'CHATROOM_HOSTED',
-}
+export const ChatroomEvents = {
+  Message: 'CHATROOM_MESSAGE',
+  MessageDeleted: 'CHATROOM_MESSAGE_DELETED',
+  UserBanned: 'CHATROOM_USER_BANNED',
+  UserUnbanned: 'CHATROOM_USER_UNBANNED',
+  MessagePinned: 'CHATROOM_MESSAGE_PINNED',
+  MessageUnpinned: 'CHATROOM_MESSAGE_UNPINNED',
+  Subscription: 'CHATROOM_SUBSCRIPTION',
+  SubscriptionsGifted: 'CHATROOM_SUBSCRIPTIONS_GIFTED',
+  PollUpdated: 'CHATROOM_POLL_UPDATED',
+  PollDeleted: 'CHATROOM_POLL_DELETED',
+  SettingsUpdated: 'CHATROOM_SETTINGS_UPDATED',
+  ClearChat: 'CHATROOM_CLEAR_CHAT',
+  Hosted: 'CHATROOM_HOSTED',
+} as const
 
 // eslint-disable-next-line ts/consistent-type-definitions
 export type ChatroomEventEmitters = {
