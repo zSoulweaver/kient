@@ -13,7 +13,5 @@ build-loader
 
 docs/.vitepress/cache
 docs/.vitepress/dist
+docs/typedoc
 playground/src
-
-docs2/.vitepress/cache
-docs2/.vitepress/dist
