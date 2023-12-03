@@ -40,8 +40,6 @@ Returns available endpoints to consume.
 `Endpoints`
 :::
 
-***
-
 ### `ws()`
 
 Returns available WebSockets to consume.
@@ -54,3 +52,39 @@ Returns available WebSockets to consume.
 
 `WsHandlers`
 :::
+
+## Events
+
+### Core
+
+Events emitted in relation to core functionality or, not emitted by a socket (sometimes).
+
+#### WebSocketConnected
+
+Emitted once Kient has a connection to Kick's Pusher instance.
+
+::: info Emits
+`() => void`
+:::
+
+#### WebSocketDisconnected
+
+Emitted once Kient has disconnected from Kick's Pusher instance.
+
+::: info Emits
+`() => void`
+:::
+
+#### UnknownEvent
+
+Emitted from sockets when they receive an event which isn't tracked by Kient. Data emitted is of any type but mostly comes in the form of `{ eventName: string, data: any }`.
+
+::: info Emits
+`(data: any) => void`
+:::
+
+<!--@include: ./socket/channel-events.md-->
+<!--@include: ./socket/chatroom-events.md-->
+<!--@include: ./socket/private-channel-events.md-->
+<!--@include: ./socket/private-chatroom-events.md-->
+<!--@include: ./socket/private-livestream-events.md-->
