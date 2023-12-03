@@ -25,17 +25,26 @@ interface WsHandlers {
   privateLivestream: PrivateLivestreamSocket
 }
 
+/**
+ * Entry class into Kient
+ *
+ * @outline [2, 3]
+ */
 export class Kient extends EventEmitter<KientEventEmitters> {
+  /** @internal */
   private _endpoints: Endpoints
+  /** @internal */
   private _wsHandlers: WsHandlers
   public _apiClient: ApiClient
   public _wsClient: WsClient
   public authenticated = false
 
+  /** @internal */
   private constructor() {
     super()
   }
 
+  /** @internal */
   private async init() {
     this._apiClient = await ApiClient.create(this)
     this._endpoints = {
@@ -54,6 +63,9 @@ export class Kient extends EventEmitter<KientEventEmitters> {
     }
   }
 
+  /**
+   * Creates a new instance of Kient
+   */
   public static async create() {
     const kient = new Kient()
     await kient.init()
