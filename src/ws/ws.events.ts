@@ -4,7 +4,7 @@ import { ChatroomEvents } from './chatroom/chatroom.events'
 import type { PrivateChannelEventEmitters } from './private-channel/private-channel.events'
 import { PrivateChannelEvents } from './private-channel/private-channel.events'
 import { type PrivateChatroomEventEmitters, PrivateChatroomEvents } from './private-chatroom/private-chatroom.events'
-import type { PrivateLivestreamEventEmitter } from './private-livestream/private-livestream.events'
+import { type PrivateLivestreamEventEmitter, PrivateLivestreamEvents } from './private-livestream/private-livestream.events'
 
 enum KientEvents {
   WebSocketConnected = 'KIENT_WEBSOCKET_CONNECTED',
@@ -18,7 +18,7 @@ export const Events = {
   Chatroom: ChatroomEvents,
   PrivateChannel: PrivateChannelEvents,
   PrivateChatroom: PrivateChatroomEvents,
-  PrivateLivestream: PrivateChatroomEvents,
+  PrivateLivestream: PrivateLivestreamEvents,
 }
 
 // eslint-disable-next-line ts/consistent-type-definitions
