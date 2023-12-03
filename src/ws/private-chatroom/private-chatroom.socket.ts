@@ -1,5 +1,4 @@
 import { BaseSocket } from '../socket.base'
-import { Events } from '../ws.events'
 import { BannedUserAddedInstance } from './instance/banned-user-added.instance'
 import { BannedUserDeletedInstance } from './instance/banned-user-deleted.instance'
 import { BannedWordAddedInstance } from './instance/banned-word-added.instance'
@@ -14,6 +13,7 @@ import { SubscribersModeActivatedInstance } from './instance/subscribers-mode-ac
 import { SubscribersModeDeactivatedInstance } from './instance/subscribers-mode-deactivated.instance'
 import { UserTimeoutedInstance } from './instance/user-timeouted.instance'
 import { PrivateChatroomEvents } from './private-chatroom.events'
+import { Events } from '@/client/kient.events'
 
 type PusherChannelEvents =
   | 'BannedWordAdded'

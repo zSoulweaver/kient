@@ -1,6 +1,7 @@
 import { EventEmitter } from 'tseep'
 import { ApiClient } from './api.client'
 import { WsClient } from './ws.client'
+import type { KientEventEmitters } from './kient.events'
 import { AuthenticationEndpoint } from '@/endpoints/authentication/authentication.endpoint'
 import { ChannelEndpoint } from '@/endpoints/channel/channel.endpoint'
 import { ChatroomSocket } from '@/ws/chatroom/chatroom.socket'
@@ -9,7 +10,6 @@ import { ChannelSocket } from '@/ws/channel/channel.socket'
 import { PrivateChannelSocket } from '@/ws/private-channel/private-channel.socket'
 import { PrivateChatroomSocket } from '@/ws/private-chatroom/private-chatroom.socket'
 import { PrivateLivestreamSocket } from '@/ws/private-livestream/private-livestream.socket'
-import type { KientEventEmitters } from '@/ws/ws.events'
 
 interface Endpoints {
   authentication: AuthenticationEndpoint

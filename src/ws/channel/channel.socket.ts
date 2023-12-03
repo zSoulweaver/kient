@@ -1,5 +1,4 @@
 import { BaseSocket } from '../socket.base'
-import { Events } from '../ws.events'
 import { ChannelEvents } from './channel.events'
 import { ChannelSubscriptionInstance } from './instance/channel-subscription.instance'
 import { ChatMoveToSupportedChannelInstance } from './instance/chat-move-to-supported-channel.instance'
@@ -8,6 +7,7 @@ import { GiftsLeaderboardUpdatedInstance } from './instance/gift-leaderboard-upd
 import { LuckyUsersWhoGotGiftSubscriptionsInstance } from './instance/lucky-users-who-got-gift-subscription.instance'
 import { StopStreamBroadcastInstance } from './instance/stop-stream-broadcast.instance'
 import { StreamerIsLiveInstance } from './instance/streamer-is-live.instance'
+import { Events } from '@/client/kient.events'
 
 type PusherChannelEvents =
   | 'App\\Events\\FollowersUpdated'

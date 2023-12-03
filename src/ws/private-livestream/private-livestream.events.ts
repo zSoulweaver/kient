@@ -13,7 +13,7 @@ export enum PrivateLivestreamEvents {
 }
 
 // eslint-disable-next-line ts/consistent-type-definitions
-export type PrivateLivestreamEventEmitter = {
+export type PrivateLivestreamEventEmitters = {
   [PrivateLivestreamEvents.HostReceived]: (hostReceivedInstance: HostReceivedInstance) => void
   [PrivateLivestreamEvents.TitleChanged]: (titleChangedInstance: TitleChangedInstance) => void
   [PrivateLivestreamEvents.MatureModeActivated]: (matureModeActivatedInstance: MatureModeActivatedInstance) => void

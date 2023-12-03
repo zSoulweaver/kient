@@ -1,5 +1,4 @@
 import { BaseSocket } from '../socket.base'
-import { Events } from '../ws.events'
 import { ChatMessageInstance } from './instance/chat-message.instance'
 import { MessageDeletedInstance } from './instance/message-deleted.instance'
 import { BannedUserInstance } from './instance/banned-user.instance'
@@ -12,6 +11,7 @@ import { StreamHostInstance } from './instance/stream-host.instance'
 import { PollUpdateInstance } from './instance/poll-update.instance'
 import { ChatroomEvents } from './chatroom.events'
 import { ChatroomClearInstance } from './instance/chatroom-clear.instance'
+import { Events } from '@/client/kient.events'
 
 type PusherChannelEvents =
   | 'App\\Events\\ChatMessageEvent'

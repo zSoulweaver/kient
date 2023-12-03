@@ -1,9 +1,9 @@
 import type { Channel, ChannelAuthorizationCallback, Options } from 'pusher-js'
 import Pusher from 'pusher-js'
 import type { ChannelAuthorizationRequestParams } from 'pusher-js/types/src/core/auth/options'
+import { Events } from 'kient'
 import type { Kient } from './kient'
 import { KientWsError } from '@/ws/ws.error'
-import { Events } from '@/ws/ws.events'
 
 export class WsClient {
   private readonly _client: Kient

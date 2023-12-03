@@ -1,10 +1,10 @@
 import { BaseSocket } from '../socket.base'
-import { Events } from '../ws.events'
 import { FollowerAddedInstance } from './instance/follower-added.instance'
 import { SubscriptionCreatedInstance } from './instance/subscription-created.instance'
 import { SubscriptionGiftedInstance } from './instance/subscription-gifted.instance'
 import { SubscriptionRenewedInstance } from './instance/subscription-renewed.instance'
 import { PrivateChannelEvents } from './private-channel.events'
+import { Events } from '@/client/kient.events'
 
 type PusherChannelEvents =
   | 'SubscriptionGifted'

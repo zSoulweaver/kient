@@ -1,10 +1,10 @@
 import { BaseSocket } from '../socket.base'
-import { Events } from '../ws.events'
 import { HostReceivedInstance } from './instance/host-received.instance'
 import { MatureModeActivatedInstance } from './instance/mature-mode-activated.instance'
 import { MatureModeDeactivatedInstance } from './instance/mature-mode-deactivated.instance'
 import { UpdatedLiveStreamInstance } from './instance/updated-livestream.instance'
 import { PrivateLivestreamEvents } from './private-livestream.events'
+import { Events } from '@/client/kient.events'
 
 // private-livestream events
 type PusherChannelEvents =
