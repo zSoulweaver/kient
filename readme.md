@@ -33,7 +33,7 @@ $ pnpm add kient
 
 Import Kient, create a new instance, and interact with API endpoints or listen to WebSocket events.
 ```ts
-import { Kient } from 'kient'
+import { Events, Kient } from 'kient'
 
 // Create a new client instance
 const client = await Kient.create()
@@ -43,8 +43,8 @@ const channel = await client.api.channel.getChannel('channel_slug')
 await client.ws.chatroom.listen(channel.data.chatroom.id)
 
 // Handle incoming messages
-client.on('onMessage', (message) => {
-  console.log(message)
+client.on(Events.Chatroom.Message, (message) => {
+  console.log(message.data)
 })
 ```
 

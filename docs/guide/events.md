@@ -19,7 +19,7 @@ Additionally Kient also exports the `Events` enum for easy usage of the events w
 ```ts
 import { Events } from 'kient'
 
-client.on('event', (streamerIsLiveInstance) => {})
+client.on(Events.Channel.StartStream, (streamerIsLiveInstance) => {})
 ```
 
 ## Subscribing to Sockets
