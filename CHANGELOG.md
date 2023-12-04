@@ -1,6 +1,30 @@
 # Changelog
 
 
+## v1.0.1-8
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-7...v1.0.1-8)
+
+### 💅 Refactors
+
+- Move events to client folder ([cb3a38e](https://github.com/zSoulweaver/kient/commit/cb3a38e))
+- Use object as const for enums ([a2868ea](https://github.com/zSoulweaver/kient/commit/a2868ea))
+- Add barrel files ([50e7516](https://github.com/zSoulweaver/kient/commit/50e7516))
+- Export everything, what could go wrong ([50a34f2](https://github.com/zSoulweaver/kient/commit/50a34f2))
+
+### 📖 Documentation
+
+- Add typedoc back ([a58592e](https://github.com/zSoulweaver/kient/commit/a58592e))
+- Fix typedoc sidebar ([ea1c306](https://github.com/zSoulweaver/kient/commit/ea1c306))
+- Add frontmatter plugin ([10fff0c](https://github.com/zSoulweaver/kient/commit/10fff0c))
+- Make typedocs look better ([2a84964](https://github.com/zSoulweaver/kient/commit/2a84964))
+- Fix events example ([a369448](https://github.com/zSoulweaver/kient/commit/a369448))
+
+### 🏡 Chore
+
+- Add generated docs to gitignore ([a4fc663](https://github.com/zSoulweaver/kient/commit/a4fc663))
+- Remove typedocs folder ([ec048f5](https://github.com/zSoulweaver/kient/commit/ec048f5))
+
 ## v1.0.1-7
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-6...v1.0.1-7)
