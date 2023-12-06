@@ -1,22 +1,8 @@
-import { cast } from '@deepkit/type'
-import type { EmotesModeDeactivatedEvent } from '../dto/emotes-mode-deactivated.event'
+// eslint-disable-next-line ts/consistent-type-imports
+import { EmotesModeDeactivatedEvent } from '../dto/emotes-mode-deactivated.event'
 import { BaseInstance } from '@/utils/instance.base'
-import type { Kient } from '@/client/kient'
-import { KientError } from '@/client/kient.error'
 
 /**
  * @category Instances
  */
-export class EmotesModeDeactivatedInstance extends BaseInstance<EmotesModeDeactivatedEvent> {
-  public constructor(data: any, client: Kient) {
-    try {
-      super(cast<EmotesModeDeactivatedEvent>(data), client)
-    } catch (err) {
-      throw new KientError({
-        name: 'SOMETHING_WENT_WRONG',
-        message: 'Failed to initialise EmotesModeDeactivatedInstance',
-        cause: err,
-      })
-    }
-  }
-}
+export class EmotesModeDeactivatedInstance extends BaseInstance<EmotesModeDeactivatedEvent> { }

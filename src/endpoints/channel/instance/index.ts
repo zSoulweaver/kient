@@ -1,2 +1,5 @@
 export * from './channel.instance'
+export * from './chatroom-settings.instance'
+export * from './leaderboard.instance'
 export * from './livestream.instance'
+export * from './poll.instance'

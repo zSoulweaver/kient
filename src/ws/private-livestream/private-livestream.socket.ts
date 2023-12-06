@@ -1,9 +1,8 @@
 import { BaseSocket } from '../socket.base'
-import { HostReceivedInstance } from './instance/host-received.instance'
-import { MatureModeActivatedInstance } from './instance/mature-mode-activated.instance'
-import { MatureModeDeactivatedInstance } from './instance/mature-mode-deactivated.instance'
-import { UpdatedLiveStreamInstance } from './instance/updated-livestream.instance'
 import { PrivateLivestreamEvents } from './private-livestream.events'
+// eslint-disable-next-line ts/consistent-type-imports
+import { HostReceivedInstance, MatureModeActivatedInstance, MatureModeDeactivatedInstance, UpdatedLiveStreamInstance } from './instance'
+import { createInstance } from '@/utils/create-instance'
 import { Events } from '@/client/kient.events'
 
 // private-livestream events
@@ -29,13 +28,13 @@ export class PrivateLivestreamSocket extends BaseSocket {
     channel.bind_global((eventName: PusherChannelEvents, data: any) => {
       switch (eventName) {
         case 'HostReceived':
-          return this._client.emit(PrivateLivestreamEvents.HostReceived, new HostReceivedInstance(data, this._client))
+          return this._client.emit(PrivateLivestreamEvents.HostReceived, createInstance<HostReceivedInstance>({ data, _client: this._client }))
 
         case 'MatureModeActivated':
-          return this._client.emit(PrivateLivestreamEvents.MatureModeActivated, new MatureModeActivatedInstance(data, this._client))
+          return this._client.emit(PrivateLivestreamEvents.MatureModeActivated, createInstance<MatureModeActivatedInstance>({ data, _client: this._client }))
 
         case 'MatureModeDeactivated':
-          return this._client.emit(PrivateLivestreamEvents.MatureModeDeactivated, new MatureModeDeactivatedInstance(data, this._client))
+          return this._client.emit(PrivateLivestreamEvents.MatureModeDeactivated, createInstance<MatureModeDeactivatedInstance>({ data, _client: this._client }))
 
         default:
           return this._client.emit(Events.Core.UnknownEvent, { eventName, data })
@@ -45,7 +44,7 @@ export class PrivateLivestreamSocket extends BaseSocket {
     channel2.bind_global((eventName: PusherChannelEvents2, data: any) => {
       switch (eventName) {
         case 'App\\Events\\LiveStream\\UpdatedLiveStreamEvent':
-          return this._client.emit(PrivateLivestreamEvents.LivestreamInformationUpdated, new UpdatedLiveStreamInstance(data, this._client))
+          return this._client.emit(PrivateLivestreamEvents.LivestreamInformationUpdated, createInstance<UpdatedLiveStreamInstance>({ data, _client: this._client }))
 
         default:
           return this._client.emit(Events.Core.UnknownEvent, { eventName, data })

@@ -1,22 +1,8 @@
-import { cast } from '@deepkit/type'
-import type { StreamerIsLiveEvent } from '../dto/streamer-is-live.event'
+// eslint-disable-next-line ts/consistent-type-imports
+import { StreamerIsLiveEvent } from '../dto/streamer-is-live.event'
 import { BaseInstance } from '@/utils/instance.base'
-import type { Kient } from '@/client/kient'
-import { KientError } from '@/client/kient.error'
 
 /**
  * @category Instances
  */
-export class StreamerIsLiveInstance extends BaseInstance<StreamerIsLiveEvent> {
-  public constructor(data: any, client: Kient) {
-    try {
-      super(cast<StreamerIsLiveEvent>(data), client)
-    } catch (err) {
-      throw new KientError({
-        name: 'SOMETHING_WENT_WRONG',
-        message: 'Failed to initialise StreamerIsLiveInstance',
-        cause: err,
-      })
-    }
-  }
-}
+export class StreamerIsLiveInstance extends BaseInstance<StreamerIsLiveEvent> { }

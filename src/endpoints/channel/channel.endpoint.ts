@@ -1,11 +1,8 @@
-import { cast } from '@deepkit/type'
 import { BaseEndpoint } from '../endpoint.base'
 import { KientApiError } from '../api.error'
-import type { GetLeaderboardsResponse } from './dto/get-leaderboards.response'
-import type { GetChatroomSettingsResponse } from './dto/get-chatroom-settings.response'
-import type { GetPollsResponse } from './dto/get-polls.response'
-import { ChannelInstance } from './instance/channel.instance'
-import { LivestreamInstance } from './instance/livestream.instance'
+// eslint-disable-next-line ts/consistent-type-imports
+import { ChannelInstance, ChatroomSettingsInstance, LeaderboardInstance, LivestreamInstance, PollInstance } from './instance'
+import { createInstance } from '@/utils/create-instance'
 
 /**
  * @category Endpoints
@@ -16,7 +13,10 @@ export class ChannelEndpoint extends BaseEndpoint {
     if (response.status !== 200)
       throw new KientApiError({ name: 'SOMETHING_WENT_WRONG', cause: response })
 
-    const channelInstance = new ChannelInstance(response.body, this._client)
+    const channelInstance = createInstance<ChannelInstance>({
+      data: response.body,
+      _client: this._client,
+    })
     return channelInstance
   }
 
@@ -25,7 +25,10 @@ export class ChannelEndpoint extends BaseEndpoint {
     if (response.status !== 200)
       throw new KientApiError({ name: 'SOMETHING_WENT_WRONG', cause: response })
 
-    const livestreamInstance = new LivestreamInstance((response.body as Record<any, any>).data, this._client)
+    const livestreamInstance = createInstance<LivestreamInstance>({
+      data: (response.body as Record<any, any>).data,
+      _client: this._client,
+    })
     return livestreamInstance
   }
 
@@ -34,7 +37,11 @@ export class ChannelEndpoint extends BaseEndpoint {
     if (response.status !== 200)
       throw new KientApiError({ name: 'SOMETHING_WENT_WRONG', cause: response })
 
-    return cast<GetLeaderboardsResponse>(response.body)
+    const leaderboardInstance = createInstance<LeaderboardInstance>({
+      data: response.body,
+      _client: this._client,
+    })
+    return leaderboardInstance
   }
 
   public async getChatroomSettings(channel: string) {
@@ -42,7 +49,11 @@ export class ChannelEndpoint extends BaseEndpoint {
     if (response.status !== 200)
       throw new KientApiError({ name: 'SOMETHING_WENT_WRONG', cause: response })
 
-    return cast<GetChatroomSettingsResponse>(response.body)
+    const chatroomSettingsInstance = createInstance<ChatroomSettingsInstance>({
+      data: response.body,
+      _client: this._client,
+    })
+    return chatroomSettingsInstance
   }
 
   public async getPoll(channel: string) {
@@ -50,15 +61,18 @@ export class ChannelEndpoint extends BaseEndpoint {
     if (response.status !== 200)
       throw new KientApiError({ name: 'SOMETHING_WENT_WRONG', cause: response })
 
-    const deserializedResponse = cast<GetPollsResponse>(response.body)
-    if (deserializedResponse.status.error) {
+    const pollInstance = createInstance<PollInstance>({
+      data: response.body,
+      _client: this._client,
+    })
+    if (pollInstance.data.status.error) {
       throw new KientApiError({
         name: 'SOMETHING_WENT_WRONG',
-        message: deserializedResponse.status.message,
-        code: deserializedResponse.status.code,
+        message: pollInstance.data.status.message,
+        code: pollInstance.data.status.code,
         cause: response,
       })
     }
-    return deserializedResponse
+    return pollInstance
   }
 }

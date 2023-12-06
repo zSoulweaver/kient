@@ -1,7 +1,7 @@
 import { cast } from '@deepkit/type'
-import type { GetLivestreamResponse } from '../dto/get-livestream.response'
+// eslint-disable-next-line ts/consistent-type-imports
+import { GetLivestreamResponse } from '../dto/get-livestream.response'
 import { BaseInstance } from '@/utils/instance.base'
-import type { Kient } from '@/client/kient'
 
 export interface LivestreamThumbnails {
   1080: string
@@ -14,11 +14,7 @@ export interface LivestreamThumbnails {
 /**
  * @category Instances
  */
-export class LivestreamInstance extends BaseInstance<GetLivestreamResponse | null> {
-  public constructor(data: any, client: Kient) {
-    super(cast<GetLivestreamResponse | null>(data), client)
-  }
-
+export class LivestreamInstance extends BaseInstance<GetLivestreamResponse> {
   public getThumbnails() {
     if (!this.data)
       return null

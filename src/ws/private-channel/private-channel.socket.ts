@@ -1,9 +1,8 @@
 import { BaseSocket } from '../socket.base'
-import { FollowerAddedInstance } from './instance/follower-added.instance'
-import { SubscriptionCreatedInstance } from './instance/subscription-created.instance'
-import { SubscriptionGiftedInstance } from './instance/subscription-gifted.instance'
-import { SubscriptionRenewedInstance } from './instance/subscription-renewed.instance'
 import { PrivateChannelEvents } from './private-channel.events'
+// eslint-disable-next-line ts/consistent-type-imports
+import { FollowerAddedInstance, SubscriptionCreatedInstance, SubscriptionGiftedInstance, SubscriptionRenewedInstance } from './instance'
+import { createInstance } from '@/utils/create-instance'
 import { Events } from '@/client/kient.events'
 
 type PusherChannelEvents =
@@ -23,19 +22,19 @@ export class PrivateChannelSocket extends BaseSocket {
     channel.bind_global((eventName: PusherChannelEvents, data: any) => {
       switch (eventName) {
         case 'SubscriptionCreated':
-          return this._client.emit(PrivateChannelEvents.Subscription, new SubscriptionCreatedInstance(data, this._client))
+          return this._client.emit(PrivateChannelEvents.Subscription, createInstance<SubscriptionCreatedInstance>({ data, _client: this._client }))
 
         case 'SubscriptionRenewed':
-          return this._client.emit(PrivateChannelEvents.SubscriptionRenewed, new SubscriptionRenewedInstance(data, this._client))
+          return this._client.emit(PrivateChannelEvents.SubscriptionRenewed, createInstance<SubscriptionRenewedInstance>({ data, _client: this._client }))
 
         case 'SubscriptionGifted':
-          return this._client.emit(PrivateChannelEvents.SubscriptionsGifted, new SubscriptionGiftedInstance(data, this._client))
+          return this._client.emit(PrivateChannelEvents.SubscriptionsGifted, createInstance<SubscriptionGiftedInstance>({ data, _client: this._client }))
 
         case 'FollowerAdded':
-          return this._client.emit(PrivateChannelEvents.FollowerAdded, new FollowerAddedInstance(data, this._client))
+          return this._client.emit(PrivateChannelEvents.FollowerAdded, createInstance<FollowerAddedInstance>({ data, _client: this._client }))
 
         case 'FollowerDeleted':
-          return this._client.emit(PrivateChannelEvents.FollowerDeleted, new FollowerAddedInstance(data, this._client))
+          return this._client.emit(PrivateChannelEvents.FollowerDeleted, createInstance<FollowerAddedInstance>({ data, _client: this._client }))
 
         default:
           return this._client.emit(Events.Core.UnknownEvent, { eventName, data })

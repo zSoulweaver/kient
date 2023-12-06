@@ -1,22 +1,8 @@
-import { cast } from '@deepkit/type'
-import type { SubscriptionEvent } from '../dto/subscription.event'
+// eslint-disable-next-line ts/consistent-type-imports
+import { SubscriptionEvent } from '../dto/subscription.event'
 import { BaseInstance } from '@/utils/instance.base'
-import type { Kient } from '@/client/kient'
-import { KientError } from '@/client/kient.error'
 
 /**
  * @category Instances
  */
-export class SubscriptionInstance extends BaseInstance<SubscriptionEvent> {
-  public constructor(data: any, client: Kient) {
-    try {
-      super(cast<SubscriptionEvent>(data), client)
-    } catch (err) {
-      throw new KientError({
-        name: 'SOMETHING_WENT_WRONG',
-        message: 'Failed to initialise SubscriptionInstance',
-        cause: err,
-      })
-    }
-  }
-}
+export class SubscriptionInstance extends BaseInstance<SubscriptionEvent> { }

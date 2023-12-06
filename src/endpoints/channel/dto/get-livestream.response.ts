@@ -1,4 +1,6 @@
-export interface GetLivestreamResponse {
+import { BaseInstance } from '@/utils'
+
+export type GetLivestreamResponse = {
   id: number
   slug: string
   session_title: string
@@ -21,4 +23,4 @@ export interface GetLivestreamResponse {
     src: string
     srcset: string
   }
-}
+} | undefined

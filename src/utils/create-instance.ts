@@ -1,5 +1,5 @@
 import type { JSONPartial, NamingStrategy, ReceiveType, SerializationOptions, Serializer } from '@deepkit/type'
-import { assert, getSerializeFunction, resolveReceiveType, serializer, stringifyResolvedType, stringifyType } from '@deepkit/type'
+import { assert, getSerializeFunction, resolveReceiveType, serializer, stringifyType } from '@deepkit/type'
 import { type Kient, KientError } from '@/client'
 
 interface InstanceData<T> {

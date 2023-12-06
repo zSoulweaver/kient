@@ -1,12 +1,8 @@
 import { BaseSocket } from '../socket.base'
 import { ChannelEvents } from './channel.events'
-import { ChannelSubscriptionInstance } from './instance/channel-subscription.instance'
-import { ChatMoveToSupportedChannelInstance } from './instance/chat-move-to-supported-channel.instance'
-import { FollowersUpdateInstance } from './instance/followers-updated.instance'
-import { GiftsLeaderboardUpdatedInstance } from './instance/gift-leaderboard-updated.instance'
-import { LuckyUsersWhoGotGiftSubscriptionsInstance } from './instance/lucky-users-who-got-gift-subscription.instance'
-import { StopStreamBroadcastInstance } from './instance/stop-stream-broadcast.instance'
-import { StreamerIsLiveInstance } from './instance/streamer-is-live.instance'
+// eslint-disable-next-line ts/consistent-type-imports
+import { ChannelSubscriptionInstance, ChatMoveToSupportedChannelInstance, FollowersUpdateInstance, GiftsLeaderboardUpdatedInstance, LuckyUsersWhoGotGiftSubscriptionsInstance, StopStreamBroadcastInstance, StreamerIsLiveInstance } from './instance'
+import { createInstance } from '@/utils/create-instance'
 import { Events } from '@/client/kient.events'
 
 type PusherChannelEvents =
@@ -29,25 +25,25 @@ export class ChannelSocket extends BaseSocket {
     channel.bind_global((eventName: PusherChannelEvents, data: any) => {
       switch (eventName) {
         case 'App\\Events\\FollowersUpdated':
-          return this._client.emit(ChannelEvents.FollowersUpdate, new FollowersUpdateInstance(data, this._client))
+          return this._client.emit(ChannelEvents.FollowersUpdate, createInstance<FollowersUpdateInstance>({ data, _client: this._client }))
 
         case 'App\\Events\\ChannelSubscriptionEvent':
-          return this._client.emit(ChannelEvents.Subscription, new ChannelSubscriptionInstance(data, this._client))
+          return this._client.emit(ChannelEvents.Subscription, createInstance<ChannelSubscriptionInstance>({ data, _client: this._client }))
 
         case 'App\\Events\\LuckyUsersWhoGotGiftSubscriptionsEvent':
-          return this._client.emit(ChannelEvents.SubscriptionsGifted, new LuckyUsersWhoGotGiftSubscriptionsInstance(data, this._client))
+          return this._client.emit(ChannelEvents.SubscriptionsGifted, createInstance<LuckyUsersWhoGotGiftSubscriptionsInstance>({ data, _client: this._client }))
 
         case 'App\\Events\\GiftsLeaderboardUpdated':
-          return this._client.emit(ChannelEvents.LeaderboardUpdate, new GiftsLeaderboardUpdatedInstance(data, this._client))
+          return this._client.emit(ChannelEvents.LeaderboardUpdate, createInstance<GiftsLeaderboardUpdatedInstance>({ data, _client: this._client }))
 
         case 'App\\Events\\ChatMoveToSupportedChannelEvent':
-          return this._client.emit(ChannelEvents.StartHost, new ChatMoveToSupportedChannelInstance(data, this._client))
+          return this._client.emit(ChannelEvents.StartHost, createInstance<ChatMoveToSupportedChannelInstance>({ data, _client: this._client }))
 
         case 'App\\Events\\StreamerIsLive':
-          return this._client.emit(ChannelEvents.StartStream, new StreamerIsLiveInstance(data, this._client))
+          return this._client.emit(ChannelEvents.StartStream, createInstance<StreamerIsLiveInstance>({ data, _client: this._client }))
 
         case 'App\\Events\\StopStreamBroadcast':
-          return this._client.emit(ChannelEvents.StopStream, new StopStreamBroadcastInstance(data, this._client))
+          return this._client.emit(ChannelEvents.StopStream, createInstance<StopStreamBroadcastInstance>({ data, _client: this._client }))
 
         case 'App\\Events\\ChannelBannedForceRefresh':
           return this._client.emit(ChannelEvents.Banned, channelId)

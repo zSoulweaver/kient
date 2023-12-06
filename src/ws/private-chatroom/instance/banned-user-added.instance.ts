@@ -1,22 +1,8 @@
-import { cast } from '@deepkit/type'
-import type { BannedUserAddedEvent } from '../dto/banned-user-added.event'
+// eslint-disable-next-line ts/consistent-type-imports
+import { BannedUserAddedEvent } from '../dto/banned-user-added.event'
 import { BaseInstance } from '@/utils/instance.base'
-import type { Kient } from '@/client/kient'
-import { KientError } from '@/client/kient.error'
 
 /**
  * @category Instances
  */
-export class BannedUserAddedInstance extends BaseInstance<BannedUserAddedEvent> {
-  public constructor(data: any, client: Kient) {
-    try {
-      super(cast<BannedUserAddedEvent>(data), client)
-    } catch (err) {
-      throw new KientError({
-        name: 'SOMETHING_WENT_WRONG',
-        message: 'Failed to initialise BannedUserAddedInstance',
-        cause: err,
-      })
-    }
-  }
-}
+export class BannedUserAddedInstance extends BaseInstance<BannedUserAddedEvent> { }
