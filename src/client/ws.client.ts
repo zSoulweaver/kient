@@ -1,9 +1,9 @@
 import type { Channel, ChannelAuthorizationCallback, Options } from 'pusher-js'
 import Pusher from 'pusher-js'
 import type { ChannelAuthorizationRequestParams } from 'pusher-js/types/src/core/auth/options'
-import { Events } from 'kient'
 import type { Kient } from './kient'
-import { KientWsError } from '@/ws/ws.error'
+import { Events } from './kient.events'
+import { KientSubscriptionFailed } from '@/errors'
 
 export class WsClient {
   private readonly _client: Kient
@@ -30,12 +30,7 @@ export class WsClient {
     return new Promise<Channel>((resolve, _) => {
       const subscribedChannel = this.pusher.subscribe(channel)
       subscribedChannel.bind('pusher:subscription_error', (error: { type: string; error: string; status: number }) => {
-        throw new KientWsError({
-          name: 'SUBSCRIPTION_FAILED',
-          message: error.error,
-          code: error.status,
-          cause: error,
-        })
+        throw new KientSubscriptionFailed({ cause: error })
       })
       subscribedChannel.bind('pusher:subscription_succeeded', () => {
         resolve(subscribedChannel)

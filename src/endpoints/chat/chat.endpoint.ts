@@ -1,9 +1,9 @@
 import { cast } from '@deepkit/type'
 import { BaseEndpoint } from '../endpoint.base'
-import { KientApiError } from '../api.error'
 import type { SendMessageResponse } from './dto/send-message.response'
 import type { PinMessageInput } from './dto/pin-message.input'
 import type { GenericApiResponse } from '@/utils/generic-api.response'
+import { KientApiError } from '@/errors'
 
 /**
  * @category Endpoints
@@ -24,17 +24,12 @@ export class ChatEndpoint extends BaseEndpoint {
       },
     })
     if (response.status !== 200)
-      throw new KientApiError({ name: 'SOMETHING_WENT_WRONG', cause: response })
+      throw new KientApiError('Failed to send chatroom message', { cause: response })
 
     const deserializedResponse = cast<SendMessageResponse>(response.body)
-    if (deserializedResponse.status.error) {
-      throw new KientApiError({
-        name: 'SOMETHING_WENT_WRONG',
-        message: deserializedResponse.status.message,
-        code: deserializedResponse.status.code,
-        cause: response,
-      })
-    }
+    if (deserializedResponse.status.error)
+      throw new KientApiError(deserializedResponse.status, { cause: response })
+
     return deserializedResponse
   }
 
@@ -46,17 +41,12 @@ export class ChatEndpoint extends BaseEndpoint {
       method: 'delete',
     })
     if (response.status !== 200)
-      throw new KientApiError({ name: 'SOMETHING_WENT_WRONG', cause: response })
+      throw new KientApiError('Failed to delete chatroom message', { cause: response })
 
     const deserializedResponse = cast<GenericApiResponse<null>>(response.body)
-    if (deserializedResponse.status.error) {
-      throw new KientApiError({
-        name: 'SOMETHING_WENT_WRONG',
-        message: deserializedResponse.status.message,
-        code: deserializedResponse.status.code,
-        cause: response,
-      })
-    }
+    if (deserializedResponse.status.error)
+      throw new KientApiError(deserializedResponse.status, { cause: response })
+
     return deserializedResponse
   }
 
@@ -79,17 +69,12 @@ export class ChatEndpoint extends BaseEndpoint {
       },
     })
     if (response.status !== 200)
-      throw new KientApiError({ name: 'SOMETHING_WENT_WRONG', cause: response })
+      throw new KientApiError('Failed to pin chatroom message', { cause: response })
 
     const deserializedResponse = cast<GenericApiResponse<null>>(response.body)
-    if (deserializedResponse.status.error) {
-      throw new KientApiError({
-        name: 'SOMETHING_WENT_WRONG',
-        message: deserializedResponse.status.message,
-        code: deserializedResponse.status.code,
-        cause: response,
-      })
-    }
+    if (deserializedResponse.status.error)
+      throw new KientApiError(deserializedResponse.status, { cause: response })
+
     return deserializedResponse
   }
 }

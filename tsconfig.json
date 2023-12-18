@@ -7,9 +7,6 @@
     "module": "esnext",
     "moduleResolution": "node",
     "paths": {
-      "kient": [
-        "./src/index.ts"
-      ],
       "@/*": [
         "./src/*"
       ]

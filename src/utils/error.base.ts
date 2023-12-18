@@ -1,14 +1,12 @@
-export class ErrorBase<T extends string> extends Error {
-  public name: T
-  public message: string
-  public code?: number
-  public cause?: any
+export class ErrorBase extends Error {
+  public constructor(message = '', options?: ErrorOptions) {
+    super(message, options)
 
-  public constructor(error: { name: T; message?: string; code?: number; cause?: any }) {
-    super()
-    this.name = error.name
-    this.message = error.message ?? ''
-    this.code = error.code
-    this.cause = error.cause
+    Object.setPrototypeOf(this, new.target.prototype)
+    Error.captureStackTrace?.(this, new.target.constructor)
+  }
+
+  get name() {
+    return this.constructor.name
   }
 }

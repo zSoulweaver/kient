@@ -1,6 +1,7 @@
 import type { JSONPartial, NamingStrategy, ReceiveType, SerializationOptions, Serializer } from '@deepkit/type'
-import { assert, getSerializeFunction, resolveReceiveType, serializer, stringifyType } from '@deepkit/type'
-import { type Kient, KientError } from '@/client'
+import { assert, getSerializeFunction, resolveReceiveType, serializer } from '@deepkit/type'
+import type { Kient } from '@/client'
+import { KientSomethingWentWrong } from '@/errors'
 
 interface InstanceData<T> {
   data: JSONPartial<T> | unknown
@@ -15,10 +16,6 @@ export function createInstance<T>(data: InstanceData<T>, options?: Serialization
     assert(item, undefined, type)
     return item
   } catch (err) {
-    throw new KientError({
-      name: 'SOMETHING_WENT_WRONG',
-      message: `Failed to initialise instance: ${stringifyType(resolvedType)}`,
-      cause: err,
-    })
+    throw new KientSomethingWentWrong({ cause: err })
   }
 }
