@@ -2,6 +2,9 @@ import { ErrorBase } from '@/utils'
 
 type OTPType = 'email' | 'authenticator'
 
+/**
+ * @category Errors
+ */
 export class KientOTPRequired extends ErrorBase {
   type: OTPType
 
