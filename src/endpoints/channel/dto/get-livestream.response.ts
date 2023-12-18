@@ -1,5 +1,3 @@
-import { BaseInstance } from '@/utils'
-
 export type GetLivestreamResponse = {
   id: number
   slug: string
