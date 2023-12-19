@@ -23,8 +23,8 @@
   "scripts": {
     "build": "tsup",
     "dev": "pnpm --filter playground dev",
-    "docs:dev": "typedoc && vitepress dev docs",
-    "docs:build": "typedoc && vitepress build docs",
+    "docs:dev": "tsup-node --config tsup-typedoc.config.ts && typedoc && vitepress dev docs",
+    "docs:build": "tsup-node --config tsup-typedoc.config.ts &&typedoc && vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "changelog": "changelogen --output --release --prerelease",
     "lint": "eslint ."
