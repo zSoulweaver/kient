@@ -16,6 +16,10 @@ type PusherChannelEvents =
   | 'App\\Events\\ChannelBannedForceRefresh' // May be unused, not sure
 
 /**
+ * Uses the `channel.${channelId}` Pusher channel. Contains events directly related to the channel, e.g, followers, subscriptions, etc.
+ *
+ * Full list of events listed on {@link ChannelEventEmitters}.
+ *
  * @category Sockets
  */
 export class ChannelSocket extends BaseSocket {

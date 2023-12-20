@@ -12,6 +12,10 @@ export const PrivateChannelEvents = {
   FollowerDeleted: 'PRIVATE_CHANNEL_UNFOLLOWED',
 } as const
 
+/**
+ * @outline 3
+ * @category Emitters
+ */
 // eslint-disable-next-line ts/consistent-type-definitions
 export type PrivateChannelEventEmitters = {
   [PrivateChannelEvents.Subscription]: (subscriptionCreatedInstance: SubscriptionCreatedInstance) => void

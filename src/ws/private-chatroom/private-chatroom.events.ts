@@ -28,6 +28,10 @@ export const PrivateChatroomEvents = {
   UserTimedOut: 'PRIVATE_CHATROOM_USER_TIMED_OUT',
 } as const
 
+/**
+ * @outline 3
+ * @category Emitters
+ */
 // eslint-disable-next-line ts/consistent-type-definitions
 export type PrivateChatroomEventEmitters = {
   [PrivateChatroomEvents.BannedWordAdded]: (bannedWordAddedInstance: BannedWordAddedInstance) => void

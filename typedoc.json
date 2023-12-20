@@ -24,7 +24,7 @@
   "parametersFormat": "table",
   "propertiesFormat": "table",
   "enumMembersFormat": "list",
-  "typeDeclarationFormat": "table",
+  "typeDeclarationFormat": "list",
   "indexFormat": "list",
   "readme": "none",
   "frontmatterTags": [

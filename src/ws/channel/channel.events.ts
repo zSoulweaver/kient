@@ -17,6 +17,10 @@ export const ChannelEvents = {
   Banned: 'CHANNEL_BANNED',
 } as const
 
+/**
+ * @outline 3
+ * @category Emitters
+ */
 // eslint-disable-next-line ts/consistent-type-definitions
 export type ChannelEventEmitters = {
   [ChannelEvents.FollowersUpdate]: (followersUpdateInstance: FollowersUpdateInstance) => void

@@ -27,8 +27,6 @@ interface WsHandlers {
 
 /**
  * Entry class into Kient
- *
- * @outline [2, 3]
  */
 export class Kient extends EventEmitter<KientEventEmitters> {
   /** @internal */

@@ -24,6 +24,10 @@ type PusherChannelEvents =
   | 'AllowLinksDeactivated' // Unused?
 
 /**
+ * Uses the `private-chatroom_${chatroomId}` Pusher channel. Contains events directly related to the chatroom, e.g, banned words, chat modes (slow, follower, etc), etc.
+ *
+ * Full list of events listed on {@link PrivateChatroomEventEmitters}.
+ *
  * @category Sockets
  */
 export class PrivateChatroomSocket extends BaseSocket {

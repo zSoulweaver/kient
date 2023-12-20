@@ -26,6 +26,10 @@ export const ChatroomEvents = {
   Hosted: 'CHATROOM_HOSTED',
 } as const
 
+/**
+ * @outline 3
+ * @category Emitters
+ */
 // eslint-disable-next-line ts/consistent-type-definitions
 export type ChatroomEventEmitters = {
   [ChatroomEvents.Message]: (chatMessageInstance: ChatMessageInstance) => void

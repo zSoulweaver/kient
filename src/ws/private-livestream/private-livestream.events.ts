@@ -12,6 +12,10 @@ export const PrivateLivestreamEvents = {
   LivestreamInformationUpdated: 'PRIVATE_LIVESTREAM_LIVESTREAM_INFORMATION_UPDATED',
 } as const
 
+/**
+ * @outline 3
+ * @category Emitters
+ */
 // eslint-disable-next-line ts/consistent-type-definitions
 export type PrivateLivestreamEventEmitters = {
   [PrivateLivestreamEvents.HostReceived]: (hostReceivedInstance: HostReceivedInstance) => void

@@ -21,6 +21,10 @@ type PusherChannelEvents =
   | 'App\\Events\\StreamHostEvent'
 
 /**
+ * Uses the `chatrooms.${chatroomId}.v2` Pusher channel. Contains events directly related to the chatroom, e.g, new messages, message deletions, polls, etc.
+ *
+ * Full list of events listed on {@link ChatroomEventEmitters}.
+ *
  * @category Sockets
  */
 export class ChatroomSocket extends BaseSocket {

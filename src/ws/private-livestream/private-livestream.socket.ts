@@ -18,6 +18,10 @@ type PusherChannelEvents2 =
   | 'App\\Events\\LiveStream\\UpdatedLiveStreamEvent'
 
 /**
+ * Uses the `private-livestream_${livestreamId}` & `private-livestream-updated.${livestreamId}` Pusher channels. Contains events directly related to the livestream, e.g, hosts received, title changes, etc.
+ *
+ * Full list of events listed on {@link PrivateLivestreamEventEmitters}.
+ *
  * @category Sockets
  */
 export class PrivateLivestreamSocket extends BaseSocket {

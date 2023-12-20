@@ -13,6 +13,10 @@ type PusherChannelEvents =
   | 'FollowerDeleted'
 
 /**
+ * Uses the `private-channel_${channelId}` Pusher channel. Contains events directly related to the channel, e.g, subscriptions, subscription renewals, followers, etc.
+ *
+ * Full list of events listed on {@link PrivateChannelEventEmitters}.
+ *
  * @category Sockets
  */
 export class PrivateChannelSocket extends BaseSocket {
