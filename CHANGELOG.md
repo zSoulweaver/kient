@@ -1,6 +1,29 @@
 # Changelog
 
 
+## v1.0.1-9
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-8...v1.0.1-9)
+
+### 💅 Refactors
+
+- Add instance creation helper ([d672a39](https://github.com/zSoulweaver/kient/commit/d672a39))
+- Simplify BaseInstance class ([628b94f](https://github.com/zSoulweaver/kient/commit/628b94f))
+- Use new instance creation method ([8c345d5](https://github.com/zSoulweaver/kient/commit/8c345d5))
+- Improve error handling ([ba37b92](https://github.com/zSoulweaver/kient/commit/ba37b92))
+- Remove unused import ([ddd0906](https://github.com/zSoulweaver/kient/commit/ddd0906))
+
+### 📖 Documentation
+
+- Categorise errors ([e4e776a](https://github.com/zSoulweaver/kient/commit/e4e776a))
+- Improve readability ([b5a7801](https://github.com/zSoulweaver/kient/commit/b5a7801))
+- Clean + remove sources from properties ([7250afc](https://github.com/zSoulweaver/kient/commit/7250afc))
+- Detail socket's info and events ([064ce73](https://github.com/zSoulweaver/kient/commit/064ce73))
+
+### 🏡 Chore
+
+- Remove explicit-member-accessibility rule ([c571a1e](https://github.com/zSoulweaver/kient/commit/c571a1e))
+
 ## v1.0.1-8
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-7...v1.0.1-8)
