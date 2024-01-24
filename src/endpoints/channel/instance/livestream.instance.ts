@@ -16,7 +16,7 @@ export interface LivestreamThumbnails {
  */
 export class LivestreamInstance extends BaseInstance<GetLivestreamResponse> {
   public getThumbnails() {
-    if (!this.data)
+    if (!this.data?.thumbnail)
       return null
 
     const pairs = this.data.thumbnail.srcset.split(', ')

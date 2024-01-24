@@ -17,7 +17,7 @@ export type GetLivestreamResponse = {
     }
   }
   playback_url: string
-  thumbnail: {
+  thumbnail?: {
     src: string
     srcset: string
   }
