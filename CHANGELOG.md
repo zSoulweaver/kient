@@ -1,6 +1,14 @@
 # Changelog
 
 
+## v1.0.1-10
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-9...v1.0.1-10)
+
+### 🩹 Fixes
+
+- Thumbnail as optional field ([6e8b1fc](https://github.com/zSoulweaver/kient/commit/6e8b1fc))
+
 ## v1.0.1-9
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-8...v1.0.1-9)
