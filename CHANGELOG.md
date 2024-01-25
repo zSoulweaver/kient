@@ -1,6 +1,14 @@
 # Changelog
 
 
+## v1.0.1
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-10...v1.0.1)
+
+### 🏡 Chore
+
+- Add pre/release scripts ([9556036](https://github.com/zSoulweaver/kient/commit/9556036))
+
 ## v1.0.1-10
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-9...v1.0.1-10)
