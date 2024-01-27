@@ -15,6 +15,7 @@ interface CallKickAPICycles {
   endpoint: string
   method?: 'head' | 'get' | 'post' | 'put' | 'delete' | 'trace' | 'options' | 'connect' | 'patch'
   options?: CycleTLSRequestOptions
+  kickAuth?: string
 }
 
 export class ApiClient {
@@ -23,6 +24,7 @@ export class ApiClient {
   private _cycleClient: CycleTLSClient
   private readonly cookieJar = new toughCookie.CookieJar()
   private bearerToken = ''
+  private kickAuth = ''
 
   private constructor(client: Kient) {
     this._client = client
@@ -54,6 +56,7 @@ export class ApiClient {
         'Accept': 'application/json',
         'Cookie': await this.cookieJar.getCookieString(requestUrl),
         'Authorization': `Bearer ${this.bearerToken}`,
+        ...(this.kickAuth && { 'x-kick-auth': this.kickAuth }),
       },
     }
 
@@ -66,6 +69,10 @@ export class ApiClient {
 
   public async setBearerToken(token: string) {
     this.bearerToken = token
+  }
+
+  public async setKickAuth(kickAuth: string) {
+    this.kickAuth = kickAuth
   }
 
   private async handleCookies(response: CycleTLSResponse, url: string) {
