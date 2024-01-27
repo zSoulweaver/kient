@@ -6,6 +6,7 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   clean: true,
   dts: true,
+  noExternal: ['exit-hook'],
   esbuildPlugins: [deepkitPlugin()],
   esbuildOptions(options) {
     options.external?.push('@deepkit/type')
