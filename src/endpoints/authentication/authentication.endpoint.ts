@@ -26,8 +26,8 @@ export class AuthenticationEndpoint extends BaseEndpoint {
     return cast<TokensResponse>(response.body)
   }
 
-  public async login(credentials: LoginCredentials, kickAuth?: string) {
-    this._apiClient.setKickAuth(kickAuth || '')
+  public async login(credentials: LoginCredentials, kickAuthHeader: string = '') {
+    this._apiClient.setKickAuthHeader(kickAuthHeader)
     const tokens = await this.getTokens()
     const body = {
       email: credentials.email,
