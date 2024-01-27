@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.0.1-11
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-10...v1.0.1-11)
+
+### 🩹 Fixes
+
+- Banned event doesn't contain expiry for perm bans ([4d59ec8](https://github.com/zSoulweaver/kient/commit/4d59ec8))
+- Cjs build issues as `exit-hook` is esm module ([7eb68f7](https://github.com/zSoulweaver/kient/commit/7eb68f7))
+
+### 🏡 Chore
+
+- Add pre/release scripts ([aaeac3e](https://github.com/zSoulweaver/kient/commit/aaeac3e))
+
 ## v1.0.1-10
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-9...v1.0.1-10)
