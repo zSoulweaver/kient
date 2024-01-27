@@ -1,14 +1,16 @@
-export interface UserBannedEvent {
+export class UserBannedEvent {
   id: string
   user: {
     id: number
     username: string
     slug: string
   }
+
   banned_by: {
     id: number
     username: string
     slug: string
   }
-  expires_at: Date
+
+  expires_at?: Date
 }

@@ -5,4 +5,8 @@ import { BaseInstance } from '@/utils/instance.base'
 /**
  * @category Instances
  */
-export class BannedUserInstance extends BaseInstance<UserBannedEvent> { }
+export class BannedUserInstance extends BaseInstance<UserBannedEvent> {
+  isPermanent() {
+    return !this.data.expires_at
+  }
+}
