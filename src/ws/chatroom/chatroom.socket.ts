@@ -33,7 +33,7 @@ export class ChatroomSocket extends BaseSocket {
     const channel = await this._wsClient.subscribe(`chatrooms.${chatroomId}.v2`)
 
     channel.bind_global((eventName: PusherChannelEvents, data: any) => {
-      const instanceData: ChatroomBaseInstance<any> = {
+      const instanceData: ChatroomBaseInstance = {
         data,
         _client: this._client,
         chatroomId: `${chatroomId}`,
