@@ -1,11 +1,11 @@
+import { ChatroomBaseInstance } from '../chatroom-base.instance'
 // eslint-disable-next-line ts/consistent-type-imports
 import { UserBannedEvent } from '../dto/user-banned.event'
-import { BaseInstance } from '@/utils/instance.base'
 
 /**
  * @category Instances
  */
-export class BannedUserInstance extends BaseInstance<UserBannedEvent> {
+export class BannedUserInstance extends ChatroomBaseInstance<UserBannedEvent> {
   isPermanent() {
     return !this.data.expires_at
   }

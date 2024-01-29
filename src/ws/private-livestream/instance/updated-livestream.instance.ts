@@ -1,8 +1,8 @@
 // eslint-disable-next-line ts/consistent-type-imports
 import { UpdatedLiveStreamEvent } from '../dto/updated-livestream.event'
-import { BaseInstance } from '@/utils/instance.base'
+import { LivestreamBaseInstance } from '@/ws/livestream/livestream-base.instance'
 
 /**
  * @category Instances
  */
-export class UpdatedLiveStreamInstance extends BaseInstance<UpdatedLiveStreamEvent> { }
+export class UpdatedLiveStreamInstance extends LivestreamBaseInstance<UpdatedLiveStreamEvent> { }

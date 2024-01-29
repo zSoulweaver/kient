@@ -1,4 +1,5 @@
 import { BaseSocket } from '../socket.base'
+import type { LivestreamBaseInstance } from '../livestream/livestream-base.instance'
 import { PrivateLivestreamEvents } from './private-livestream.events'
 // eslint-disable-next-line ts/consistent-type-imports
 import { HostReceivedInstance, MatureModeActivatedInstance, MatureModeDeactivatedInstance, UpdatedLiveStreamInstance } from './instance'
@@ -30,15 +31,21 @@ export class PrivateLivestreamSocket extends BaseSocket {
     const channel2 = await this._wsClient.subscribe(`private-livestream-updated.${livestreamId}`)
 
     channel.bind_global((eventName: PusherChannelEvents, data: any) => {
+      const instanceData: LivestreamBaseInstance = {
+        data,
+        _client: this._client,
+        livestreamId: `${livestreamId}`,
+      }
+
       switch (eventName) {
         case 'HostReceived':
-          return this._client.emit(PrivateLivestreamEvents.HostReceived, createInstance<HostReceivedInstance>({ data, _client: this._client }))
+          return this._client.emit(PrivateLivestreamEvents.HostReceived, createInstance<HostReceivedInstance>(instanceData))
 
         case 'MatureModeActivated':
-          return this._client.emit(PrivateLivestreamEvents.MatureModeActivated, createInstance<MatureModeActivatedInstance>({ data, _client: this._client }))
+          return this._client.emit(PrivateLivestreamEvents.MatureModeActivated, createInstance<MatureModeActivatedInstance>(instanceData))
 
         case 'MatureModeDeactivated':
-          return this._client.emit(PrivateLivestreamEvents.MatureModeDeactivated, createInstance<MatureModeDeactivatedInstance>({ data, _client: this._client }))
+          return this._client.emit(PrivateLivestreamEvents.MatureModeDeactivated, createInstance<MatureModeDeactivatedInstance>(instanceData))
 
         default:
           return this._client.emit(Events.Core.UnknownEvent, { eventName, data })
@@ -46,9 +53,15 @@ export class PrivateLivestreamSocket extends BaseSocket {
     })
 
     channel2.bind_global((eventName: PusherChannelEvents2, data: any) => {
+      const instanceData: LivestreamBaseInstance = {
+        data,
+        _client: this._client,
+        livestreamId: `${livestreamId}`,
+      }
+
       switch (eventName) {
         case 'App\\Events\\LiveStream\\UpdatedLiveStreamEvent':
-          return this._client.emit(PrivateLivestreamEvents.LivestreamInformationUpdated, createInstance<UpdatedLiveStreamInstance>({ data, _client: this._client }))
+          return this._client.emit(PrivateLivestreamEvents.LivestreamInformationUpdated, createInstance<UpdatedLiveStreamInstance>(instanceData))
 
         default:
           return this._client.emit(Events.Core.UnknownEvent, { eventName, data })

@@ -1,8 +1,8 @@
 // eslint-disable-next-line ts/consistent-type-imports
 import { EmotesModeDeactivatedEvent } from '../dto/emotes-mode-deactivated.event'
-import { BaseInstance } from '@/utils/instance.base'
+import { ChatroomBaseInstance } from '@/ws/chatroom/chatroom-base.instance'
 
 /**
  * @category Instances
  */
-export class EmotesModeDeactivatedInstance extends BaseInstance<EmotesModeDeactivatedEvent> { }
+export class EmotesModeDeactivatedInstance extends ChatroomBaseInstance<EmotesModeDeactivatedEvent> { }

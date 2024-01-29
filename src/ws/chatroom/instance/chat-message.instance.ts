@@ -1,10 +1,12 @@
+import { ChatroomBaseInstance } from '../chatroom-base.instance'
 // eslint-disable-next-line ts/consistent-type-imports
 import { ChatMessageEvent, ChatterStatus } from '../dto/chat-message.event'
-import { BaseInstance } from '@/utils/instance.base'
 /**
  * @category Instances
  */
-export class ChatMessageInstance extends BaseInstance<ChatMessageEvent> {
+export class ChatMessageInstance extends ChatroomBaseInstance<ChatMessageEvent> {
+  chatroomId: string
+
   public chatterIs(chatterStatus: typeof ChatterStatus | string) {
     const badges = this.data.sender.identity.badges
     return badges.filter(x => x.type === chatterStatus).length > 0

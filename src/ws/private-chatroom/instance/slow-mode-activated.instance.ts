@@ -1,8 +1,8 @@
 // eslint-disable-next-line ts/consistent-type-imports
 import { SlowModeActivatedEvent } from '../dto/slow-mode-activated.event'
-import { BaseInstance } from '@/utils/instance.base'
+import { ChatroomBaseInstance } from '@/ws/chatroom/chatroom-base.instance'
 
 /**
  * @category Instances
  */
-export class SlowModeActivatedInstance extends BaseInstance<SlowModeActivatedEvent> { }
+export class SlowModeActivatedInstance extends ChatroomBaseInstance<SlowModeActivatedEvent> { }
