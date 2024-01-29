@@ -1,6 +1,14 @@
 # Changelog
 
 
+## v1.0.1-12
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-11...v1.0.1-12)
+
+### 🚀 Enhancements
+
+- Add support for new 'x-kick-auth' header. ([#6](https://github.com/zSoulweaver/kient/pull/6))
+
 ## v1.0.1-11
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-10...v1.0.1-11)
