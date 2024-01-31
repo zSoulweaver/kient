@@ -1,7 +1,7 @@
 import { cast } from '@deepkit/type'
 // eslint-disable-next-line ts/consistent-type-imports
 import { GetLivestreamResponse } from '../dto/get-livestream.response'
-import { BaseInstance } from '@/utils/instance.base'
+import { BaseInstance } from '@/core/instance.base'
 
 export interface LivestreamThumbnails {
   1080: string

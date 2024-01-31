@@ -1,6 +1,6 @@
 // eslint-disable-next-line ts/consistent-type-imports
 import { GetChannelResponse } from '../dto/get-channel.response'
-import { BaseInstance } from '@/utils/instance.base'
+import { BaseInstance } from '@/core/instance.base'
 
 /**
  * @category Instances
