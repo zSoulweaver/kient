@@ -1,4 +1,4 @@
-import type { GenericApiResponse } from '@/utils/generic-api.response'
+import type { GenericApiResponse } from '@/endpoints/generic-api.response'
 
 interface MessageData {
   id: string

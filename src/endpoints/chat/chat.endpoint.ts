@@ -2,7 +2,7 @@ import { cast } from '@deepkit/type'
 import { BaseEndpoint } from '../endpoint.base'
 import type { SendMessageResponse } from './dto/send-message.response'
 import type { PinMessageInput } from './dto/pin-message.input'
-import type { GenericApiResponse } from '@/utils/generic-api.response'
+import type { GenericApiResponse } from '@/endpoints/generic-api.response'
 import { KientApiError } from '@/errors'
 
 /**
