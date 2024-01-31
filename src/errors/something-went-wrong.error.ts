@@ -1,4 +1,4 @@
-import { ErrorBase } from '@/utils'
+import { ErrorBase } from './error.base'
 
 /**
  * @category Errors

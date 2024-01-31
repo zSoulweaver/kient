@@ -1,5 +1,5 @@
 import type { GetChatroomSettingsResponse } from '../dto'
-import { BaseInstance } from '@/utils'
+import { BaseInstance } from '@/core/instance.base'
 
 /**
  * @category Instances
