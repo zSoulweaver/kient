@@ -4,7 +4,7 @@ import { ChannelEvents } from './channel.events'
 import { ChannelSubscriptionInstance, ChatMoveToSupportedChannelInstance, FollowersUpdateInstance, GiftsLeaderboardUpdatedInstance, LuckyUsersWhoGotGiftSubscriptionsInstance, StopStreamBroadcastInstance, StreamerIsLiveInstance } from './instance'
 import type { ChannelBaseInstance } from './channel-base.instance'
 import { createInstance } from '@/utils/create-instance'
-import { Events } from '@/client/kient.events'
+import { Events } from '@/kient.events'
 
 type PusherChannelEvents =
   | 'App\\Events\\FollowersUpdated'

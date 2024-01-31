@@ -1,4 +1,4 @@
-import type { Kient } from '@/client/kient'
+import type { Kient } from '@/kient'
 
 export abstract class BaseInstance<T> {
   /** @internal */

@@ -4,7 +4,7 @@ import { PrivateChatroomEvents } from './private-chatroom.events'
 // eslint-disable-next-line ts/consistent-type-imports
 import { BannedUserAddedInstance, BannedUserDeletedInstance, BannedWordAddedInstance, BannedWordDeletedInstance, EmotesModeActivatedInstance, EmotesModeDeactivatedInstance, FollowersModeActivatedInstance, FollowersModeDeactivatedInstance, SlowModeActivatedInstance, SlowModeDeactivatedInstance, SubscribersModeActivatedInstance, SubscribersModeDeactivatedInstance, UserTimeoutedInstance } from './instance'
 import { createInstance } from '@/utils/create-instance'
-import { Events } from '@/client/kient.events'
+import { Events } from '@/kient.events'
 
 type PusherChannelEvents =
   | 'BannedWordAdded'

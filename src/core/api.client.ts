@@ -4,7 +4,7 @@ import type { CycleTLSClient, CycleTLSRequestOptions, CycleTLSResponse } from 'c
 import initCycleTLS from 'cycletls'
 import exitHook from 'exit-hook'
 import toughCookie from 'tough-cookie'
-import type { Kient } from './kient'
+import type { Kient } from '../kient'
 
 // interface CallKickAPI {
 //   endpoint: string

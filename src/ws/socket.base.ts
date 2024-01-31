@@ -1,5 +1,5 @@
-import type { Kient } from '@/client/kient'
-import type { WsClient } from '@/client/ws.client'
+import type { Kient } from '@/kient'
+import type { WsClient } from '@/core/ws.client'
 
 export abstract class BaseSocket {
   /** @internal */

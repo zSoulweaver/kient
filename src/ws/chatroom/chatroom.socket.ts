@@ -3,7 +3,7 @@ import { BaseSocket } from '../socket.base'
 import { BannedUserInstance, ChatMessageInstance, ChatroomClearInstance, ChatroomUpdatedInstance, GiftedSubscriptionsInstance, MessageDeletedInstance, PinnedMessageInstance, PollUpdateInstance, StreamHostInstance, SubscriptionInstance, UnbannedUserInstance } from './instance'
 import { ChatroomEvents } from './chatroom.events'
 import type { ChatroomBaseInstance } from './chatroom-base.instance'
-import { Events } from '@/client/kient.events'
+import { Events } from '@/kient.events'
 import { createInstance } from '@/utils/create-instance'
 
 type PusherChannelEvents =

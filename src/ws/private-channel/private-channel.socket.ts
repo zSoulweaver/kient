@@ -4,7 +4,7 @@ import { PrivateChannelEvents } from './private-channel.events'
 // eslint-disable-next-line ts/consistent-type-imports
 import { FollowerAddedInstance, SubscriptionCreatedInstance, SubscriptionGiftedInstance, SubscriptionRenewedInstance } from './instance'
 import { createInstance } from '@/utils/create-instance'
-import { Events } from '@/client/kient.events'
+import { Events } from '@/kient.events'
 
 type PusherChannelEvents =
   | 'SubscriptionGifted'

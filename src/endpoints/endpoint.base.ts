@@ -1,5 +1,5 @@
-import type { ApiClient } from '@/client/api.client'
-import type { Kient } from '@/client/kient'
+import type { ApiClient } from '@/core/api.client'
+import type { Kient } from '@/kient'
 import { KientUnauthenticated } from '@/errors'
 
 export abstract class BaseEndpoint {

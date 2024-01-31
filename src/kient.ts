@@ -1,6 +1,6 @@
 import { EventEmitter } from 'tseep'
-import { ApiClient } from './api.client'
-import { WsClient } from './ws.client'
+import { ApiClient } from './core/api.client'
+import { WsClient } from './core/ws.client'
 import type { KientEventEmitters } from './kient.events'
 import { AuthenticationEndpoint } from '@/endpoints/authentication/authentication.endpoint'
 import { ChannelEndpoint } from '@/endpoints/channel/channel.endpoint'

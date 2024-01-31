@@ -4,7 +4,7 @@ import { PrivateLivestreamEvents } from './private-livestream.events'
 // eslint-disable-next-line ts/consistent-type-imports
 import { HostReceivedInstance, MatureModeActivatedInstance, MatureModeDeactivatedInstance, UpdatedLiveStreamInstance } from './instance'
 import { createInstance } from '@/utils/create-instance'
-import { Events } from '@/client/kient.events'
+import { Events } from '@/kient.events'
 
 // private-livestream events
 type PusherChannelEvents =
