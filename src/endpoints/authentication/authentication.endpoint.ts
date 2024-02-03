@@ -6,13 +6,10 @@ import type { LoginErrorResponse, LoginResponse } from './dto/login.response'
 import type { UserResponse } from './dto/user.response'
 import type { PusherAuthenticationResponse } from './dto/pusher-authentication.response'
 import { KientIncorrectCredentials, KientInvalidCredentials, KientOTPIncorrect, KientOTPRequired } from './error'
+import type { LoginCredentials, LoginInput } from './dto/login.input'
+import type { PusherAuthenticationInput } from './dto/pusher-authentication.input'
 import { KientApiError, KientUnauthenticated } from '@/errors'
-
-interface LoginCredentials {
-  email: string
-  password: string
-  otc?: number | string
-}
+import { buildBody } from '@/utils/build-body'
 
 /**
  * @category Endpoints
@@ -29,20 +26,19 @@ export class AuthenticationEndpoint extends BaseEndpoint {
   public async login(credentials: LoginCredentials, kickAuthHeader: string = '') {
     this._apiClient.setKickAuthHeader(kickAuthHeader)
     const tokens = await this.getTokens()
-    const body = {
+
+    const body = buildBody<LoginInput>({
       email: credentials.email,
       password: credentials.password,
       one_time_password: credentials.otc,
+      isMobileRequest: true,
       [tokens.nameFieldName]: '',
       [tokens.validFromFieldName]: tokens.encryptedValidFrom,
-      isMobileRequest: true,
-    }
+    })
     const response = await this._apiClient.callKickApi({
       endpoint: 'mobile/login',
       method: 'post',
-      options: {
-        body: JSON.stringify(body),
-      },
+      options: { body },
     })
 
     if (response.status === 422) {
@@ -94,16 +90,14 @@ export class AuthenticationEndpoint extends BaseEndpoint {
   public async pusherAuthenticate(params: ChannelAuthorizationRequestParams) {
     this.checkAuthenticated()
 
-    const body = {
+    const body = buildBody<PusherAuthenticationInput>({
       socket_id: params.socketId,
       channel_name: params.channelName,
-    }
+    })
     const response = await this._apiClient.callKickApi({
       endpoint: 'broadcasting/auth',
       method: 'post',
-      options: {
-        body: JSON.stringify(body),
-      },
+      options: { body },
     })
     if (response.status !== 200)
       throw new KientApiError('Failed to get pusher channel authentication token', { cause: response })
