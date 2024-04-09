@@ -1,7 +1,9 @@
 import { cast } from '@deepkit/type'
 import { BaseEndpoint } from '../endpoint.base'
-import type { DownloadClipResponse } from './dto/download-clip.response'
-import type { GetClipResponse } from './dto/get-clip.response'
+// eslint-disable-next-line ts/consistent-type-imports
+import { DownloadClipResponse } from './dto/download-clip.response'
+// eslint-disable-next-line ts/consistent-type-imports
+import { GetClipResponse } from './dto/get-clip.response'
 import { KientApiError } from '@/errors'
 
 /**
