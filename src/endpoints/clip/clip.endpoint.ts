@@ -9,7 +9,6 @@ import { KientApiError } from '@/errors'
 /**
  * @category Endpoints
  */
-
 export class ClipEndpoint extends BaseEndpoint {
   public async getClip(clipId: string) {
     const response = await this._apiClient.callKickApi({
