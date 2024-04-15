@@ -11,10 +11,10 @@ import { buildBody } from '@/utils/build-body'
  * @category Endpoints
  */
 export class ChatEndpoint extends BaseEndpoint {
-  public async sendMessage(chatroomId: string | number, message: string, replyTo?: { originalMessageId: string, originalMessageContent: string, originalSenderId: number, originalSenderUsername: string }) {
+  public async sendMessage(chatroomId: string | number, message: string, replyTo?: { originalMessageId: string; originalMessageContent: string; originalSenderId: number; originalSenderUsername: string }) {
     this.checkAuthenticated()
 
-    let body;
+    let body
     if (replyTo) {
       body = buildBody<SendMessageInput>({
         content: message,
@@ -51,7 +51,6 @@ export class ChatEndpoint extends BaseEndpoint {
 
     return deserializedResponse
   }
-
 
   public async deleteMessage(chatroomId: string | number, messageId: string) {
     this.checkAuthenticated()
