@@ -7,11 +7,18 @@ import type { GenericApiResponse } from '@/endpoints/generic-api.response'
 import { KientApiError } from '@/errors'
 import { buildBody } from '@/utils/build-body'
 
+interface ChatMessageReference {
+  messageId: string
+  messageContent: string
+  senderId: number
+  senderUsername: string
+}
+
 /**
  * @category Endpoints
  */
 export class ChatEndpoint extends BaseEndpoint {
-  public async sendMessage(chatroomId: string | number, message: string, replyTo?: { originalMessageId: string; originalMessageContent: string; originalSenderId: number; originalSenderUsername: string }) {
+  public async sendMessage(chatroomId: string | number, message: string, replyTo?: ChatMessageReference) {
     this.checkAuthenticated()
 
     let body
@@ -21,12 +28,12 @@ export class ChatEndpoint extends BaseEndpoint {
         type: 'reply',
         metadata: {
           original_message: {
-            id: replyTo.originalMessageId,
-            content: replyTo.originalMessageContent,
+            id: replyTo.messageId,
+            content: replyTo.messageContent,
           },
           original_sender: {
-            id: replyTo.originalSenderId,
-            username: replyTo.originalSenderUsername,
+            id: replyTo.senderId,
+            username: replyTo.senderUsername,
           },
         },
       })

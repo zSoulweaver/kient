@@ -13,11 +13,11 @@ outline: deep
 
 Sends a message into the specified chatroom.
 
-| Parameter  | Type             | Required | Default | Description                                      |
-| ---------- | ---------------- | :------: | ------- | ------------------------------------------------ |
-| chatroomId | string \| number |   true   |         | The chatroom where you want to send your message |
-| message    | string           |   true   |         | The message to be sent                           |
-| replyTo    | 	{ originalMessageId: string, originalMessageContent: string, originalSenderId: number, originalSenderUsername: string } |   false   |         | Information about the original message to reply to  |
+| Parameter  | Type                 | Required | Default | Description                                         |
+| ---------- | -------------------- | :------: | ------- | --------------------------------------------------- |
+| chatroomId | string \| number     |   true   |         | The chatroom where you want to send your message    |
+| message    | string               |   true   |         | The message to be sent                              |
+| replyTo    | ChatMessageReference |  false   |         | Information about the original message to reply  to |
 
 
 ::: info Returns
