@@ -7,17 +7,43 @@ import type { GenericApiResponse } from '@/endpoints/generic-api.response'
 import { KientApiError } from '@/errors'
 import { buildBody } from '@/utils/build-body'
 
+interface ChatMessageReference {
+  messageId: string
+  messageContent: string
+  senderId: number
+  senderUsername: string
+}
+
 /**
  * @category Endpoints
  */
 export class ChatEndpoint extends BaseEndpoint {
-  public async sendMessage(chatroomId: string | number, message: string) {
+  public async sendMessage(chatroomId: string | number, message: string, replyTo?: ChatMessageReference) {
     this.checkAuthenticated()
 
-    const body = buildBody<SendMessageInput>({
-      content: message,
-      type: 'message',
-    })
+    let body
+    if (replyTo) {
+      body = buildBody<SendMessageInput>({
+        content: message,
+        type: 'reply',
+        metadata: {
+          original_message: {
+            id: replyTo.messageId,
+            content: replyTo.messageContent,
+          },
+          original_sender: {
+            id: replyTo.senderId,
+            username: replyTo.senderUsername,
+          },
+        },
+      })
+    } else {
+      body = buildBody<SendMessageInput>({
+        content: message,
+        type: 'message',
+      })
+    }
+
     const response = await this._apiClient.callKickApi({
       endpoint: `api/v2/messages/send/${chatroomId}`,
       method: 'post',
