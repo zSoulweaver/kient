@@ -35,6 +35,7 @@ Returns available endpoints to consume.
 | Authentication | [AuthenticationEndpoint](./authentication-endpoint.md) |
 | Channels       | [ChannelEndpoint](./channel-endpoint.md)               |
 | Chat           | [ChatEndpoint](./chat-endpoint.md)                     |
+| Clips           | [ClipEndpoint](./clip-endpoint.md)                     |
 
 ::: info Returns
 `Endpoints`

@@ -40,6 +40,7 @@ export default defineConfig({
             { text: 'Authentication', link: '/reference/authentication-endpoint' },
             { text: 'Channels', link: '/reference/channel-endpoint' },
             { text: 'Chat', link: '/reference/chat-endpoint' },
+            { text: 'Clips', link: '/reference/clip-endpoint' },
           ],
         },
         {

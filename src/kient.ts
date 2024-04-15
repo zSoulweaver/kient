@@ -6,6 +6,7 @@ import { AuthenticationEndpoint } from '@/endpoints/authentication/authenticatio
 import { ChannelEndpoint } from '@/endpoints/channel/channel.endpoint'
 import { ChatroomSocket } from '@/ws/chatroom/chatroom.socket'
 import { ChatEndpoint } from '@/endpoints/chat/chat.endpoint'
+import { ClipEndpoint } from '@/endpoints/clip/clip.endpoint'
 import { ChannelSocket } from '@/ws/channel/channel.socket'
 import { PrivateChannelSocket } from '@/ws/private-channel/private-channel.socket'
 import { PrivateChatroomSocket } from '@/ws/private-chatroom/private-chatroom.socket'
@@ -15,6 +16,7 @@ interface Endpoints {
   authentication: AuthenticationEndpoint
   channel: ChannelEndpoint
   chat: ChatEndpoint
+  clip: ClipEndpoint
 }
 
 interface WsHandlers {
@@ -49,6 +51,7 @@ export class Kient extends EventEmitter<KientEventEmitters> {
       authentication: new AuthenticationEndpoint(this),
       channel: new ChannelEndpoint(this),
       chat: new ChatEndpoint(this),
+      clip: new ClipEndpoint(this),
     }
 
     this._wsClient = new WsClient(this)
