@@ -1,6 +1,35 @@
 # Changelog
 
 
+## v1.0.1-13
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-12...v1.0.1-13)
+
+### 🚀 Enhancements
+
+- Include originating resource ID for events ([dae1f25](https://github.com/zSoulweaver/kient/commit/dae1f25))
+- Add clip endpoints ([#12](https://github.com/zSoulweaver/kient/pull/12))
+- Add reply param to sendMessage ([#14](https://github.com/zSoulweaver/kient/pull/14))
+
+### 🩹 Fixes
+
+- Import paths ([d1c3609](https://github.com/zSoulweaver/kient/commit/d1c3609))
+
+### 💅 Refactors
+
+- Remove redundant type ([05cc913](https://github.com/zSoulweaver/kient/commit/05cc913))
+- Fix type issue with instance data ([75796af](https://github.com/zSoulweaver/kient/commit/75796af))
+- Remove redundant property ([9e3e087](https://github.com/zSoulweaver/kient/commit/9e3e087))
+- Move main class to root ([4464bc8](https://github.com/zSoulweaver/kient/commit/4464bc8))
+- Move `GenericApiResponse` to endpoints dir ([8e845bb](https://github.com/zSoulweaver/kient/commit/8e845bb))
+- Move `ErrorBase` to error dir ([4f7305c](https://github.com/zSoulweaver/kient/commit/4f7305c))
+- Move `BaseInstance` to core dir ([9dff84a](https://github.com/zSoulweaver/kient/commit/9dff84a))
+- Add typed api body builder ([cd95375](https://github.com/zSoulweaver/kient/commit/cd95375))
+
+### 🏡 Chore
+
+- Add npm publish action ([2aacd4c](https://github.com/zSoulweaver/kient/commit/2aacd4c))
+
 ## v1.0.1-12
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-11...v1.0.1-12)
