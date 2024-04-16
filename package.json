@@ -29,8 +29,8 @@
     "lint": "eslint .",
     "changelog:prerelease": "changelogen --output --release --prerelease",
     "changelog:release": "changelogen --output --release",
-    "prerelease": "pnpm changelog:prerelease && pnpm publish",
-    "release": "pnpm changelog:release && pnpm publish"
+    "prerelease": "pnpm changelog:prerelease",
+    "release": "pnpm changelog:release"
   },
   "dependencies": {
     "@deepkit/type": "1.0.1-alpha.105",
