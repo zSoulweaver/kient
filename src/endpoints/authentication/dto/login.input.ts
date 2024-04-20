@@ -10,3 +10,8 @@ export interface LoginCredentials {
   password: string
   otc?: number | string
 }
+
+export interface LoginOptions {
+  kickAuthHeader?: string
+  proxy?: string
+}

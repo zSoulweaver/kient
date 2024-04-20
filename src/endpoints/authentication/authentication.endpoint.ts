@@ -6,7 +6,7 @@ import type { LoginErrorResponse, LoginResponse } from './dto/login.response'
 import type { UserResponse } from './dto/user.response'
 import type { PusherAuthenticationResponse } from './dto/pusher-authentication.response'
 import { KientIncorrectCredentials, KientInvalidCredentials, KientOTPIncorrect, KientOTPRequired } from './error'
-import type { LoginCredentials, LoginInput } from './dto/login.input'
+import type { LoginCredentials, LoginOptions, LoginInput } from './dto/login.input'
 import type { PusherAuthenticationInput } from './dto/pusher-authentication.input'
 import { KientApiError, KientUnauthenticated } from '@/errors'
 import { buildBody } from '@/utils/build-body'
@@ -23,8 +23,9 @@ export class AuthenticationEndpoint extends BaseEndpoint {
     return cast<TokensResponse>(response.body)
   }
 
-  public async login(credentials: LoginCredentials, kickAuthHeader: string = '') {
-    this._apiClient.setKickAuthHeader(kickAuthHeader)
+  public async login(credentials: LoginCredentials, options: LoginOptions) {
+    this._apiClient.setKickAuthHeader(options.kickAuthHeader || '')
+    this._apiClient.setProxy(options.proxy || '')
     const tokens = await this.getTokens()
 
     const body = buildBody<LoginInput>({
