@@ -23,7 +23,7 @@ export class AuthenticationEndpoint extends BaseEndpoint {
     return cast<TokensResponse>(response.body)
   }
 
-  public async login(credentials: LoginCredentials, options: LoginOptions) {
+  public async login(credentials: LoginCredentials, options: LoginOptions = {}) {
     this._apiClient.setKickAuthHeader(options.kickAuthHeader || '')
     this._apiClient.setProxy(options.proxy || '')
     const tokens = await this.getTokens()
