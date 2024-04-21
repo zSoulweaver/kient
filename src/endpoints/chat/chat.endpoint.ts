@@ -3,6 +3,7 @@ import { BaseEndpoint } from '../endpoint.base'
 import type { SendMessageResponse } from './dto/send-message.response'
 import type { PinMessageInput } from './dto/pin-message.input'
 import type { SendMessageInput } from './dto/send-message.input'
+import type { BanUserInput } from './dto/ban-user.input'
 import type { GenericApiResponse } from '@/endpoints/generic-api.response'
 import { KientApiError } from '@/errors'
 import { buildBody } from '@/utils/build-body'
@@ -103,4 +104,55 @@ export class ChatEndpoint extends BaseEndpoint {
 
     return deserializedResponse
   }
+
+  public async banUser(channel: string, target: string, duration?: number) {
+    this.checkAuthenticated()
+
+    let body
+    if (typeof duration === 'undefined') {
+      body = buildBody<BanUserInput>({
+        banned_username: target,
+        permanent: true,
+      });
+    } else {
+      body = buildBody<BanUserInput>({
+        banned_username: target,
+        duration: duration,
+        permanent: false,
+      });
+    }
+    const response = await this._apiClient.callKickApi({
+      endpoint: `api/v2/channels/${channel}/bans`,
+      method: 'post',
+      options: {
+        body: body,
+      },
+    })
+    if (response.status !== 200)
+      throw new KientApiError('Failed to ban user', { cause: response })
+
+    const deserializedResponse = cast<GenericApiResponse<null>>(response.body)
+    if (deserializedResponse.status.error)
+      throw new KientApiError(deserializedResponse.status, { cause: response })
+
+    return deserializedResponse
+  }
+
+  public async unbanUser(channel: string, target: string) {
+    this.checkAuthenticated()
+  
+    const response = await this._apiClient.callKickApi({
+      endpoint: `api/v2/channels/${channel}/bans/${target}`,
+      method: 'delete',
+    })
+    if (response.status !== 201)
+      throw new KientApiError('Failed to unban user', { cause: response })
+
+    const deserializedResponse = cast<GenericApiResponse<null>>(response.body)
+    if (deserializedResponse.status.error)
+      throw new KientApiError(deserializedResponse.status, { cause: response })
+
+    return deserializedResponse
+  }
+
 }
