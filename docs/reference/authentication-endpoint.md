@@ -25,6 +25,7 @@ Attempts authentication with Kick.
 | Parameter   | Type             | Required | Default | Description                                            |
 | ----------- | ---------------- | :------: | ------- | ------------------------------------------------------ |
 | credentials | LoginCredentials |   true   |         | The credentials for the account that is authenticating |
+| options     | LoginOptions     |   false  |         | Optional settings for the login process                |
 
 ::: info Returns
 `Promise<void>`
