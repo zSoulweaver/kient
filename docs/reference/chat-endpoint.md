@@ -53,3 +53,34 @@ Pins a message in the specified channel by ID.
 ::: info Returns
 `Promise<GenericApiResponse<null>>`
 :::
+
+***
+
+### <Badge type="warning">Authentication Required</Badge> <Badge type="tip">async</Badge> `banUser(channel, target, duration)`
+
+Ban a user from the specified channel.
+
+| Parameter | Type   | Required | Default | Description                                                                                                    |
+| --------- | ------ | :------: | ------- | -------------------------------------------------------------------------------------------------------------- |
+| channel   | string |   true   |         | The channel where you want to ban the user                                                                     |
+| target    | string |   true   |         | The username of the user you want to ban                                                                       |
+| duration  | number |   false  |         | Duration in minutes for how long the ban should last. If not provided, the ban is considered permanent         |
+
+::: info Returns
+`Promise<GenericApiResponse<null>>`
+:::
+
+***
+
+### <Badge type="warning">Authentication Required</Badge> <Badge type="tip">async</Badge> `unbanUser(channel, target)`
+
+Unban a user from the specified channel.
+
+| Parameter | Type   | Required | Default | Description                                        |
+| --------- | ------ | :------: | ------- | -------------------------------------------------- |
+| channel   | string |   true   |         | The channel from which you want to unban the user  |
+| target    | string |   true   |         | The username of the user you want to unban         |
+
+::: info Returns
+`Promise<GenericApiResponse<null>>`
+:::
