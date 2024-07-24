@@ -27,7 +27,8 @@
       "Kient": [
         "./src/index.ts"
       ]
-    }
+    },
+    "outDir": "dist"
   },
   "reflection": true
 }
