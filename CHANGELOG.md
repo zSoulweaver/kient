@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.0.1-14
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-13...v1.0.1-14)
+
+### 🚀 Enhancements
+
+- Add banUser & unbanUser ([#16](https://github.com/zSoulweaver/kient/pull/16))
+
+### 🩹 Fixes
+
+- Update pusher app key ([#18](https://github.com/zSoulweaver/kient/pull/18))
+
+### 🏡 Chore
+
+- Remove npm publish from release script ([d545fc4](https://github.com/zSoulweaver/kient/commit/d545fc4))
+
 ## v1.0.1-13
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-12...v1.0.1-13)
