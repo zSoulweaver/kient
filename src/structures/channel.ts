@@ -1,7 +1,9 @@
-export interface Channel {
-	id: string
-	slug: string
-	banner_picture: string
-	description: string
-	followers_count: number
+import { Base, Expose } from './base'
+
+export class Channel extends Base {
+	@Expose id!: string
+	@Expose slug!: string
+	@Expose banner_picture!: string
+	@Expose description!: string
+	@Expose followers_count!: number
 }
