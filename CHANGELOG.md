@@ -1,6 +1,14 @@
 # Changelog
 
 
+## v1.0.1-15
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-14...v1.0.1-15)
+
+### 🩹 Fixes
+
+- Type validation error for profile_picture property (getClip) ([#19](https://github.com/zSoulweaver/kient/pull/19))
+
 ## v1.0.1-14
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-13...v1.0.1-14)
