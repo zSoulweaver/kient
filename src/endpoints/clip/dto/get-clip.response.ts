@@ -31,13 +31,13 @@ export interface GetClipResponse {
       id: number
       username: string
       slug: string
-      profile_picture: string
+      profile_picture?: string
     }
     channel: {
       id: number
       username: string
       slug: string
-      profile_picture: string
+      profile_picture?: string
     }
   }
 }
