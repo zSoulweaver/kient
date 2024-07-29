@@ -7,7 +7,7 @@ import { KientSubscriptionFailed } from '@/errors'
 
 export class WsClient {
   private readonly _client: Kient
-  private readonly PUSHER_APP_KEY = 'eb1d5f283081a78b932c'
+  private readonly PUSHER_APP_KEY = '32cbd69e4b950bf9767'
   private readonly pusher: Pusher
 
   public constructor(client: Kient) {
