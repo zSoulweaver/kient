@@ -1,4 +1,4 @@
-import Kient from 'Kient'
+import { Kient } from 'kient'
 import { inspect } from 'bun'
 
 const kient = new Kient()

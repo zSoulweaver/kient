@@ -24,7 +24,7 @@
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false,
     "paths": {
-      "Kient": [
+      "kient": [
         "./src/index.ts"
       ]
     },

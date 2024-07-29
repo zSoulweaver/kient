@@ -1,5 +1,5 @@
 import { cast } from '@deepkit/type'
-import type Kient from 'Kient'
+import type { Kient } from 'kient'
 import { ofetch } from 'ofetch'
 // biome-ignore lint/style/useImportType: deepkit/type runtime type information
 import { CommonAPIResponse, isSuccessResponse } from '../../util/common-api-response'

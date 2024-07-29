@@ -1,4 +1,4 @@
-import Kient from 'Kient'
+import { Kient } from 'kient'
 import { Events } from '../src/events'
 
 // const kient = new Kient({

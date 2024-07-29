@@ -1,4 +1,4 @@
-import type Kient from 'Kient'
+import type { Kient } from 'kient'
 import Pusher, { type Channel, type Options } from 'pusher-js'
 import { Events } from './events'
 

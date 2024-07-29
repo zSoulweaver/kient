@@ -1,4 +1,4 @@
-import type Kient from 'Kient'
+import type { Kient } from '../kient'
 
 // biome-ignore lint/suspicious/noExplicitAny: Decorator
 export function Expose(target: any, propertyKey: any) {
