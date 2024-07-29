@@ -1,8 +1,8 @@
 import defu from 'defu'
-import { getChannel } from './api/channels/get-channel'
 import { WSClient } from './ws.client'
 import { EventEmitter } from 'tseep'
 import type { KientEventEmitters } from './events'
+import { ChannelsAPI } from './api/channels'
 
 type DeepRequired<T> = {
 	[P in keyof T]-?: DeepRequired<NonNullable<T[P]>>
@@ -45,6 +45,6 @@ export class Kient extends EventEmitter<KientEventEmitters> {
 	}
 
 	api = {
-		getChannel: (slugOrId: string) => getChannel(this, slugOrId),
+		channel: new ChannelsAPI(this),
 	}
 }
