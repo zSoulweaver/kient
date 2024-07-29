@@ -13,10 +13,12 @@ outline: deep
 
 Sends a message into the specified chatroom.
 
-| Parameter  | Type             | Required | Default | Description                                      |
-| ---------- | ---------------- | :------: | ------- | ------------------------------------------------ |
-| chatroomId | string \| number |   true   |         | The chatroom where you want to send your message |
-| message    | string           |   true   |         | The message to be sent                           |
+| Parameter  | Type                 | Required | Default | Description                                         |
+| ---------- | -------------------- | :------: | ------- | --------------------------------------------------- |
+| chatroomId | string \| number     |   true   |         | The chatroom where you want to send your message    |
+| message    | string               |   true   |         | The message to be sent                              |
+| replyTo    | ChatMessageReference |  false   |         | Information about the original message to reply  to |
+
 
 ::: info Returns
 `Promise<SendMessageResponse>`
@@ -47,6 +49,37 @@ Pins a message in the specified channel by ID.
 | --------- | ------ | :------: | ------- | --------------------------------------------- |
 | chatroom  | string |   true   |         | The channel where you want to pin the message |
 | messageId | string |   true   |         | The ID of the message you want to pin         |
+
+::: info Returns
+`Promise<GenericApiResponse<null>>`
+:::
+
+***
+
+### <Badge type="warning">Authentication Required</Badge> <Badge type="tip">async</Badge> `banUser(channel, target, duration)`
+
+Ban a user from the specified channel.
+
+| Parameter | Type   | Required | Default | Description                                                                                                    |
+| --------- | ------ | :------: | ------- | -------------------------------------------------------------------------------------------------------------- |
+| channel   | string |   true   |         | The channel where you want to ban the user                                                                     |
+| target    | string |   true   |         | The username of the user you want to ban                                                                       |
+| duration  | number |   false  |         | Duration in minutes for how long the ban should last. If not provided, the ban is considered permanent         |
+
+::: info Returns
+`Promise<GenericApiResponse<null>>`
+:::
+
+***
+
+### <Badge type="warning">Authentication Required</Badge> <Badge type="tip">async</Badge> `unbanUser(channel, target)`
+
+Unban a user from the specified channel.
+
+| Parameter | Type   | Required | Default | Description                                        |
+| --------- | ------ | :------: | ------- | -------------------------------------------------- |
+| channel   | string |   true   |         | The channel from which you want to unban the user  |
+| target    | string |   true   |         | The username of the user you want to unban         |
 
 ::: info Returns
 `Promise<GenericApiResponse<null>>`
