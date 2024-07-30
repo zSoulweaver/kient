@@ -1,6 +1,14 @@
 # Changelog
 
 
+## v1.0.1-16
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-15...v1.0.1-16)
+
+### 🩹 Fixes
+
+- Update pusher app key ([#20](https://github.com/zSoulweaver/kient/pull/20))
+
 ## v1.0.1-15
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-14...v1.0.1-15)
