@@ -11,8 +11,8 @@ import { Channel } from '../../structures/channel'
 import { User } from '../../structures/user'
 
 export async function getChannel(kient: Kient, slugOrId: string) {
-	const response = await ofetch<CommonAPIResponse<ChannelResponse>>(
-		`https://api.kick.com/private/v1/channels/${slugOrId}`,
+	const response = await kient._apiClient.fetch<CommonAPIResponse<ChannelResponse>>(
+		`/channels/${slugOrId}`,
 	)
 
 	const typedResponse = cast<CommonAPIResponse<ChannelResponse>>(response)
