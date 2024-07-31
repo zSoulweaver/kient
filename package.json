@@ -3,7 +3,7 @@
   "module": "src/index.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun run --watch example/init.ts"
+    "dev": "bun run --watch example/get-clips.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",

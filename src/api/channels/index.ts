@@ -1,5 +1,6 @@
 import { APIBase } from '../api-base'
 import { getChannel } from './get-channel'
+import { getClips } from './get-clip'
 
 export class ChannelsAPI extends APIBase {
 	/**
@@ -9,5 +10,9 @@ export class ChannelsAPI extends APIBase {
 	 */
 	get(slugOrId: string) {
 		return getChannel(this.kient, slugOrId)
+	}
+
+	clips(slugOrId: string) {
+		return getClips(this.kient, slugOrId)
 	}
 }
