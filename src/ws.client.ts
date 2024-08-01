@@ -10,21 +10,21 @@ interface WSClientOptions {
 }
 
 export class WSClient {
-	private readonly _kientInstance!: Kient
-	private readonly pusher!: Pusher
+	private readonly pusher: Pusher
 
-	constructor(kientInstance: Kient, options: WSClientOptions) {
-		this._kientInstance = kientInstance
-
+	constructor(
+		public kientInstance: Kient,
+		options: WSClientOptions,
+	) {
 		const pusherOptions: Options = {
 			cluster: options.pusher.cluster,
 		}
 		this.pusher = new Pusher(options.pusher.appKey, pusherOptions)
 		this.pusher.connection.bind('connected', () =>
-			this._kientInstance.emit(Events.Core.WebSocketConnected),
+			this.kientInstance.emit(Events.Core.WebSocketConnected),
 		)
 		this.pusher.connection.bind('disconnected', () =>
-			this._kientInstance.emit(Events.Core.WebSocketDisconnected),
+			this.kientInstance.emit(Events.Core.WebSocketDisconnected),
 		)
 	}
 

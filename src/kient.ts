@@ -30,9 +30,9 @@ const defaultKientOptions: KientOptions = {
 }
 
 export class Kient extends EventEmitter<KientEventEmitters> {
-	private readonly kientOptions!: KientOptions
+	private readonly kientOptions: KientOptions
 	_wsClient?: WSClient
-	_apiClient!: APIClient
+	_apiClient: APIClient
 
 	constructor(options?: DeepPartial<KientOptions>) {
 		super()

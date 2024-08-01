@@ -6,12 +6,12 @@ export interface APIClientOptions {
 }
 
 export class APIClient {
-	private readonly _kient!: Kient
-	private readonly apiFetch!: $Fetch
+	private readonly apiFetch: $Fetch
 
-	constructor(kient: Kient, options?: APIClientOptions) {
-		this._kient = kient
-
+	constructor(
+		public kient: Kient,
+		options?: APIClientOptions,
+	) {
 		this.apiFetch = ofetch.create(options?.ofetch || {})
 	}
 
