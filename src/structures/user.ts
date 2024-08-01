@@ -1,8 +1,18 @@
-import { Base, Expose } from './base'
+// biome-ignore lint/style/useImportType: deepkit/type
+import { serialize, Group } from '@deepkit/type'
+import type { Kient } from '../kient'
 
-export class User extends Base {
-	@Expose id!: string
-	@Expose username!: string
-	@Expose is_verified!: boolean
-	@Expose profile_picture!: string
+export class User {
+	constructor(
+		public kient: Kient & Group<'exclude'>,
+
+		public id: string,
+		public username: string,
+		public is_verified: boolean,
+		public profile_picture: string,
+	) {}
+
+	toJSON() {
+		return serialize<User>(this, { groupsExclude: ['exclude'] })
+	}
 }
