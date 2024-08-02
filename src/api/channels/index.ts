@@ -2,6 +2,11 @@ import { APIBase } from '../api-base'
 import { getChannel } from './get-channel'
 import { getClips } from './get-clip'
 
+/**
+ * Description placeholder
+ *
+ * @group APIs
+ */
 export class ChannelsAPI extends APIBase {
 	/**
 	 * Returns channel and user information of the specified channel

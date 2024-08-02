@@ -4,8 +4,14 @@ import type { Kient } from '../kient'
 // biome-ignore lint/style/useImportType: deepkit/type
 import { Directory } from './directory'
 
+/**
+ * Data structure of a stream category
+ *
+ * @group API Structures
+ */
 export class Category {
 	constructor(
+		/** @internal */
 		public kient: Kient & Group<'exclude'>,
 
 		public id: string,

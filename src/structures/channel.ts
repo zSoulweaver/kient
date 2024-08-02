@@ -2,6 +2,11 @@
 import { serialize, Group } from '@deepkit/type'
 import type { Kient } from '../kient'
 
+/**
+ * Data structure of a user's channel
+ *
+ * @group API Structures
+ */
 export class Channel {
 	constructor(
 		public kient: Kient & Group<'exclude'>,

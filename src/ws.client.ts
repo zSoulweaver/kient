@@ -2,13 +2,14 @@ import type { Kient } from 'kient'
 import Pusher, { type Channel, type Options } from 'pusher-js'
 import { Events } from './events'
 
-interface WSClientOptions {
+export interface WSClientOptions {
 	pusher: {
 		appKey: string
 		cluster: string
 	}
 }
 
+/** @internal */
 export class WSClient {
 	private readonly pusher: Pusher
 

@@ -8,6 +8,11 @@ import { Channel } from './channel'
 // biome-ignore lint/style/useImportType: deepkit/type
 import { User } from './user'
 
+/**
+ * Data structure of a clip from a livestream
+ *
+ * @group API Structures
+ */
 export class Clip {
 	constructor(
 		public kient: Kient & Group<'exclude'>,

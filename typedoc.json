@@ -1,0 +1,35 @@
+{
+  "plugin": [
+    "typedoc-plugin-markdown",
+    "typedoc-vitepress-theme",
+    "typedoc-plugin-missing-exports"
+  ],
+  "entryPoints": [
+    "./src/index.ts",
+  ],
+  "exclude": [
+    "docs"
+  ],
+  "out": "./docs/typedoc",
+  "docsRoot": "./docs",
+  "readme": "none",
+  "categorizeByGroup": true,
+  "excludeExternals": true,
+  "excludeInternal": true,
+  /**
+  * typedoc-plugin-missing-exports
+  */
+  "internalModule": "Internal",
+  "collapseInternalModule": true,
+  "placeInternalsInOwningModule": true,
+  /**
+  * typedoc-vitepress-theme
+  */
+  "useCodeBlocks": true,
+  "parametersFormat": "table",
+  "interfacePropertiesFormat": "table",
+  "classPropertiesFormat": "table",
+  "enumMembersFormat": "table",
+  "typeDeclarationFormat": "table",
+  "propertyMembersFormat": "table",
+}

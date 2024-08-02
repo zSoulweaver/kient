@@ -1,5 +1,6 @@
 import type { Kient } from '../kient'
 
+/** @internal */
 export class APIBase {
 	protected readonly kient: Kient
 

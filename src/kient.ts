@@ -1,5 +1,5 @@
 import defu from 'defu'
-import { WSClient } from './ws.client'
+import { WSClient, type WSClientOptions } from './ws.client'
 import { EventEmitter } from 'tseep'
 import type { KientEventEmitters } from './events'
 import { ChannelsAPI } from './api/channels'
@@ -9,22 +9,21 @@ type DeepPartial<T> = T extends object ? { [P in keyof T]?: DeepPartial<T[P]> } 
 
 export interface KientOptions {
 	connectToWebsocket: boolean
-	pusher: {
-		appKey: string
-		cluster: string
-	}
 	apiClient: APIClientOptions
+	wsClient: WSClientOptions
 }
 
 const defaultKientOptions: KientOptions = {
 	connectToWebsocket: true,
-	pusher: {
-		appKey: '32cbd69e4b950bf97679',
-		cluster: 'us2',
-	},
 	apiClient: {
 		ofetch: {
 			baseURL: 'https://api.kick.com/private/v1',
+		},
+	},
+	wsClient: {
+		pusher: {
+			appKey: '32cbd69e4b950bf97679',
+			cluster: 'us2',
 		},
 	},
 }
@@ -44,12 +43,7 @@ export class Kient extends EventEmitter<KientEventEmitters> {
 	}
 
 	connectWebsocket() {
-		this._wsClient = new WSClient(this, {
-			pusher: {
-				appKey: this.kientOptions.pusher.appKey,
-				cluster: this.kientOptions.pusher.cluster,
-			},
-		})
+		this._wsClient = new WSClient(this, this.kientOptions.wsClient)
 	}
 
 	api = {

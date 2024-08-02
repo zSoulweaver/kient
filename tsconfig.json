@@ -2,19 +2,18 @@
   "compilerOptions": {
     // Enable latest features
     "lib": [
-      "ESNext",
-      "DOM"
+      "ESNext"
     ],
     "target": "ESNext",
     "module": "ESNext",
     "moduleDetection": "force",
-    "jsx": "react-jsx",
     "allowJs": true,
     // Bundler mode
-    "moduleResolution": "bundler",
+    "moduleResolution": "Bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": false,
     "noEmit": true,
+    "resolveJsonModule": true,
     // Best practices
     "strict": true,
     "skipLibCheck": true,
@@ -30,5 +29,11 @@
     },
     "outDir": "dist"
   },
-  "reflection": true
+  "reflection": true,
+  "include": [
+    "src",
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

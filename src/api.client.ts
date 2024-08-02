@@ -5,6 +5,7 @@ export interface APIClientOptions {
 	ofetch?: FetchOptions<ResponseType>
 }
 
+/** @internal */
 export class APIClient {
 	private readonly apiFetch: $Fetch
 
