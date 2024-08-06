@@ -8,7 +8,9 @@ import type { Kient } from '../kient'
  * @group API Structures
  */
 export class User {
+	/** @internal */
 	constructor(
+		/** @internal */
 		public kient: Kient & Group<'exclude'>,
 
 		public id: string,

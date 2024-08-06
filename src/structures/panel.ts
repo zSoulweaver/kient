@@ -8,7 +8,11 @@ import type { Kient } from '../kient'
  * @group API Structures
  */
 export class Panel {
-	constructor(public kient: Kient & Group<'exclude'>) {}
+	/** @internal */
+	constructor(
+		/** @internal */
+		public kient: Kient & Group<'exclude'>,
+	) {}
 
 	toJSON() {
 		return serialize<Panel>(this, { groupsExclude: ['exclude'] })

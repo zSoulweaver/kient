@@ -10,6 +10,7 @@ import { Directory } from './directory'
  * @group API Structures
  */
 export class Category {
+	/** @internal */
 	constructor(
 		/** @internal */
 		public kient: Kient & Group<'exclude'>,

@@ -14,7 +14,9 @@ import { User } from './user'
  * @group API Structures
  */
 export class Clip {
+	/** @internal */
 	constructor(
+		/** @internal */
 		public kient: Kient & Group<'exclude'>,
 
 		public id: string,
