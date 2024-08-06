@@ -6,6 +6,7 @@ import typedocSidebar from '../typedoc/typedoc-sidebar.json'
 export default defineConfig({
 	title: 'Kient',
 	description: 'Typescript first API wrapper for Kick.com',
+	cleanUrls: true,
 	themeConfig: {
 		// https://vitepress.dev/reference/default-theme-config
 		nav: [
@@ -29,5 +30,6 @@ export default defineConfig({
 		],
 
 		socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }],
+		outline: [2, 3],
 	},
 })
