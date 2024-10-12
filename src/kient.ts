@@ -49,8 +49,9 @@ export class Kient extends EventEmitter<KientEventEmitters> {
   }
 
   /** @internal */
-  private async init() {
+  private async init(options: options) {
     this._apiClient = await ApiClient.create(this)
+    this._apiClient.setProxy(options.proxy || '')
     this._endpoints = {
       authentication: new AuthenticationEndpoint(this),
       channel: new ChannelEndpoint(this),
@@ -72,9 +73,8 @@ export class Kient extends EventEmitter<KientEventEmitters> {
    * Creates a new instance of Kient
    */
   public static async create(options: LoginOptions = {}) {
-    const kient = new Kient()
+    const kient = new Kient(options)
     await kient.init()
-    this._apiClient.setProxy(options.proxy || '')
     return kient
   }
 
