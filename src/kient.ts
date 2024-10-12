@@ -49,7 +49,7 @@ export class Kient extends EventEmitter<KientEventEmitters> {
   }
 
   /** @internal */
-  private async init(options: options) {
+  private async init(options) {
     this._apiClient = await ApiClient.create(this)
     this._apiClient.setProxy(options.proxy || '')
     this._endpoints = {
