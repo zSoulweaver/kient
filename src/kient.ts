@@ -44,12 +44,12 @@ export class Kient extends EventEmitter<KientEventEmitters> {
   public authenticated = false
 
   /** @internal */
-  private constructor() {
+  private constructor(private options: LoginOptions = {}) {
     super()
   }
 
   /** @internal */
-  private async init(options) {
+  private async init(options: LoginOptions) {
     this._apiClient = await ApiClient.create(this)
     this._apiClient.setProxy(options.proxy || '')
     this._endpoints = {
@@ -74,7 +74,7 @@ export class Kient extends EventEmitter<KientEventEmitters> {
    */
   public static async create(options: LoginOptions = {}) {
     const kient = new Kient(options)
-    await kient.init()
+    await kient.init(options)
     return kient
   }
 
