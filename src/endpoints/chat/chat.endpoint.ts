@@ -105,7 +105,7 @@ export class ChatEndpoint extends BaseEndpoint {
     return deserializedResponse
   }
 
-  public async unPinMessage(channel: string) {
+  public async unpinMessage(channel: string) {
     this.checkAuthenticated()
 
     const response = await this._apiClient.callKickApi({
