@@ -92,7 +92,7 @@ export class ChatEndpoint extends BaseEndpoint {
       endpoint: `api/v2/channels/${channel}/pinned-message`,
       method: 'post',
       options: {
-        body: body,
+        body
       },
     })
     if (response.status !== 200)
