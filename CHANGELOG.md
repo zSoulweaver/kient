@@ -1,6 +1,15 @@
 # Changelog
 
 
+## v1.0.1-17
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-16...v1.0.1-17)
+
+### 🚀 Enhancements
+
+- Proxy support ([#25](https://github.com/zSoulweaver/kient/pull/25))
+- Add `unpinMessage` Method & `pinMessage` Fix ([#24](https://github.com/zSoulweaver/kient/pull/24))
+
 ## v1.0.1-16
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-15...v1.0.1-16)
