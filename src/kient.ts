@@ -27,6 +27,10 @@ interface WsHandlers {
   privateLivestream: PrivateLivestreamSocket
 }
 
+interface LoginOptions {
+  proxy?: string
+}
+
 /**
  * Entry class into Kient
  */
@@ -40,13 +44,14 @@ export class Kient extends EventEmitter<KientEventEmitters> {
   public authenticated = false
 
   /** @internal */
-  private constructor() {
+  private constructor(private options: LoginOptions = {}) {
     super()
   }
 
   /** @internal */
-  private async init() {
+  private async init(options: LoginOptions) {
     this._apiClient = await ApiClient.create(this)
+    this._apiClient.setProxy(options.proxy || '')
     this._endpoints = {
       authentication: new AuthenticationEndpoint(this),
       channel: new ChannelEndpoint(this),
@@ -67,9 +72,9 @@ export class Kient extends EventEmitter<KientEventEmitters> {
   /**
    * Creates a new instance of Kient
    */
-  public static async create() {
-    const kient = new Kient()
-    await kient.init()
+  public static async create(options: LoginOptions = {}) {
+    const kient = new Kient(options)
+    await kient.init(options)
     return kient
   }
 
