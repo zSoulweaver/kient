@@ -92,7 +92,7 @@ export class ChatEndpoint extends BaseEndpoint {
       endpoint: `api/v2/channels/${channel}/pinned-message`,
       method: 'post',
       options: {
-        body: JSON.stringify(body),
+        body
       },
     })
     if (response.status !== 200)
@@ -105,6 +105,23 @@ export class ChatEndpoint extends BaseEndpoint {
     return deserializedResponse
   }
 
+  public async unpinMessage(channel: string) {
+    this.checkAuthenticated()
+
+    const response = await this._apiClient.callKickApi({
+      endpoint: `api/v2/channels/${channel}/pinned-message`,
+      method: 'delete',
+    })
+    if (response.status !== 200)
+      throw new KientApiError('Failed to unpin chatroom message', { cause: response })
+
+    const deserializedResponse = cast<GenericApiResponse<null>>(response.body)
+    if (deserializedResponse.status.error)
+      throw new KientApiError(deserializedResponse.status, { cause: response })
+
+    return deserializedResponse
+  }
+  
   public async banUser(channel: string, target: string, duration?: number) {
     this.checkAuthenticated()
 
