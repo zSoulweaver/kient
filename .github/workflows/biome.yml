@@ -1,0 +1,17 @@
+name: Biome CI
+
+on: [pull_request]
+
+permissions:
+  actions: write
+  contents: read
+  pull-requests: write
+
+jobs:
+  biome:
+    name: CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: biomejs/setup-biome@v2
+      - run: biome ci . --reporter=github
