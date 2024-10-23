@@ -1,5 +1,5 @@
 // biome-ignore lint/style/useImportType: deepkit/type
-import { serialize, Group } from '@deepkit/type'
+import { Group, serialize } from '@deepkit/type'
 import type { Kient } from '../kient'
 // biome-ignore lint/style/useImportType: deepkit/type
 import { Directory } from './directory'

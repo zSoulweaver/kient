@@ -2,11 +2,11 @@ import { cast } from '@deepkit/type'
 import type { Kient } from 'kient'
 import { ofetch } from 'ofetch'
 // biome-ignore lint/style/useImportType: deepkit/type runtime type information
+import { Chatroom } from '../../structures/chatroom'
+// biome-ignore lint/style/useImportType: deepkit/type runtime type information
 import { CommonAPIResponse, isSuccessResponse } from '../../util/common-api-response'
 // biome-ignore lint/style/useImportType: deepkit/type runtime type information
 import { ChannelChatroomResponse } from './get-chatroom.response'
-// biome-ignore lint/style/useImportType: deepkit/type runtime type information
-import { Chatroom } from '../../structures/chatroom'
 
 export async function getChatroom(kient: Kient, slugOrId: string) {
 	const response = await kient._apiClient.fetch<CommonAPIResponse<ChannelChatroomResponse>>(

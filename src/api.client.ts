@@ -1,4 +1,4 @@
-import { ofetch, type $Fetch, type FetchOptions, type ResponseType } from 'ofetch'
+import { type $Fetch, type FetchOptions, type ResponseType, ofetch } from 'ofetch'
 import type { Kient } from './kient'
 
 export interface APIClientOptions {

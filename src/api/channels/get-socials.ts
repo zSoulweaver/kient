@@ -1,11 +1,11 @@
 import { cast } from '@deepkit/type'
 import type { Kient } from '../../kient'
 // biome-ignore lint/style/useImportType: deepkit/type
+import { Social } from '../../structures/social'
+// biome-ignore lint/style/useImportType: deepkit/type
 import { CommonAPIResponse, isSuccessResponse } from '../../util/common-api-response'
 // biome-ignore lint/style/useImportType: deepkit/type
 import { ChannelSocialsResponse } from './get-socials.response'
-// biome-ignore lint/style/useImportType: deepkit/type
-import { Social } from '../../structures/social'
 
 export async function getSocials(kient: Kient, slugOrId: string) {
 	const response = await kient._apiClient.fetch<CommonAPIResponse<ChannelSocialsResponse>>(

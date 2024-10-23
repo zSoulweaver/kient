@@ -1,9 +1,9 @@
 import defu from 'defu'
-import { WSClient, type WSClientOptions } from './ws.client'
 import { EventEmitter } from 'tseep'
-import type { KientEventEmitters } from './events'
-import { ChannelsAPI } from './api/channels'
 import { APIClient, type APIClientOptions } from './api.client'
+import { ChannelsAPI } from './api/channels'
+import type { KientEventEmitters } from './events'
+import { WSClient, type WSClientOptions } from './ws.client'
 
 type DeepPartial<T> = T extends object ? { [P in keyof T]?: DeepPartial<T[P]> } : T
 

@@ -1,40 +1,31 @@
 {
-  "compilerOptions": {
-    // Enable latest features
-    "lib": [
-      "ESNext"
-    ],
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleDetection": "force",
-    "allowJs": true,
-    // Bundler mode
-    "moduleResolution": "Bundler",
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": false,
-    "noEmit": true,
-    "resolveJsonModule": true,
-    // Best practices
-    "strict": true,
-    "skipLibCheck": true,
-    "noFallthroughCasesInSwitch": true,
-    // Some stricter flags (disabled by default)
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false,
-    "paths": {
-      "kient": [
-        "./src/index.ts"
-      ]
-    },
-    "outDir": "dist"
-  },
-  "reflection": true,
-  "include": [
-    "src",
-    "example"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+	"compilerOptions": {
+		// Enable latest features
+		"lib": ["ESNext"],
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleDetection": "force",
+		"allowJs": true,
+		// Bundler mode
+		"moduleResolution": "Bundler",
+		"allowImportingTsExtensions": true,
+		"verbatimModuleSyntax": false,
+		"noEmit": true,
+		"resolveJsonModule": true,
+		// Best practices
+		"strict": true,
+		"skipLibCheck": true,
+		"noFallthroughCasesInSwitch": true,
+		// Some stricter flags (disabled by default)
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"noPropertyAccessFromIndexSignature": false,
+		"paths": {
+			"kient": ["./src/index.ts"]
+		},
+		"outDir": "dist"
+	},
+	"reflection": true,
+	"include": ["src", "example"],
+	"exclude": ["node_modules"]
 }

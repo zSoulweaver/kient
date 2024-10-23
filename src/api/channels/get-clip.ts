@@ -2,11 +2,11 @@ import { cast } from '@deepkit/type'
 import type { Kient } from 'kient'
 import { ofetch } from 'ofetch'
 // biome-ignore lint/style/useImportType: deepkit/type runtime type information
+import { Clip } from '../../structures/clip'
+// biome-ignore lint/style/useImportType: deepkit/type runtime type information
 import { CommonAPIResponse, isSuccessResponse } from '../../util/common-api-response'
 // biome-ignore lint/style/useImportType: deepkit/type runtime type information
 import { ChannelClipsResponse } from './get-clip.response'
-// biome-ignore lint/style/useImportType: deepkit/type runtime type information
-import { Clip } from '../../structures/clip'
 
 export async function getClips(kient: Kient, slugOrId: string) {
 	const response = await kient._apiClient.fetch<CommonAPIResponse<ChannelClipsResponse>>(

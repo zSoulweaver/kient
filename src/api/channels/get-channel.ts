@@ -2,13 +2,13 @@ import { cast } from '@deepkit/type'
 import type { Kient } from 'kient'
 import { ofetch } from 'ofetch'
 // biome-ignore lint/style/useImportType: deepkit/type runtime type information
-import { CommonAPIResponse, isSuccessResponse } from '../../util/common-api-response'
-// biome-ignore lint/style/useImportType: deepkit/type runtime type information
-import { ChannelResponse } from './get-channel.response'
-// biome-ignore lint/style/useImportType: deepkit/type runtime type information
 import { Channel } from '../../structures/channel'
 // biome-ignore lint/style/useImportType: deepkit/type runtime type information
 import { User } from '../../structures/user'
+// biome-ignore lint/style/useImportType: deepkit/type runtime type information
+import { CommonAPIResponse, isSuccessResponse } from '../../util/common-api-response'
+// biome-ignore lint/style/useImportType: deepkit/type runtime type information
+import { ChannelResponse } from './get-channel.response'
 
 export async function getChannel(kient: Kient, slugOrId: string) {
 	const response = await kient._apiClient.fetch<CommonAPIResponse<ChannelResponse>>(
