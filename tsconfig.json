@@ -1,11 +1,16 @@
 {
 	"compilerOptions": {
 		// Enable latest features
-		"lib": ["ESNext"],
+		"lib": [
+			"ESNext"
+		],
 		"target": "ESNext",
 		"module": "ESNext",
 		"moduleDetection": "force",
 		"allowJs": true,
+		// "isolatedDeclarations": true,
+		// "declaration": true,
+		// "declarationDir": "./types",
 		// Bundler mode
 		"moduleResolution": "Bundler",
 		"allowImportingTsExtensions": true,
@@ -21,11 +26,18 @@
 		"noUnusedParameters": false,
 		"noPropertyAccessFromIndexSignature": false,
 		"paths": {
-			"kient": ["./src/index.ts"]
+			"kient": [
+				"./src/index.ts"
+			]
 		},
 		"outDir": "dist"
 	},
 	"reflection": true,
-	"include": ["src", "example"],
-	"exclude": ["node_modules"]
+	"include": [
+		"src",
+		"example"
+	],
+	"exclude": [
+		"node_modules"
+	]
 }
