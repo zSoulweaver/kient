@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.0.1-18
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-17...v1.0.1-18)
+
+### 🚀 Enhancements
+
+- Add channel message history ([b399614](https://github.com/zSoulweaver/kient/commit/b399614))
+
+### 🩹 Fixes
+
+- Deepkit casting for generic api responses ([0f0701d](https://github.com/zSoulweaver/kient/commit/0f0701d))
+
+### 💅 Refactors
+
+- Use generic api response cast for message history ([1a8ded4](https://github.com/zSoulweaver/kient/commit/1a8ded4))
+
 ## v1.0.1-17
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-16...v1.0.1-17)
