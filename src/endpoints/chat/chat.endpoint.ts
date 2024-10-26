@@ -4,6 +4,7 @@ import type { SendMessageResponse } from './dto/send-message.response'
 import type { PinMessageInput } from './dto/pin-message.input'
 import type { SendMessageInput } from './dto/send-message.input'
 import type { BanUserInput } from './dto/ban-user.input'
+import type { GetMessagesResponse } from './dto/messages.response'
 import type { GenericApiResponse } from '@/endpoints/generic-api.response'
 import { KientApiError } from '@/errors'
 import { buildBody } from '@/utils/build-body'
@@ -92,7 +93,7 @@ export class ChatEndpoint extends BaseEndpoint {
       endpoint: `api/v2/channels/${channel}/pinned-message`,
       method: 'post',
       options: {
-        body
+        body,
       },
     })
     if (response.status !== 200)
@@ -121,7 +122,19 @@ export class ChatEndpoint extends BaseEndpoint {
 
     return deserializedResponse
   }
-  
+
+  public async getMessageHistory(channelId: number) {
+    const response = await this._apiClient.callKickApi({ endpoint: `api/v2/channels/${channelId}/messages` })
+    if (response.status !== 200)
+      throw new KientApiError('Failed to get currently pinned message', { cause: response })
+
+    const deserializedResponse = cast<GetMessagesResponse>(response.body)
+    if (deserializedResponse.status.error)
+      throw new KientApiError(deserializedResponse.status, { cause: response })
+
+    return deserializedResponse
+  }
+
   public async banUser(channel: string, target: string, duration?: number) {
     this.checkAuthenticated()
 
@@ -130,19 +143,19 @@ export class ChatEndpoint extends BaseEndpoint {
       body = buildBody<BanUserInput>({
         banned_username: target,
         permanent: true,
-      });
+      })
     } else {
       body = buildBody<BanUserInput>({
         banned_username: target,
-        duration: duration,
+        duration,
         permanent: false,
-      });
+      })
     }
     const response = await this._apiClient.callKickApi({
       endpoint: `api/v2/channels/${channel}/bans`,
       method: 'post',
       options: {
-        body: body,
+        body,
       },
     })
     if (response.status !== 200)
@@ -157,7 +170,7 @@ export class ChatEndpoint extends BaseEndpoint {
 
   public async unbanUser(channel: string, target: string) {
     this.checkAuthenticated()
-  
+
     const response = await this._apiClient.callKickApi({
       endpoint: `api/v2/channels/${channel}/bans/${target}`,
       method: 'delete',
@@ -171,5 +184,4 @@ export class ChatEndpoint extends BaseEndpoint {
 
     return deserializedResponse
   }
-
 }
