@@ -4,10 +4,12 @@ import type { SendMessageResponse } from './dto/send-message.response'
 import type { PinMessageInput } from './dto/pin-message.input'
 import type { SendMessageInput } from './dto/send-message.input'
 import type { BanUserInput } from './dto/ban-user.input'
-import type { GetMessagesResponse } from './dto/messages.response'
+// eslint-disable-next-line ts/consistent-type-imports
+import { Messages } from './dto/messages.response'
 import type { GenericApiResponse } from '@/endpoints/generic-api.response'
 import { KientApiError } from '@/errors'
 import { buildBody } from '@/utils/build-body'
+import { castGenericAPIResponse } from '@/utils/cast-generic-api-response'
 
 interface ChatMessageReference {
   messageId: string
@@ -128,7 +130,7 @@ export class ChatEndpoint extends BaseEndpoint {
     if (response.status !== 200)
       throw new KientApiError('Failed to get currently pinned message', { cause: response })
 
-    const deserializedResponse = cast<GetMessagesResponse>(response.body)
+    const deserializedResponse = castGenericAPIResponse<Messages>(response.body)
     if (deserializedResponse.status.error)
       throw new KientApiError(deserializedResponse.status, { cause: response })
 

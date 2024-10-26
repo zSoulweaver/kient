@@ -1,6 +1,3 @@
-// eslint-disable-next-line ts/consistent-type-imports
-import { GenericApiResponse } from '@/endpoints/generic-api.response'
-
 export interface Messages {
   messages: Array<{
     id: string
@@ -64,5 +61,3 @@ export interface Messages {
     duration: number
   }
 }
-
-export type GetMessagesResponse = GenericApiResponse<null | Messages>
