@@ -2,8 +2,15 @@
 	"name": "kient",
 	"version": "2.0.0",
 	"repository": "github:zSoulweaver/kient-test",
-	"module": "src/index.ts",
 	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"scripts": {
 		"build": "bun ./build.ts",
 		"dev": "bun run --watch example/init.ts",
