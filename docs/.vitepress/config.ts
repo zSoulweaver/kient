@@ -1,5 +1,4 @@
 import { defineConfig } from 'vitepress'
-// @ts-expect-error vite will import json
 import typedocSidebar from '../typedoc/typedoc-sidebar.json'
 
 // https://vitepress.dev/reference/site-config

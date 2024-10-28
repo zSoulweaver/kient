@@ -16,7 +16,7 @@
 		"dev": "bun run --watch example/init.ts",
 		"docs:prepare": "typedoc",
 		"docs:dev": "typedoc && vitepress dev docs",
-		"docs:build": "vitepress build docs",
+		"docs:build": "typedoc && vitepress build docs",
 		"docs:preview": "vitepress preview docs",
 		"prerelease": "changelogen --release --prerelease"
 	},
