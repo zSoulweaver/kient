@@ -1,4 +1,4 @@
-export interface LoginInput extends Record<string, any> {
+export interface LoginInput {
   email: string
   password: string
   one_time_password?: string | number

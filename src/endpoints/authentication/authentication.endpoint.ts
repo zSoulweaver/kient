@@ -1,7 +1,6 @@
 import { cast } from '@deepkit/type'
 import type { ChannelAuthorizationRequestParams } from 'pusher-js/types/src/core/auth/options'
 import { BaseEndpoint } from '../endpoint.base'
-import type { TokensResponse } from './dto/tokens.response'
 import type { LoginErrorResponse, LoginResponse } from './dto/login.response'
 import type { UserResponse } from './dto/user.response'
 import type { PusherAuthenticationResponse } from './dto/pusher-authentication.response'
@@ -15,25 +14,19 @@ import { buildBody } from '@/utils/build-body'
  * @category Endpoints
  */
 export class AuthenticationEndpoint extends BaseEndpoint {
-  public async getTokens() {
-    const response = await this._apiClient.callKickApi({ endpoint: 'kick-token-provider' })
-    if (response.status !== 200)
-      throw new KientApiError('Failed to retrieve pre-login tokens', { cause: response })
-
-    return cast<TokensResponse>(response.body)
+  public async getCsrfHeaders() {
+    await this._apiClient.callKickApi({ endpoint: 'sanctum/csrf' })
   }
 
   public async login(credentials: LoginCredentials, kickAuthHeader: string = '') {
     this._apiClient.setKickAuthHeader(kickAuthHeader)
-    const tokens = await this.getTokens()
+    await this.getCsrfHeaders()
 
     const body = buildBody<LoginInput>({
       email: credentials.email,
       password: credentials.password,
       one_time_password: credentials.otc,
       isMobileRequest: true,
-      [tokens.nameFieldName]: '',
-      [tokens.validFromFieldName]: tokens.encryptedValidFrom,
     })
     const response = await this._apiClient.callKickApi({
       endpoint: 'mobile/login',
