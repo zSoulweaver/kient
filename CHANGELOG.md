@@ -1,6 +1,14 @@
 # Changelog
 
 
+## v1.0.1-20
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-19...v1.0.1-20)
+
+### 🩹 Fixes
+
+- Remove dto from barrel ([1467285](https://github.com/zSoulweaver/kient/commit/1467285))
+
 ## v1.0.1-19
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-18...v1.0.1-19)
