@@ -1,6 +1,14 @@
 # Changelog
 
 
+## v1.0.1-19
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-18...v1.0.1-19)
+
+### 🩹 Fixes
+
+- Login auth flow ([9a04478](https://github.com/zSoulweaver/kient/commit/9a04478))
+
 ## v1.0.1-18
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-17...v1.0.1-18)
