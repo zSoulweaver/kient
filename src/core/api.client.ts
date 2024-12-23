@@ -62,10 +62,10 @@ export class ApiClient {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Sec-Fetch-Mode': 'navigate',
-        'Sec-Fetch-Site': 'same-origin',
         'Cookie': cookie,
         'Authorization': `Bearer ${this.bearerToken}`,
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': 'same-origin',
         ...(this.kickAuthHeader && { 'x-kick-auth': this.kickAuthHeader }),
       },
     }
