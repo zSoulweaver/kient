@@ -52,7 +52,7 @@ export class ApiClient {
   public async callKickApi(params: CallKickAPICycles) {
     const requestUrl = `https://kick.com/${params.endpoint}`
     const cookie = await this.cookieJar.getCookieString(requestUrl)
-    if (cookie && !cookie.includes('XSRF-TOKEN'))
+    if (params.endpoint === 'mobile/login' && cookie && !cookie.includes('XSRF-TOKEN='))
       throw new KientApiError('Failed to get XSRF-TOKEN cookie')
 
     const defaultOptions: CycleTLSRequestOptions = {
