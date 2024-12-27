@@ -1,6 +1,14 @@
 # Changelog
 
 
+## v1.0.1-21
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-20...v1.0.1-21)
+
+### 🩹 Fixes
+
+- Improve cycletls request options ([#28](https://github.com/zSoulweaver/kient/pull/28))
+
 ## v1.0.1-20
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-19...v1.0.1-20)
