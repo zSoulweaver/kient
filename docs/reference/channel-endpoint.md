@@ -75,3 +75,17 @@ Retrieves information about the current running poll on a specified Kick channel
 ::: info Returns
 `Promise<GetPollsResponse>`
 :::
+
+***
+
+### <Badge type="warning">Authentication Required</Badge> <Badge type="warning">Moderator Role Required</Badge> <Badge type="tip">async</Badge> `getBans(channel)`
+
+Retrieves a list of banned/timed-out users for a specified Kick channel.
+
+| Parameter | Type   | Required | Default | Description                                            |
+| --------- | ------ | :------: | ------- | ------------------------------------------------------ |
+| channel   | string |   true   |         | The channel name you want to retrieve banned/timed-out users list for |
+
+::: info Returns
+`Promise<BansInstance>`
+:::

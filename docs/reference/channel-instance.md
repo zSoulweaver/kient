@@ -62,3 +62,13 @@ Gets information for current running poll.
 ::: info Returns
 `Promise<GetPollsResponse>`
 :::
+
+***
+
+### <Badge type="warning">Authentication Required</Badge> <Badge type="warning">Moderator Role Required</Badge> <Badge type="tip">async</Badge> `getBans()`
+
+Gets a list of banned/timed-out users in this channel.
+
+::: info Returns
+`Promise<BansInstance>`
+:::
