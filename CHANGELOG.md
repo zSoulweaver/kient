@@ -1,6 +1,14 @@
 # Changelog
 
 
+## v1.0.1-22
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-21...v1.0.1-22)
+
+### 🚀 Enhancements
+
+- **channel:** Add getBans method ([#29](https://github.com/zSoulweaver/kient/pull/29))
+
 ## v1.0.1-21
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v1.0.1-20...v1.0.1-21)

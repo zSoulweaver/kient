@@ -1,7 +1,7 @@
 {
   "name": "kient",
   "type": "module",
-  "version": "1.0.1-21",
+  "version": "1.0.1-22",
   "packageManager": "pnpm@8.10.2",
   "description": "TypeScript-First Client Library for Kick.com",
   "author": "Soulweaver",
