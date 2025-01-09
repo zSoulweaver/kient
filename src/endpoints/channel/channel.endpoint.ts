@@ -1,6 +1,6 @@
 import { BaseEndpoint } from '../endpoint.base'
 // eslint-disable-next-line ts/consistent-type-imports
-import { ChannelInstance, ChatroomSettingsInstance, LeaderboardInstance, LivestreamInstance, PollInstance } from './instance'
+import { BansInstance, ChannelInstance, ChatroomSettingsInstance, LeaderboardInstance, LivestreamInstance, PollInstance } from './instance'
 import { KientApiError } from '@/errors'
 import { createInstance } from '@/utils/create-instance'
 
@@ -69,5 +69,25 @@ export class ChannelEndpoint extends BaseEndpoint {
       throw new KientApiError(pollInstance.data.status, { cause: response })
 
     return pollInstance
+  }
+
+  public async getBans(channel: string) {
+    this.checkAuthenticated()
+
+    const response = await this._apiClient.callKickApi({ endpoint: `api/v2/channels/${channel}/bans` })
+    if (response.status === 403)
+      throw new KientApiError('You do not have permission to view this channel\'s bans', { cause: response })
+    if (response.status !== 200)
+      throw new KientApiError('Failed to get banned users', { cause: response })
+
+    const bansInstance = createInstance<BansInstance>({
+      data: response.body,
+      _client: this._client,
+    })
+
+    if (!bansInstance.data.length)
+      throw new KientApiError('No banned users found', { cause: response })
+
+    return bansInstance
   }
 }

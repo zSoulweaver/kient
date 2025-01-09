@@ -25,4 +25,8 @@ export class ChannelInstance extends BaseInstance<GetChannelResponse> {
   public async getPoll() {
     return this._client.api.channel.getPoll(this.data.slug)
   }
+
+  public async getBans() {
+    return this._client.api.channel.getBans(this.data.slug)
+  }
 }
