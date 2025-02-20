@@ -12,7 +12,14 @@ const auth = new KientUserTokenAuthentication({
 })
 
 const url = auth.constructAuthoriseUrl({
-	scopes: ['channel:read', KientScopes.ChannelWrite],
+	scopes: [
+		'channel:read',
+		'channel:write',
+		'chat:write',
+		'events:subscribe',
+		'streamkey:read',
+		'user:read',
+	],
 })
 
 console.log(url)
