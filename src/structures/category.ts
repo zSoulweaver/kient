@@ -1,8 +1,7 @@
 // biome-ignore lint/style/useImportType: deepkit/type
-import { Group, serialize } from '@deepkit/type'
+import { Group, serialize, type JSONEntity } from '@deepkit/type'
 import type { Kient } from '../kient'
-// biome-ignore lint/style/useImportType: deepkit/type
-import { Directory } from './directory'
+import type { KientObject } from '../util/kient-object'
 
 /**
  * Data structure of a stream category
@@ -17,16 +16,14 @@ export class Category {
 
 		public id: string,
 		public name: string,
-		public slug: string,
-		public tags: string[],
-		public image_url: string,
-		public directory: Directory,
-		public viewers_count?: number,
-	) {
-		this.directory.kient = this.kient
+		public thumbnail: string,
+	) {}
+
+	toObject(): KientObject<Category> {
+		return serialize<Category>(this, { groupsExclude: ['exclude'] })
 	}
 
 	toJSON() {
-		return serialize<Category>(this, { groupsExclude: ['exclude'] })
+		return JSON.stringify(serialize<Category>(this, { groupsExclude: ['exclude'] }))
 	}
 }

@@ -7,16 +7,28 @@ export interface APIClientOptions {
 
 /** @internal */
 export class APIClient {
-	private readonly apiFetch: $Fetch
+	private apiFetch: $Fetch
+	private ofetchOptions: FetchOptions<ResponseType>
 
 	constructor(
 		public kient: Kient,
 		options?: APIClientOptions,
 	) {
-		this.apiFetch = ofetch.create(options?.ofetch || {})
+		this.ofetchOptions = options?.ofetch || {}
+		this.apiFetch = ofetch.create(this.ofetchOptions)
 	}
 
 	get fetch() {
 		return this.apiFetch
+	}
+
+	setHeaders(headers: Record<string, string>) {
+		this.apiFetch = ofetch.create({
+			...this.ofetchOptions,
+			headers: {
+				...this.ofetchOptions.headers,
+				...headers,
+			},
+		})
 	}
 }
