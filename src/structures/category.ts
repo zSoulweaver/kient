@@ -19,11 +19,7 @@ export class Category {
 		public thumbnail: string,
 	) {}
 
-	toObject(): KientObject<Category> {
+	toJSON(): KientObject<Category> {
 		return serialize<Category>(this, { groupsExclude: ['exclude'] })
-	}
-
-	toJSON() {
-		return JSON.stringify(serialize<Category>(this, { groupsExclude: ['exclude'] }))
 	}
 }
