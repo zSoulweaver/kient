@@ -15,7 +15,7 @@ if (!existsSync(filePath)) {
 	process.exit(1)
 }
 
-Bun.spawn(['bun', filePath], {
+Bun.spawn(['bun', '--watch', filePath], {
 	stderr: 'inherit',
 	stdin: 'inherit',
 	stdout: 'inherit',
