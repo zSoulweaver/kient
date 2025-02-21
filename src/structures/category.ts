@@ -12,7 +12,7 @@ export interface CategoryData {
  *
  * @group API Structures
  */
-export class Category extends Base<CategoryData> implements CategoryData {
+export class Category extends Base<CategoryData> {
 	/**
 	 * The category's id
 	 */

@@ -1,10 +1,9 @@
 import { nanoid } from 'nanoid'
 import { randomBytes, createHash } from 'node:crypto'
 import type { KientScope } from './scopes'
-// biome-ignore lint/style/useImportType: deepkit/type runtime type information
-import { TokenResponse } from '../structures/token-response'
-import { cast } from '@deepkit/type'
 import { ofetch } from 'ofetch'
+import { TokenResponse, type TokenResponseData } from '../structures/token-response'
+import type { APIResponse } from '../util/api-response'
 
 interface KientUserAuthenticationParams {
 	clientId: string
@@ -79,7 +78,7 @@ export class KientUserTokenAuthentication {
 			code_verifier: params.codeVerifier,
 		})
 
-		const req = await ofetch(KICK_TOKEN_ENDPOINT, {
+		const req = await ofetch<TokenResponseData>(KICK_TOKEN_ENDPOINT, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded',
@@ -87,11 +86,7 @@ export class KientUserTokenAuthentication {
 			body: tokenParams.toString(),
 		})
 
-		if (req?.message) {
-			throw new Error('failed to get token')
-		}
-
-		return cast<TokenResponse>(req)
+		return new TokenResponse(req)
 	}
 
 	async refeshToken(params: KientUserRefreshTokenParams) {
@@ -102,7 +97,7 @@ export class KientUserTokenAuthentication {
 			grant_type: 'refresh_token',
 		})
 
-		const req = await ofetch(KICK_TOKEN_ENDPOINT, {
+		const req = await ofetch<TokenResponseData>(KICK_TOKEN_ENDPOINT, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded',
@@ -110,11 +105,7 @@ export class KientUserTokenAuthentication {
 			body: refreshParams.toString(),
 		})
 
-		if (req?.message) {
-			throw new Error('failed to get token')
-		}
-
-		return cast<TokenResponse>(req)
+		return new TokenResponse(req)
 	}
 
 	// TODO: Endpoint currently not working

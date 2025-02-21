@@ -34,7 +34,7 @@ app.get('/callback', async (c) => {
 		codeVerifier: url.verifier,
 	})
 
-	return c.body(token.toJSON())
+	return c.body(JSON.stringify(token))
 })
 
 Bun.serve({
