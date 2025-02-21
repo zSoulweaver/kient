@@ -4,11 +4,11 @@ import { Kient } from 'kient'
 const kient = new Kient()
 kient.setAuthToken(env.KICK_TOKEN as string)
 
-const currentUser = await kient.api.users.getAuthorisedUser()
-console.log(currentUser.toJSON())
+const currentUser = await kient.api.user.getAuthorisedUser()
+console.log(currentUser.raw)
 
-const multipleUsers = await kient.api.users.getByIds([1, 2, 3])
-console.log(multipleUsers[0].toJSON())
+const multipleUsers = await kient.api.user.getByIds([1, 2, 3])
+console.log(multipleUsers.map((user) => user.raw))
 
-const specificUser = await kient.api.users.getById(2)
-console.log(specificUser.toJSON())
+const specificUser = await kient.api.user.getById(2)
+console.log(specificUser.raw)

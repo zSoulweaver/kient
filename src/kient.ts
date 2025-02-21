@@ -4,6 +4,7 @@ import { APIClient, type APIClientOptions } from './api.client'
 import type { KientEventEmitters } from './events'
 import { WSClient, type WSClientOptions } from './ws.client'
 import { CategoryAPI } from './api/category'
+import { UserAPI } from './api/user'
 
 type DeepPartial<T> = T extends object ? { [P in keyof T]?: DeepPartial<T[P]> } : T
 
@@ -53,6 +54,7 @@ export class Kient extends EventEmitter<KientEventEmitters> {
 	}
 
 	api = {
-		categories: new CategoryAPI(this),
+		category: new CategoryAPI(this),
+		user: new UserAPI(this),
 	}
 }
