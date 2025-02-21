@@ -1,4 +1,2 @@
-preload = ["@deepkit/bun"]
-
 [install]
 peer = true

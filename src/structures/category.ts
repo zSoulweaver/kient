@@ -1,25 +1,39 @@
-// biome-ignore lint/style/useImportType: deepkit/type
-import { Group, serialize, type JSONEntity } from '@deepkit/type'
 import type { Kient } from '../kient'
-import type { KientObject } from '../util/kient-object'
+import { Base } from './base'
+
+export interface CategoryData {
+	id: string
+	name: string
+	thumbnail: string
+}
 
 /**
  * Data structure of a stream category
  *
  * @group API Structures
  */
-export class Category {
+export class Category extends Base<CategoryData> implements CategoryData {
+	/**
+	 * The category's id
+	 */
+	id: string
+
+	/**
+	 * The category's name
+	 */
+	name: string
+
+	/**
+	 * The category's thumbnail image url
+	 */
+	thumbnail: string
+
 	/** @internal */
-	constructor(
-		/** @internal */
-		public kient: Kient & Group<'exclude'>,
+	constructor(kient: Kient, data: CategoryData) {
+		super(kient, data)
 
-		public id: string,
-		public name: string,
-		public thumbnail: string,
-	) {}
-
-	toJSON(): KientObject<Category> {
-		return serialize<Category>(this, { groupsExclude: ['exclude'] })
+		this.id = data.id
+		this.name = data.name
+		this.thumbnail = data.thumbnail
 	}
 }

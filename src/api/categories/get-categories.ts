@@ -1,20 +1,19 @@
-import { cast } from '@deepkit/type'
 import type { Kient } from 'kient'
-// biome-ignore lint/style/useImportType: deepkit/type runtime type information
-import { APIResponse } from '../../util/api-response'
-// biome-ignore lint/style/useImportType: deepkit/type runtime type information
-import { Category } from '../../structures/category'
+import { Category, type CategoryData } from '../../structures/category'
+import type { APIResponse } from '../../util/api-response'
 
 export async function getCategoriesByQuery(kient: Kient, query: string) {
-	const response = await kient._apiClient.fetch<APIResponse<Category[]>>('/categories', {
+	const response = await kient._apiClient.fetch<APIResponse<CategoryData[]>>('/categories', {
 		query: {
 			q: query,
 		},
 	})
 
-	const typedResponse = cast<APIResponse<Category[]>>(response)
+	const categoryInstances = []
+	for (const categoryData of response.data) {
+		const category = new Category(kient, categoryData)
+		categoryInstances.push(category)
+	}
 
-	console.log(response)
-
-	return typedResponse.data
+	return categoryInstances
 }
