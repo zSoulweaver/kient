@@ -6,7 +6,7 @@ import { getCategoriesByQuery } from './get-categories'
  *
  * @group APIs
  */
-export class CategoriesAPI extends APIBase {
+export class CategoryAPI extends APIBase {
 	/**
 	 * Returns an array of categories matching search query
 	 *
