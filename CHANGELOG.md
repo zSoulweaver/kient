@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.0.1-2
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v2.0.1-1...v2.0.1-2)
+
+### 🤖 CI
+
+- Publish fix hopefully ([b7c4ee3](https://github.com/zSoulweaver/kient/commit/b7c4ee3))
+
+### ❤️ Contributors
+
+- ZSoulweaver ([@zSoulweaver](http://github.com/zSoulweaver))
+
 ## v2.0.1-1
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v2.0.1-0...v2.0.1-1)
