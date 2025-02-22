@@ -11,6 +11,9 @@
 	},
 	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"build": "bun ./build.ts",
 		"dev": "bun run --watch --env-file=example/.env run-example.ts",
