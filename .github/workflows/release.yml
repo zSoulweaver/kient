@@ -23,3 +23,4 @@ jobs:
         run: bun publish --access public
         env:
           BUN_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
+          NPM_CONFIG_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
