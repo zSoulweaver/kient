@@ -1,6 +1,5 @@
 import { APIBase } from '../api-base'
 import { getChannelsByID } from './get-channels'
-import { getUsersByID } from './get-user'
 
 /**
  * Description placeholder
