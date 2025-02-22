@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.0.1-3
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v2.0.1-2...v2.0.1-3)
+
+### 🩹 Fixes
+
+- Add dist directory to files key in package ([2425f90](https://github.com/zSoulweaver/kient/commit/2425f90))
+
+### ❤️ Contributors
+
+- ZSoulweaver ([@zSoulweaver](http://github.com/zSoulweaver))
+
 ## v2.0.1-2
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v2.0.1-1...v2.0.1-2)
