@@ -16,11 +16,11 @@ Kient
 
 ## About
 
-Kient (**K**ick-Cl**ient**) is a versatile TypeScript library designed to simplify interaction with Kick's API and WebSocket. With Kient, you can seamlessly integrate Kick's platform into your projects, making it easier than ever to leverage its capabilities.
+Kient (**K**ick-Cl**ient**) is a versatile TypeScript library designed to simplify interaction with Kick's API and Webhooks. With Kient, you can seamlessly integrate Kick's platform into your projects, making it easier than ever to leverage its capabilities.
 
 ## Documentation
 
-Learn how to use Kient and find detailed information on the [website](https://kient.pages.dev/).
+Learn how to use Kient and find detailed information on the [website](https://kient.pages.dev/) - Very much WIP.
 
 ## Installation and Example Usage
 
@@ -33,18 +33,29 @@ $ bun add kient
 Import Kient, create a new instance, and interact with API endpoints or listen to WebSocket events.
 
 ```ts
+import { env } from 'bun'
 import { Kient } from 'kient'
 
 // Create a new kient instance
 const kient = new Kient()
 
-// Get a specific channel
-const { channel } = await kient.api.channel.get('xqc')
+// Set the authentication token
+kient.setAuthToken(env.KICK_TOKEN as string)
 
-// Print channel response as json
-console.log(channel.toJSON())
-// or, print the channel's follower count
-console.log(channel.followers_count)
+// Get the currently authorised user
+const currentUser = await kient.api.channel.getAuthorisedUser()
+// Log the raw output
+console.log(currentUser.raw)
+
+// Retrieve multiple channels by their ID
+const multipleUsers = await kient.api.channel.getByIds([1, 2, 3])
+
+// Send a chat message to the first channel in the above list as the authenticated user
+await kient.api.chat.send({
+	type: 'user',
+	message: 'Message will be send to specified user id below',
+	userId: multipleUsers[0].id,
+})
 ```
 
 ## License
