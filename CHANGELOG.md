@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.0.1-1
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v2.0.1-0...v2.0.1-1)
+
+### 🤖 CI
+
+- Fix copy paste error ([5aff6f2](https://github.com/zSoulweaver/kient/commit/5aff6f2))
+
+### ❤️ Contributors
+
+- ZSoulweaver ([@zSoulweaver](http://github.com/zSoulweaver))
+
 ## v2.0.1-0
 
 
