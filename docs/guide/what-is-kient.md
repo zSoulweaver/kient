@@ -7,7 +7,7 @@ Kient is a versatile TypeScript client designed to simplify interaction with Kic
 
 <div class="tip custom-block" style="padding-top: 8px">
 
-Wanting to try it out? Skip to [**Getting Started**](./getting-started).
+Wanting to try it out? Skip to [**Getting Started**](./what-is-kient).
 
 </div>
 
