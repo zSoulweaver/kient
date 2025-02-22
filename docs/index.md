@@ -4,22 +4,24 @@ layout: home
 
 hero:
   name: "Kient"
-  text: "Typescript first API wrapper for Kick.com"
-  tagline: My great project tagline
+  text: "Typescript API wrapper for Kick's API"
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Guide
+      link: /guide/what-is-kient
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: TypeDoc API Reference
+      link: /typedoc
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - icon: ✨
+    title: Typescript-First Design
+    details: Love Typescript? Same—Kient sprinkles in that magic to ensure your app development is a breeze
+  - icon: 🔧
+    title: All-In-One Toolkit
+    details: Possibilities are endless—build that wild idea you’ve been dreaming about
+  - icon: 📜
+    title: MIT Freedom
+    details: No strings attached—hack it, fork it, or flaunt it, it’s all yours!  
 ---
 
