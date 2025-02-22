@@ -7,6 +7,7 @@ import { CategoryAPI } from './api/category'
 import { UserAPI } from './api/user'
 import { ChannelAPI } from './api/channel'
 import { ChatAPI } from './api/chat'
+import { MiscAPI } from './api/misc'
 
 type DeepPartial<T> = T extends object ? { [P in keyof T]?: DeepPartial<T[P]> } : T
 
@@ -56,6 +57,7 @@ export class Kient extends EventEmitter<KientEventEmitters> {
 	}
 
 	api = {
+		misc: new MiscAPI(this),
 		category: new CategoryAPI(this),
 		user: new UserAPI(this),
 		channel: new ChannelAPI(this),
