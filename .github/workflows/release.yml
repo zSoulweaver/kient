@@ -20,6 +20,6 @@ jobs:
         run: bun run build
       
       - name: Publish
-        run: pnpm publish --access public
+        run: bun publish --access public
         env:
           BUN_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
