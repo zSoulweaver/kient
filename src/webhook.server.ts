@@ -17,6 +17,7 @@ export class WebhookServer {
 		this.instance.post('/webhook', async (c) => {
 			if (this.kient._kickPublicKey) {
 				const messageId = c.req.header('Kick-Event-Message-Id')
+				const subscriptionId = c.req.header('Kick-Event-Subscription-Id')
 				const signature = c.req.header('Kick-Event-Signature')
 				const timestamp = c.req.header('Kick-Event-Message-Timestamp')
 				const body = await c.req.text()
@@ -40,13 +41,14 @@ export class WebhookServer {
 				const eventType = c.req.header('Kick-Event-Type')
 				const eventVersion = c.req.header('Kick-Event-Version')
 
-				if (!eventType || !eventVersion) {
+				if (!eventType || !eventVersion || !subscriptionId) {
 					console.error('Missing required event type or version')
 					return c.body(null, 400)
 				}
 
 				this.kient.handleWebhookEvent({
 					messageId,
+					subscriptionId,
 					timestamp,
 					type: eventType,
 					version: eventVersion,

@@ -3,6 +3,7 @@ import { Base } from './base'
 
 export interface WebhookEvent {
 	messageId: string
+	subscriptionId: string
 	timestamp: string
 	type: string
 	version: string
@@ -20,6 +21,11 @@ export class EventBase extends Base<WebhookEvent> {
 		messageId: string
 
 		/**
+		 * The subscription ID associated with the event
+		 */
+		subscriptionId: string
+
+		/**
 		 * The event's timestamp
 		 */
 		timestamp: Date
@@ -32,6 +38,14 @@ export class EventBase extends Base<WebhookEvent> {
 		this.webhookEvent = {
 			messageId: data.messageId,
 			timestamp: new Date(data.timestamp),
+			subscriptionId: data.subscriptionId,
 		}
+	}
+
+	/**
+	 * The unsubscribes the client from this subscription type using the associated subscription ID in the event
+	 */
+	unsubscribe() {
+		this.kient.api.webhook.unsubscribe([this.webhookEvent.subscriptionId])
 	}
 }
