@@ -44,8 +44,8 @@ export class ChatMessage extends EventBase {
 
 		const eventBody = destr<ChatMessageEventData>(data.body)
 		this.messageId = eventBody.message_id
-		this.broadcaster = new ChatUser(kient, eventBody.broadcaster)
-		this.sender = new ChatUser(kient, eventBody.sender)
+		this.broadcaster = new ChatUser(kient, ChatUser.constructChatUser(eventBody.broadcaster))
+		this.sender = new ChatUser(kient, ChatUser.constructChatUser(eventBody.sender))
 		this.content = eventBody.content
 		this.emotes = eventBody.emotes
 	}

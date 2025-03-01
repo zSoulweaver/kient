@@ -2,6 +2,7 @@ import destr from 'destr'
 import type { Kient } from '../kient'
 import { EventBase, type WebhookEvent } from './base-event'
 import { ChatUser, type ChatUserData } from './chat-user'
+import { flatten } from '../util/flatten'
 
 export interface ChannelFollowEventData {
 	broadcaster: ChatUserData
@@ -25,7 +26,11 @@ export class ChannelFollow extends EventBase {
 
 		const eventBody = destr<ChannelFollowEventData>(data.body)
 
-		this.broadcaster = new ChatUser(kient, eventBody.broadcaster)
-		this.follower = new ChatUser(kient, eventBody.follower)
+		this.broadcaster = new ChatUser(kient, ChatUser.constructChatUser(eventBody.broadcaster))
+		this.follower = new ChatUser(kient, ChatUser.constructChatUser(eventBody.follower))
+	}
+
+	toJSON() {
+		return flatten(this)
 	}
 }

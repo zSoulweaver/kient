@@ -1,5 +1,5 @@
 import type { KientScope } from '../authentication/scopes'
-import type { Flattened } from '../util/flatten'
+import { flatten, type Flattened } from '../util/flatten'
 
 type TokenDataParams = Omit<Flattened<Token>, 'scopes'>
 
@@ -48,5 +48,9 @@ export class Token {
 	 */
 	get scopes() {
 		return this.scope.split(' ') as KientScope[]
+	}
+
+	toJSON() {
+		return flatten(this)
 	}
 }

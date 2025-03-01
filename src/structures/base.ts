@@ -1,8 +1,9 @@
 import type { Kient } from 'kient'
 
 export class Base {
-	readonly _kient: Kient
+	protected readonly _kient: Kient
 
+	/** @internal */
 	constructor(kient: Kient) {
 		this._kient = kient
 	}

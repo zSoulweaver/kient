@@ -2,6 +2,7 @@ import destr from 'destr'
 import type { Kient } from '../kient'
 import { EventBase, type WebhookEvent } from './base-event'
 import { ChatUser, type ChatUserData } from './chat-user'
+import { flatten } from '../util/flatten'
 
 export interface ChannelSubscriptionGiftEventData {
 	broadcaster: ChatUserData
@@ -38,16 +39,20 @@ export class ChannelSubscriptionGift extends EventBase {
 
 		const eventBody = destr<ChannelSubscriptionGiftEventData>(data.body)
 
-		this.broadcaster = new ChatUser(kient, eventBody.broadcaster)
+		this.broadcaster = new ChatUser(kient, ChatUser.constructChatUser(eventBody.broadcaster))
 		if (!eventBody.gifter.is_anonymous) {
-			this.gifter = new ChatUser(kient, eventBody.gifter)
+			this.gifter = new ChatUser(kient, ChatUser.constructChatUser(eventBody.gifter))
 		}
 		const gifteeInstances = []
 		for (const giftee of eventBody.giftees) {
-			const gifteeInstance = new ChatUser(kient, giftee)
+			const gifteeInstance = new ChatUser(kient, ChatUser.constructChatUser(giftee))
 			gifteeInstances.push(gifteeInstance)
 		}
 		this.giftees = gifteeInstances
 		this.createdAt = new Date(eventBody.created_at)
+	}
+
+	toJSON() {
+		return flatten(this)
 	}
 }

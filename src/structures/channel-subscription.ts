@@ -39,8 +39,8 @@ export class ChannelSubscription extends EventBase {
 
 		const eventBody = destr<ChannelSubscriptionEventData>(data.body)
 
-		this.broadcaster = new ChatUser(kient, eventBody.broadcaster)
-		this.subscriber = new ChatUser(kient, eventBody.subscriber)
+		this.broadcaster = new ChatUser(kient, ChatUser.constructChatUser(eventBody.broadcaster))
+		this.subscriber = new ChatUser(kient, ChatUser.constructChatUser(eventBody.subscriber))
 		this.duration = eventBody.duration
 		this.createdAt = new Date(eventBody.created_at)
 	}

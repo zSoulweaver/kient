@@ -14,7 +14,7 @@ export class EventBase extends Base {
 	/**
 	 * The information relating the received event
 	 */
-	webhookEvent: {
+	kickEvent: {
 		/**
 		 * The event's message id
 		 */
@@ -35,7 +35,7 @@ export class EventBase extends Base {
 	constructor(kient: Kient, data: WebhookEvent) {
 		super(kient)
 
-		this.webhookEvent = {
+		this.kickEvent = {
 			messageId: data.messageId,
 			timestamp: new Date(data.timestamp),
 			subscriptionId: data.subscriptionId,
@@ -46,6 +46,6 @@ export class EventBase extends Base {
 	 * The unsubscribes the client from this subscription type using the associated subscription ID in the event
 	 */
 	unsubscribe() {
-		this._kient.api.webhook.unsubscribe([this.webhookEvent.subscriptionId])
+		this._kient.api.event.unsubscribe([this.kickEvent.subscriptionId])
 	}
 }
