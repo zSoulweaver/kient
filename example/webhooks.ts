@@ -11,7 +11,7 @@ if (kient.webhookServerFetch) {
 	})
 }
 
-const subscription = await kient.api.webhook.subscribe({
+const subscription = await kient.api.event.subscribe({
 	method: 'webhook',
 	events: [
 		{
@@ -22,7 +22,7 @@ const subscription = await kient.api.webhook.subscribe({
 })
 console.log(kientToJSON(subscription))
 
-const subscriptions = await kient.api.webhook.getSubscriptions()
+const subscriptions = await kient.api.event.getSubscriptions()
 console.log(subscriptions.map((sub) => sub.toJSON()))
 
 kient.addListener('KIENT_CHAT_MESSAGE_SENT', (message) => {

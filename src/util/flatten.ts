@@ -24,6 +24,11 @@ function flatten<T>(obj: T): Flattened<T> {
 		return obj as Flattened<T>
 	}
 
+	// Handle Date objects
+	if (obj instanceof Date) {
+		return obj.toISOString() as Flattened<T>
+	}
+
 	const result: Record<string, unknown> = {}
 
 	for (const key in obj) {

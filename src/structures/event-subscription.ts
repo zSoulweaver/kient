@@ -1,20 +1,13 @@
 import type { Kient } from '../kient'
-import { flatten } from '../util/flatten'
+import { flatten, type Flattened } from '../util/flatten'
 import { Base } from './base'
-
-export interface BasicSubscriptionEventData {
-	subscription_id: string
-	name: string
-	version: number
-	error: string
-}
 
 /**
  * Data structure of a subscription event
  *
  * @group API Structures
  */
-export class BasicSubscriptionEvent extends Base {
+export class EventSubscription extends Base {
 	/**
 	 * The subscriptions's ID
 	 */
@@ -31,16 +24,16 @@ export class BasicSubscriptionEvent extends Base {
 	version: number
 
 	/** @internal */
-	constructor(kient: Kient, data: BasicSubscriptionEventData) {
+	constructor(kient: Kient, data: Flattened<EventSubscription>) {
 		super(kient)
 
-		this.id = data.subscription_id
-		this.event = data.name
+		this.id = data.id
+		this.event = data.event
 		this.version = data.version
 	}
 
 	unsubscribe() {
-		this._kient.api.webhook.unsubscribe([this.id])
+		this._kient.api.event.unsubscribe([this.id])
 	}
 
 	toJSON() {

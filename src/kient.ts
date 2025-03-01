@@ -7,10 +7,10 @@ import { UserAPI } from './api/user'
 import { ChannelAPI } from './api/channel'
 import { ChatAPI } from './api/chat'
 import { MiscAPI } from './api/misc'
-import { WebhookAPI } from './api/webhook'
 import { WebhookServer } from './webhook.server'
 import { WebhookHandler } from './webhook.handler'
 import type { WebhookEvent } from './structures/base-event'
+import { EventAPI } from './api/events'
 
 type DeepPartial<T> = T extends object ? { [P in keyof T]?: DeepPartial<T[P]> } : T
 
@@ -77,6 +77,6 @@ export class Kient extends EventEmitter<KientEventEmitters> {
 		user: new UserAPI(this),
 		channel: new ChannelAPI(this),
 		chat: new ChatAPI(this),
-		webhook: new WebhookAPI(this),
+		event: new EventAPI(this),
 	}
 }
