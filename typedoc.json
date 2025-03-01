@@ -6,10 +6,13 @@
 		"./docs/.typedoc/theme.js"
 	],
 	"theme": "kientTheme",
-	"entryPoints": ["./src/index.ts"],
-	"exclude": ["docs"],
+	"entryPoints": [
+		"./src/index.ts"
+	],
+	"exclude": [
+		"docs"
+	],
 	"out": "./docs/typedoc",
-	"docsRoot": "./docs",
 	"readme": "none",
 	"categorizeByGroup": true,
 	"excludeExternals": true,
@@ -23,6 +26,7 @@
 	/**
 	 * typedoc-vitepress-theme
 	 */
+	"docsRoot": "./docs",
 	"useCodeBlocks": true,
 	"parametersFormat": "table",
 	"interfacePropertiesFormat": "table",
