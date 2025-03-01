@@ -1,9 +1,10 @@
 import type { Kient } from 'kient'
 import type { APIResponse } from '../../util/api-response'
-import type { PublicKey } from '../../structures/public-key'
+
+type GetPublicKeyResponse = APIResponse<{ public_key: string }>
 
 export async function getPublicKey(kient: Kient) {
-	const response = await kient._apiClient.fetch<APIResponse<PublicKey>>('/public-key')
+	const response = await kient._apiClient.fetch<GetPublicKeyResponse>('/public-key')
 
 	return response.data.public_key
 }

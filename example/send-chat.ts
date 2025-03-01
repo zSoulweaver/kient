@@ -8,11 +8,11 @@ const bot = await kient.api.chat.send({
 	type: 'bot',
 	message: 'Message will be send to authenticated user channel',
 })
-console.log(bot.raw)
+console.log(bot.toJSON())
 
 const user = await kient.api.chat.send({
 	type: 'user',
 	message: 'Message will be send to specified user id',
-	userId: 0,
+	userId: 2808896,
 })
-console.log(user.raw)
+console.log(user.toJSON())

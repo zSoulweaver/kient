@@ -2,6 +2,7 @@ import destr from 'destr'
 import type { Kient } from '../kient'
 import { EventBase, type WebhookEvent } from './base-event'
 import { ChatUser, type ChatUserData } from './chat-user'
+import { flatten } from '../util/flatten'
 
 export interface ChannelSubscriptionEventData {
 	broadcaster: ChatUserData
@@ -42,5 +43,9 @@ export class ChannelSubscription extends EventBase {
 		this.subscriber = new ChatUser(kient, eventBody.subscriber)
 		this.duration = eventBody.duration
 		this.createdAt = new Date(eventBody.created_at)
+	}
+
+	toJSON() {
+		return flatten(this)
 	}
 }

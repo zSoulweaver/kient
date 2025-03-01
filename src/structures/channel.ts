@@ -1,26 +1,14 @@
 import type { Kient } from '../kient'
+import { flatten, type Flattened } from '../util/flatten'
 import { Base } from './base'
-import { Category, type CategoryData } from './category'
-
-export interface ChannelData {
-	banner_picture: string
-	broadcaster_user_id: string
-	category: CategoryData
-	channel_description: string
-	slug: string
-	stream: {
-		key: string
-		url: string
-	}
-	stream_title: string
-}
+import { Category } from './category'
 
 /**
  * Data structure of a user's channel
  *
  * @group API Structures
  */
-export class Channel extends Base<ChannelData> {
+export class Channel extends Base {
 	/**
 	 * The channel owner's user ID
 	 */
@@ -67,15 +55,19 @@ export class Channel extends Base<ChannelData> {
 	}
 
 	/** @internal */
-	constructor(kient: Kient, data: ChannelData) {
-		super(kient, data)
+	constructor(kient: Kient, data: Flattened<Channel>) {
+		super(kient)
 
-		this.id = data.broadcaster_user_id
+		this.id = data.id
 		this.slug = data.slug
-		this.bannerPicture = data.banner_picture
-		this.channelDescription = data.channel_description
-		this.streamTitle = data.stream_title
+		this.bannerPicture = data.bannerPicture
+		this.channelDescription = data.channelDescription
+		this.streamTitle = data.streamTitle
 		this.category = new Category(kient, data.category)
 		this.stream = data.stream
+	}
+
+	toJSON() {
+		return flatten(this)
 	}
 }

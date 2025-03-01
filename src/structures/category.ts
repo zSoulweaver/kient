@@ -1,22 +1,17 @@
 import type { Kient } from '../kient'
+import { flatten, type Flattened } from '../util/flatten'
 import { Base } from './base'
-
-export interface CategoryData {
-	id: string
-	name: string
-	thumbnail: string
-}
 
 /**
  * Data structure of a stream category
  *
  * @group API Structures
  */
-export class Category extends Base<CategoryData> {
+export class Category extends Base {
 	/**
 	 * The category's id
 	 */
-	id: string
+	id: number
 
 	/**
 	 * The category's name
@@ -29,11 +24,15 @@ export class Category extends Base<CategoryData> {
 	thumbnail: string
 
 	/** @internal */
-	constructor(kient: Kient, data: CategoryData) {
-		super(kient, data)
+	constructor(kient: Kient, data: Flattened<Category>) {
+		super(kient)
 
 		this.id = data.id
 		this.name = data.name
 		this.thumbnail = data.thumbnail
+	}
+
+	toJSON() {
+		return flatten(this)
 	}
 }

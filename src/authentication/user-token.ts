@@ -2,8 +2,7 @@ import { nanoid } from 'nanoid'
 import { randomBytes, createHash } from 'node:crypto'
 import type { KientScope } from './scopes'
 import { ofetch } from 'ofetch'
-import { TokenResponse, type TokenResponseData } from '../structures/token-response'
-import type { APIResponse } from '../util/api-response'
+import { Token } from '../structures/token'
 
 interface KientUserAuthenticationParams {
 	clientId: string
@@ -29,6 +28,14 @@ interface KientUserRefreshTokenParams {
 interface KientUserTokenRevoke {
 	token: string
 	type: 'access_token' | 'refresh_token'
+}
+
+interface TokenResponse {
+	access_token: string
+	token_type: 'Bearer'
+	refresh_token: string
+	expires_in: number
+	scope: string
 }
 
 const KICK_AUTH_ENDPOINT = 'https://id.kick.com/oauth/authorize'
@@ -78,7 +85,7 @@ export class KientUserTokenAuthentication {
 			code_verifier: params.codeVerifier,
 		})
 
-		const req = await ofetch<TokenResponseData>(KICK_TOKEN_ENDPOINT, {
+		const req = await ofetch<TokenResponse>(KICK_TOKEN_ENDPOINT, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded',
@@ -86,7 +93,13 @@ export class KientUserTokenAuthentication {
 			body: tokenParams.toString(),
 		})
 
-		return new TokenResponse(req)
+		return new Token({
+			accessToken: req.access_token,
+			tokenType: req.token_type,
+			refreshToken: req.refresh_token,
+			expiresIn: req.expires_in,
+			scope: req.scope,
+		})
 	}
 
 	async refeshToken(params: KientUserRefreshTokenParams) {
@@ -97,7 +110,7 @@ export class KientUserTokenAuthentication {
 			grant_type: 'refresh_token',
 		})
 
-		const req = await ofetch<TokenResponseData>(KICK_TOKEN_ENDPOINT, {
+		const req = await ofetch<TokenResponse>(KICK_TOKEN_ENDPOINT, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded',
@@ -105,7 +118,13 @@ export class KientUserTokenAuthentication {
 			body: refreshParams.toString(),
 		})
 
-		return new TokenResponse(req)
+		return new Token({
+			accessToken: req.access_token,
+			tokenType: req.token_type,
+			refreshToken: req.refresh_token,
+			expiresIn: req.expires_in,
+			scope: req.scope,
+		})
 	}
 
 	// TODO: Endpoint currently not working

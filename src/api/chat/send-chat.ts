@@ -1,6 +1,6 @@
 import type { Kient } from 'kient'
 import type { APIResponse } from '../../util/api-response'
-import { Chat, type ChatData } from '../../structures/chat'
+import { Chat } from '../../structures/chat'
 
 interface SendBotChatParams {
 	message: string
@@ -18,6 +18,13 @@ interface SendUserChatParams {
 
 export type SendChatParams = SendUserChatParams | SendBotChatParams
 
+export interface ChatResponse {
+	is_sent: boolean
+	message_id: string
+}
+
+type SendChatResponse = APIResponse<ChatResponse>
+
 export async function sendChat(kient: Kient, params: SendChatParams) {
 	const requestParams: {
 		content: string
@@ -32,11 +39,14 @@ export async function sendChat(kient: Kient, params: SendChatParams) {
 		requestParams.broadcaster_user_id = params.userId
 	}
 
-	const response = await kient._apiClient.fetch<APIResponse<ChatData>>('/chat', {
+	const response = await kient._apiClient.fetch<SendChatResponse>('/chat', {
 		method: 'POST',
 		body: JSON.stringify(requestParams),
 	})
 
-	const chat = new Chat(kient, response.data)
+	const chat = new Chat(kient, {
+		id: response.data.message_id,
+		isSent: response.data.is_sent,
+	})
 	return chat
 }

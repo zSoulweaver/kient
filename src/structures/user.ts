@@ -1,19 +1,13 @@
 import type { Kient } from '../kient'
+import { flatten, type Flattened } from '../util/flatten'
 import { Base } from './base'
-
-export interface UserData {
-	user_id: number
-	name: string
-	email: string
-	profile_picture: string
-}
 
 /**
  * Data structure of a user account
  *
  * @group API Structures
  */
-export class User extends Base<UserData> {
+export class User extends Base {
 	/**
 	 * The user's id
 	 */
@@ -22,7 +16,7 @@ export class User extends Base<UserData> {
 	/**
 	 * The username of the user
 	 */
-	name: string
+	username: string
 
 	/**
 	 * The user's email address
@@ -36,12 +30,16 @@ export class User extends Base<UserData> {
 	profilePicture: string
 
 	/** @internal */
-	constructor(kient: Kient, data: UserData) {
-		super(kient, data)
+	constructor(kient: Kient, data: Flattened<User>) {
+		super(kient)
 
-		this.id = data.user_id
-		this.name = data.name
+		this.id = data.id
+		this.username = data.username
 		this.email = data.email === '' ? undefined : data.email
-		this.profilePicture = data.profile_picture
+		this.profilePicture = data.profilePicture
+	}
+
+	toJSON() {
+		return flatten(this)
 	}
 }

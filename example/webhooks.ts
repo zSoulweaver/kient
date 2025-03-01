@@ -1,5 +1,5 @@
 import { env } from 'bun'
-import { Kient } from 'kient'
+import { Kient, kientToJSON } from 'kient'
 
 const kient = new Kient()
 kient.setAuthToken(env.KICK_TOKEN as string)
@@ -20,15 +20,12 @@ const subscription = await kient.api.webhook.subscribe({
 		},
 	],
 })
-console.log(subscription)
+console.log(kientToJSON(subscription))
 
 const subscriptions = await kient.api.webhook.getSubscriptions()
-console.log(subscriptions.map((sub) => sub.raw))
-
-for (const sub of subscriptions) {
-	sub.unsubscribe()
-}
+console.log(subscriptions.map((sub) => sub.toJSON()))
 
 kient.addListener('KIENT_CHAT_MESSAGE_SENT', (message) => {
 	console.log('chat message received from', message.sender.username)
+	console.log(kientToJSON(message))
 })

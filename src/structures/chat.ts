@@ -1,17 +1,13 @@
 import type { Kient } from '../kient'
+import { flatten, type Flattened } from '../util/flatten'
 import { Base } from './base'
-
-export interface ChatData {
-	is_sent: boolean
-	message_id: string
-}
 
 /**
  * Data structure of a chat message
  *
  * @group API Structures
  */
-export class Chat extends Base<ChatData> {
+export class Chat extends Base {
 	/**
 	 * The id of the sent message
 	 */
@@ -23,10 +19,14 @@ export class Chat extends Base<ChatData> {
 	isSent: boolean
 
 	/** @internal */
-	constructor(kient: Kient, data: ChatData) {
-		super(kient, data)
+	constructor(kient: Kient, data: Flattened<Chat>) {
+		super(kient)
 
-		this.id = data.message_id
-		this.isSent = data.is_sent
+		this.id = data.id
+		this.isSent = data.isSent
+	}
+
+	toJSON() {
+		return flatten(this)
 	}
 }

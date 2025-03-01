@@ -1,6 +1,15 @@
 import type { Kient } from 'kient'
 import type { APIResponse } from '../../util/api-response'
-import { User, type UserData } from '../../structures/user'
+import { User } from '../../structures/user'
+
+export interface UserResponse {
+	user_id: number
+	name: string
+	email: string
+	profile_picture: string
+}
+
+type GetUsersResponse = APIResponse<UserResponse[]>
 
 export async function getUsersByID(kient: Kient, ids: number[] = []) {
 	const params = new URLSearchParams()
@@ -8,11 +17,16 @@ export async function getUsersByID(kient: Kient, ids: number[] = []) {
 		params.append('id', id.toString())
 	}
 
-	const response = await kient._apiClient.fetch<APIResponse<UserData[]>>(`/users?${params}`)
+	const response = await kient._apiClient.fetch<GetUsersResponse>(`/users?${params}`)
 
 	const userInstances = []
 	for (const userData of response.data) {
-		const category = new User(kient, userData)
+		const category = new User(kient, {
+			id: userData.user_id,
+			username: userData.name,
+			email: userData.email,
+			profilePicture: userData.profile_picture,
+		})
 		userInstances.push(category)
 	}
 

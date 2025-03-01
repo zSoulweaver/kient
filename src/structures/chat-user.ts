@@ -1,5 +1,6 @@
 import type { Kient } from 'kient'
 import { Base } from './base'
+import { flatten } from '../util/flatten'
 
 export interface ChatUserData {
 	is_anonymous: boolean
@@ -10,7 +11,7 @@ export interface ChatUserData {
 	channel_slug: string
 }
 
-export class ChatUser extends Base<ChatUserData> {
+export class ChatUser extends Base {
 	/**
 	 * The user's ID
 	 */
@@ -38,12 +39,16 @@ export class ChatUser extends Base<ChatUserData> {
 
 	/** @internal */
 	constructor(kient: Kient, data: ChatUserData) {
-		super(kient, data)
+		super(kient)
 
 		this.id = data.user_id
 		this.username = data.username
 		this.isVerified = data.is_verified
 		this.profilePicture = data.profile_picture
 		this.slug = data.channel_slug
+	}
+
+	toJSON() {
+		return flatten(this)
 	}
 }

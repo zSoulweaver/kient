@@ -2,6 +2,7 @@ import destr from 'destr'
 import type { Kient } from '../kient'
 import { EventBase, type WebhookEvent } from './base-event'
 import { ChatUser, type ChatUserData } from './chat-user'
+import { flatten } from '../util/flatten'
 
 export interface ChatMessageEventData {
 	message_id: string
@@ -47,5 +48,9 @@ export class ChatMessage extends EventBase {
 		this.sender = new ChatUser(kient, eventBody.sender)
 		this.content = eventBody.content
 		this.emotes = eventBody.emotes
+	}
+
+	toJSON() {
+		return flatten(this)
 	}
 }
