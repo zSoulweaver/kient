@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v2.0.1-4
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v2.0.1-3...v2.0.1-4)
+
+### 🚀 Enhancements
+
+- Add webhook handling - adds optional internal webhook server - exposes function to handle events externally - adds chat message events ([7771eba](https://github.com/zSoulweaver/kient/commit/7771eba))
+- Add remaining webhook events ([470ed60](https://github.com/zSoulweaver/kient/commit/470ed60))
+- Add subscription id to event and add unsub func ([0dfeebd](https://github.com/zSoulweaver/kient/commit/0dfeebd))
+
+### 💅 Refactors
+
+- Adjust api responses and structure instances ([cdd2822](https://github.com/zSoulweaver/kient/commit/cdd2822))
+- Restructure event/webhook api ([a62489f](https://github.com/zSoulweaver/kient/commit/a62489f))
+- Rename webhooks to events and align to api design ([3b9d201](https://github.com/zSoulweaver/kient/commit/3b9d201))
+
+### ❤️ Contributors
+
+- ZSoulweaver ([@zSoulweaver](http://github.com/zSoulweaver))
+
 ## v2.0.1-3
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v2.0.1-2...v2.0.1-3)
