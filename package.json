@@ -1,7 +1,18 @@
 {
 	"name": "kient",
 	"version": "2.0.1-5",
-	"repository": "github:zSoulweaver/kient",
+	"homepage": "https://kient.pages.dev",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com:zSoulweaver/kient.git"
+	},
+	"license": "MIT",
+	"keywords": [
+		"kick",
+		"api",
+		"livestream",
+		"bot"
+	],
 	"type": "module",
 	"exports": {
 		".": {
