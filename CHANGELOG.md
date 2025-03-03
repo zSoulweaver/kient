@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v2.0.1-5
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v2.0.1-4...v2.0.1-5)
+
+### 🚀 Enhancements
+
+- Add new channel endpoint data ([3f50b31](https://github.com/zSoulweaver/kient/commit/3f50b31))
+
+### 💅 Refactors
+
+- Improve flatten function - uses grok llm, so could be further issues yet ([79ced64](https://github.com/zSoulweaver/kient/commit/79ced64))
+
+### 📖 Documentation
+
+- Fix build issue ([64523d4](https://github.com/zSoulweaver/kient/commit/64523d4))
+- Fix build v2 ([b422004](https://github.com/zSoulweaver/kient/commit/b422004))
+
+### ❤️ Contributors
+
+- ZSoulweaver ([@zSoulweaver](http://github.com/zSoulweaver))
+
 ## v2.0.1-4
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v2.0.1-3...v2.0.1-4)
