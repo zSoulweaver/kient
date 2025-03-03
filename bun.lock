@@ -4,6 +4,7 @@
     "": {
       "name": "kient",
       "dependencies": {
+        "@kakasoo/deep-strict-types": "^2.0.2",
         "defu": "^6.1.4",
         "destr": "^2.0.3",
         "hono": "^4.7.2",
@@ -149,6 +150,10 @@
     "@iconify/types": ["@iconify/types@2.0.0", "", {}, "sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg=="],
 
     "@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.5.0", "", {}, "sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ=="],
+
+    "@kakasoo/deep-strict-types": ["@kakasoo/deep-strict-types@2.0.2", "", { "dependencies": { "@kakasoo/proto-typescript": "^1.28.7" } }, "sha512-UdIQK2gkAiamPZonXfoiTyrtLJ7/pgFIQDJ+o8Frftf0YcRSGkFG8fIYg1uuThW0CNBZSH2dSyaGD9ElfLjZIw=="],
+
+    "@kakasoo/proto-typescript": ["@kakasoo/proto-typescript@1.28.8", "", {}, "sha512-5lbFseSDzrZaQifPyDlFgCnB0duFb3ISi3fU7DGTMnZatIVEBz5rZZX0Wkq6HwsX5TNm0b+2d3s03tmPKh4WWw=="],
 
     "@rollup/rollup-android-arm-eabi": ["@rollup/rollup-android-arm-eabi@4.34.9", "", { "os": "android", "cpu": "arm" }, "sha512-qZdlImWXur0CFakn2BJ2znJOdqYZKiedEPEVNTBrpfPjc/YuTGcaYZcdmNFTkUj3DU0ZM/AElcM8Ybww3xVLzA=="],
 

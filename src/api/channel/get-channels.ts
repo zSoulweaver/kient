@@ -12,9 +12,20 @@ export interface ChannelResponse {
 	}
 	channel_description: string
 	slug: string
-	stream?: {
-		key: string
-		url: string
+	stream: {
+		key?: string
+		url?: string
+		category: {
+			id: number
+			name: string
+			thumbnail: string
+		}
+		is_live: boolean
+		is_mature: boolean
+		language: string
+		start_time: string
+		stream_title: string
+		viewer_count: number
 	}
 	stream_title: string
 }
@@ -36,9 +47,19 @@ export async function getChannelsByID(kient: Kient, ids: number[] = []) {
 			slug: channelData.slug,
 			bannerPicture: channelData.banner_picture,
 			channelDescription: channelData.channel_description,
-			streamTitle: channelData.stream_title,
-			category: channelData.category,
-			stream: channelData.stream,
+			stream: {
+				category: channelData.stream.category,
+				isLive: channelData.stream.is_live,
+				isMature: channelData.stream.is_mature,
+				language: channelData.stream.language,
+				startTime: channelData.stream.start_time,
+				streamTitle: channelData.stream.stream_title,
+				viewerCount: channelData.stream.viewer_count,
+			},
+			ingest: {
+				key: channelData.stream.key || '',
+				url: channelData.stream.url || '',
+			},
 		})
 		channelInstances.push(channel)
 	}
