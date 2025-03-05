@@ -2,7 +2,10 @@
 	"name": "kient",
 	"version": "2.0.1-7",
 	"homepage": "https://kient.pages.dev",
-	"repository": "zSoulweaver/kient",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/zSoulweaver/kient.git"
+	},
 	"license": "MIT",
 	"keywords": [
 		"kick",
