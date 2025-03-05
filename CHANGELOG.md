@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v2.0.1-6
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v2.0.1-5...v2.0.1-6)
+
+### 🏡 Chore
+
+- Improve package.json - Adds NPM keywords - Adds homepage to docs - Maybe fixes repo link on npm? ([eff2d6c](https://github.com/zSoulweaver/kient/commit/eff2d6c))
+- Update package for changelogen ([857e608](https://github.com/zSoulweaver/kient/commit/857e608))
+
+### ❤️ Contributors
+
+- ZSoulweaver ([@zSoulweaver](http://github.com/zSoulweaver))
+
 ## v2.0.1-5
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v2.0.1-4...v2.0.1-5)
