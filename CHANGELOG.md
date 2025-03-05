@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v2.0.1-7
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v2.0.1-6...v2.0.1-7)
+
+### 🩹 Fixes
+
+- Update channel API response ([9131ce9](https://github.com/zSoulweaver/kient/commit/9131ce9))
+
+### 🏡 Chore
+
+- Possible npm repo fix 2? ([427237c](https://github.com/zSoulweaver/kient/commit/427237c))
+
+### ❤️ Contributors
+
+- ZSoulweaver ([@zSoulweaver](http://github.com/zSoulweaver))
+
 ## v2.0.1-6
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v2.0.1-5...v2.0.1-6)
