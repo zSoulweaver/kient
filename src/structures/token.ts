@@ -1,7 +1,7 @@
 import type { KientScope } from '../authentication/scopes'
 import { flatten, type Flattened } from '../util/flatten'
 
-type TokenDataParams = Omit<Flattened<Token>, 'scopes'>
+type TokenDataParams = Omit<Flattened<Token>, 'scopes' | 'isAppToken'>
 
 /**
  * Response when generating an authorisation token
@@ -22,7 +22,7 @@ export class Token {
 	/**
 	 * The refresh token used to get a new access token
 	 */
-	refreshToken: string
+	refreshToken?: string
 
 	/**
 	 * The seconds until the access token expires
@@ -32,7 +32,7 @@ export class Token {
 	/**
 	 * A string of space seperated scopes available to this token
 	 */
-	scope: string
+	scope?: string
 
 	/** @internal */
 	constructor(data: TokenDataParams) {
@@ -47,7 +47,14 @@ export class Token {
 	 * An array of scopes available to this token
 	 */
 	get scopes() {
-		return this.scope.split(' ') as KientScope[]
+		return this.scope ? this.scope.split(' ') as KientScope[] : []
+	}
+	
+	/**
+	 * Returns true if the token is an app token type
+	 */
+	get isAppToken() {
+		return !this.scope || !this.refreshToken
 	}
 
 	toJSON() {
