@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v2.2.0
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v2.1.0...v2.2.0)
+
+### 💅 Refactors
+
+- Move webhook verifier to exported utility function ([33a0d28](https://github.com/zSoulweaver/kient/commit/33a0d28))
+
+### 🏡 Chore
+
+- Add biome to default formatter ([1cf40f3](https://github.com/zSoulweaver/kient/commit/1cf40f3))
+
+### ❤️ Contributors
+
+- ZSoulweaver ([@zSoulweaver](http://github.com/zSoulweaver))
+
 ## v2.1.0
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v2.0.1-7...v2.1.0)
