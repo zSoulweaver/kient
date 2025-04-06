@@ -4,6 +4,7 @@ import { EventSubscription } from '../../structures/event-subscription'
 
 export interface EventSubscriptionParams {
 	method: 'webhook'
+	broadcaster_user_id?: number
 	events: Array<{
 		name: string
 		version: number

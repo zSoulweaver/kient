@@ -13,6 +13,7 @@ if (kient.webhookServerFetch) {
 
 const subscription = await kient.api.event.subscribe({
 	method: 'webhook',
+	broadcaster_user_id: 676,
 	events: [
 		{
 			name: 'chat.message.sent',
@@ -24,6 +25,7 @@ console.log(kientToJSON(subscription))
 
 const subscriptions = await kient.api.event.getSubscriptions()
 console.log(subscriptions.map((sub) => sub.toJSON()))
+// subscriptions.forEach(sub => sub.unsubscribe())
 
 kient.addListener('KIENT_CHAT_MESSAGE_SENT', (message) => {
 	console.log('chat message received from', message.sender.username)
