@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
 
 import type { Kient } from 'kient'
-import { WebhookHandler } from './webhook.handler'
+import { verifyWebhookSignature } from './util/verify-webhook-signature'
 
 export class WebhookServer {
 	private kient: Kient
@@ -27,7 +27,7 @@ export class WebhookServer {
 					return c.body(null, 400)
 				}
 
-				const signatureValid = WebhookHandler.verifySignature({
+				const signatureValid = verifyWebhookSignature({
 					publicKey: this.kient._kickPublicKey,
 					messageId,
 					signature,

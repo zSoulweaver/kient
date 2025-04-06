@@ -1,18 +1,9 @@
 import type { Kient } from 'kient'
-import crypto from 'node:crypto'
 import type { WebhookEvent } from './structures/base-event'
 import { ChatMessage } from './structures/chat-message'
 import { ChannelFollow } from './structures/channel-follow'
 import { ChannelSubscription } from './structures/channel-subscription'
 import { ChannelSubscriptionGift } from './structures/channel-subscription-gift'
-
-interface VerifySignatureParams {
-	publicKey: string
-	messageId: string
-	signature: string
-	timestamp: string
-	body: string
-}
 
 export type WebhookEventNames =
 	| 'chat.message.sent'
@@ -84,25 +75,6 @@ export class WebhookHandler {
 
 			default:
 				break
-		}
-	}
-
-	static verifySignature(params: VerifySignatureParams) {
-		try {
-			const data = `${params.messageId}.${params.timestamp}.${params.body}`
-
-			const verifer = crypto.createVerify('RSA-SHA256')
-			verifer.update(data)
-
-			const signature = Buffer.from(params.signature, 'base64')
-			const isValid = verifer.verify(params.publicKey, signature)
-			if (!isValid) {
-				console.warn('Webhook signature verification failed')
-			}
-			return isValid
-		} catch (err) {
-			console.error('Unable to verify signature of webhook event', err)
-			return false
 		}
 	}
 }
