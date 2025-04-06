@@ -33,7 +33,7 @@
 		"docs:build": "typedoc && vitepress build docs",
 		"docs:preview": "vitepress preview docs",
 		"release": "changelogen --release",
-		"prerelease": "changelogen --release --prerelease"
+		"pre-release": "changelogen --release --prerelease"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
