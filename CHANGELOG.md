@@ -1,6 +1,25 @@
 # Changelog
 
 
+## v2.1.0
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v2.0.1-7...v2.1.0)
+
+### 🚀 Enhancements
+
+- Add app tokens ([24b5404](https://github.com/zSoulweaver/kient/commit/24b5404))
+- Add target user to webhook subscriptions ([d7bd0b4](https://github.com/zSoulweaver/kient/commit/d7bd0b4))
+
+### 🏡 Chore
+
+- Repo fix again? ([a5a41dc](https://github.com/zSoulweaver/kient/commit/a5a41dc))
+- Add release script ([b5d9802](https://github.com/zSoulweaver/kient/commit/b5d9802))
+- Adjust prerelease script name - conflicts with some built in npm script stuff causing release command to have both commands run ([ddfd66e](https://github.com/zSoulweaver/kient/commit/ddfd66e))
+
+### ❤️ Contributors
+
+- ZSoulweaver ([@zSoulweaver](http://github.com/zSoulweaver))
+
 ## v2.0.1-7
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v2.0.1-6...v2.0.1-7)
