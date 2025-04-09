@@ -4,6 +4,7 @@ import { ChatMessage } from './structures/chat-message'
 import { ChannelFollow } from './structures/channel-follow'
 import { ChannelSubscription } from './structures/channel-subscription'
 import { ChannelSubscriptionGift } from './structures/channel-subscription-gift'
+import { LivestreamStatus } from './structures/livestream-status'
 
 export type WebhookEventNames =
 	| 'chat.message.sent'
@@ -11,6 +12,7 @@ export type WebhookEventNames =
 	| 'channel.subscription.renewal'
 	| 'channel.subscription.gifts'
 	| 'channel.subscription.new'
+	| 'livestream.status.updated'
 
 export const WebhookEvents = {
 	Chat: {
@@ -22,6 +24,9 @@ export const WebhookEvents = {
 		Resubscription: 'KIENT_CHANNEL_RESUBSCRIPTION',
 		GiftSubscriptions: 'KIENT_CHANNEL_GIFT_SUBSCRIPTIONS',
 	},
+	Livestream: {
+		StatusUpdated: 'KIENT_LIVESTREAM_STATUS_UPDATED',
+	},
 } as const
 
 export type WebhookEvents = {
@@ -32,6 +37,7 @@ export type WebhookEvents = {
 	[WebhookEvents.Channel.GiftSubscriptions]: (
 		channelSubscriptionsGift: ChannelSubscriptionGift,
 	) => void
+	[WebhookEvents.Livestream.StatusUpdated]: (livestreamStatus: LivestreamStatus) => void
 }
 
 export class WebhookHandler {
@@ -42,7 +48,7 @@ export class WebhookHandler {
 	}
 
 	handleEvent(event: WebhookEvent) {
-		switch (event.type) {
+		switch (event.type as WebhookEventNames) {
 			case 'chat.message.sent': {
 				const chatMessage = new ChatMessage(this.kient, event)
 				this.kient.emit('KIENT_CHAT_MESSAGE_SENT', chatMessage)
@@ -70,6 +76,12 @@ export class WebhookHandler {
 			case 'channel.subscription.gifts': {
 				const channelSubscriptionGift = new ChannelSubscriptionGift(this.kient, event)
 				this.kient.emit('KIENT_CHANNEL_GIFT_SUBSCRIPTIONS', channelSubscriptionGift)
+				break
+			}
+
+			case 'livestream.status.updated': {
+				const livestreamStatus = new LivestreamStatus(this.kient, event)
+				this.kient.emit('KIENT_LIVESTREAM_STATUS_UPDATED', livestreamStatus)
 				break
 			}
 
