@@ -12,3 +12,9 @@ kient.setAuthToken(env.KICK_TOKEN as string)
 
 const specificUser = await kient.api.channel.getById(676)
 console.log(specificUser.toJSON())
+
+// const multipleUsersBySlugs = await kient.api.channel.getBySlugs(['kient', 'user1', 'user2'])
+// console.log(kientToJSON(multipleUsersBySlugs))
+
+// const specificUserBySlug = await kient.api.channel.getBySlug('kient')
+// console.log(specificUserBySlug.toJSON())

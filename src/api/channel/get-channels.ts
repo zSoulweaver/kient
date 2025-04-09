@@ -26,12 +26,7 @@ export interface ChannelResponse {
 
 type GetChannelResponse = APIResponse<ChannelResponse[]>
 
-export async function getChannelsByID(kient: Kient, ids: number[] = []) {
-	const params = new URLSearchParams()
-	for (const id of ids) {
-		params.append('broadcaster_user_id', id.toString())
-	}
-
+async function fetchChannels(kient: Kient, params: URLSearchParams): Promise<Channel[]> {
 	const response = await kient._apiClient.fetch<GetChannelResponse>(`/channels?${params}`)
 
 	const channelInstances = []
@@ -59,4 +54,20 @@ export async function getChannelsByID(kient: Kient, ids: number[] = []) {
 	}
 
 	return channelInstances
+}
+
+export async function getChannelsByID(kient: Kient, ids: number[] = []) {
+	const params = new URLSearchParams()
+	for (const id of ids) {
+		params.append('broadcaster_user_id', id.toString())
+	}
+	return fetchChannels(kient, params)
+}
+
+export async function getChannelsBySlugs(kient: Kient, slugs: string[] = []) {
+	const params = new URLSearchParams()
+	for (const slug of slugs) {
+		params.append('slug', slug)
+	}
+	return fetchChannels(kient, params)
 }
