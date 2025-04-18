@@ -1,6 +1,25 @@
 # Changelog
 
 
+## v2.3.0
+
+[compare changes](https://github.com/zSoulweaver/kient/compare/v2.2.0...v2.3.0)
+
+### 🚀 Enhancements
+
+- Support getting channels by slug ([#32](https://github.com/zSoulweaver/kient/pull/32))
+- Add livestream status webhook ([8cf7a79](https://github.com/zSoulweaver/kient/commit/8cf7a79))
+- Add chat user identity ([d6b3056](https://github.com/zSoulweaver/kient/commit/d6b3056))
+
+### 🏡 Chore
+
+- Update webhook example - data structures should really be use `number` type, will get on that later ([6a72f7b](https://github.com/zSoulweaver/kient/commit/6a72f7b))
+
+### ❤️ Contributors
+
+- ZSoulweaver ([@zSoulweaver](http://github.com/zSoulweaver))
+- Kody <gh@kdy.ch>
+
 ## v2.2.0
 
 [compare changes](https://github.com/zSoulweaver/kient/compare/v2.1.0...v2.2.0)
